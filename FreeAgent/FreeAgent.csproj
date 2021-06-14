@@ -8,6 +8,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <PackageId>FreeAgent.API.CSharp.Client</PackageId>
+    <Authors>Nic Wise and Contributors</Authors>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="RestSharp" Version="106.11.7" />

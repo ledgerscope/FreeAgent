@@ -13,11 +13,23 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+
+    - name: Setup NuGet
+      run: dotnet nuget add source "https://pkgs.dev.azure.com/ledgerscope/_packaging/LSFeed/nuget/v3/index.json" --name LSFeed -u ledgerscope --password ${{ secrets.LEDGERSCOPEDEVOPS }} --store-password-in-clear-text
+
     - name: Restore dependencies
       run: dotnet restore
+
     - name: Build
       run: dotnet build --no-restore
+
+    - name: Package
+      run: dotnet pack -p:PackageVersion=0.3.$GITHUB_RUN_NUMBER
+      
+    - name: Publish
+      run: dotnet nuget push -s LSFeed --api-key az "**/*.nupkg"
