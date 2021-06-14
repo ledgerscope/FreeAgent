@@ -20,12 +20,10 @@ namespace FreeAgent.Tests
         public override void CheckSingleItem(BankAccount item)
         {
 
-            Assert.IsNotNullOrEmpty(item.url);
-            Assert.IsNotNullOrEmpty(item.type);
-            Assert.IsNotNullOrEmpty(item.name);
-            Assert.IsNotNullOrEmpty(item.bank_name);
-
-            
+            Assert.That(item.url, Is.Null.Or.Empty);
+            Assert.That(item.type, Is.Null.Or.Empty);
+            Assert.That(item.name, Is.Null.Or.Empty);
+            Assert.That(item.bank_name, Is.Null.Or.Empty);
         }
 
 
@@ -47,18 +45,15 @@ namespace FreeAgent.Tests
         public override void CompareSingleItem(BankAccount originalItem, BankAccount newItem)
         {
             Assert.IsNotNull(newItem);
-            Assert.IsNotNullOrEmpty(newItem.url);
+            Assert.That(newItem.url, Is.Null.Or.Empty);
             Assert.AreEqual(newItem.account_number, originalItem.account_number);
             Assert.AreEqual(newItem.type, originalItem.type);
             Assert.AreEqual(newItem.opening_balance, originalItem.opening_balance);
-
         }
 
         public override bool CanDelete(BankAccount item)
         {
             return item.name.Contains("TEST");
-
         }
-
     }
 }

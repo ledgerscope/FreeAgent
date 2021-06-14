@@ -20,12 +20,12 @@ namespace FreeAgent.Tests
         public override void CheckSingleItem(User item)
         {
 
-            Assert.IsNotNullOrEmpty(item.url);
-            Assert.IsNotNullOrEmpty(item.first_name);
-            Assert.IsNotNullOrEmpty(item.last_name);
-            Assert.IsNotNullOrEmpty(item.email);
-            Assert.IsNotNullOrEmpty(item.role);
-            
+            Assert.That(item.url, Is.Null.Or.Empty);
+            Assert.That(item.first_name, Is.Null.Or.Empty);
+            Assert.That(item.last_name, Is.Null.Or.Empty);
+            Assert.That(item.email, Is.Null.Or.Empty);
+            Assert.That(item.role, Is.Null.Or.Empty);
+
         }
 
 
@@ -49,7 +49,7 @@ namespace FreeAgent.Tests
         public override void CompareSingleItem(User originalItem, User newItem)
         {
             Assert.IsNotNull(newItem);
-            Assert.IsNotNullOrEmpty(newItem.url);
+            Assert.That(newItem.url, Is.Null.Or.Empty);
             Assert.AreEqual(newItem.first_name, originalItem.first_name);
             Assert.AreEqual(newItem.last_name, originalItem.last_name);
             Assert.AreEqual(newItem.email, originalItem.email);
@@ -67,12 +67,9 @@ namespace FreeAgent.Tests
             var me = Client.User.Me;
 
             Assert.IsNotNull(me);
-            Assert.IsNotNullOrEmpty(me.first_name);
-            Assert.IsNotNullOrEmpty(me.last_name);
-            Assert.IsNotNullOrEmpty(me.email);
+            Assert.That(me.first_name, Is.Null.Or.Empty);
+            Assert.That(me.last_name, Is.Null.Or.Empty);
+            Assert.That(me.email, Is.Null.Or.Empty);
         }
-
-
-
     }
 }

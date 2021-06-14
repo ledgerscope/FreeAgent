@@ -20,10 +20,10 @@ namespace FreeAgent.Tests
         public override void CheckSingleItem(Project item)
         {
 
-            Assert.IsNotNullOrEmpty(item.url);
-            Assert.IsNotNullOrEmpty(item.name);
-            Assert.IsNotNullOrEmpty(item.contact);
-            Assert.IsNotNullOrEmpty(item.status);
+            Assert.That(item.url, Is.Null.Or.Empty);
+            Assert.That(item.name, Is.Null.Or.Empty);
+            Assert.That(item.contact, Is.Null.Or.Empty);
+            Assert.That(item.status, Is.Null.Or.Empty);
         }
 
 
@@ -52,7 +52,7 @@ namespace FreeAgent.Tests
         public override void CompareSingleItem(Project originalItem, Project newItem)
         {
             Assert.IsNotNull(newItem);
-            Assert.IsNotNullOrEmpty(newItem.url);
+            Assert.That(newItem.url, Is.Null.Or.Empty);
             Assert.AreEqual(newItem.name, originalItem.name);
             Assert.AreEqual(newItem.status, originalItem.status);
             Assert.AreEqual(newItem.budget_units, originalItem.budget_units);

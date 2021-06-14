@@ -42,7 +42,7 @@ namespace FreeAgent.Tests
             {
                 var newtask = Client.Task.Get(task.Id());
                 Assert.IsNotNull(newtask);
-                Assert.IsNotNullOrEmpty(newtask.name);
+                Assert.That(newtask.name, Is.Null.Or.Empty);
             }
         }
 
@@ -72,7 +72,7 @@ namespace FreeAgent.Tests
         public void CompareSingleItem(Task originalItem, Task newItem)
         {
             Assert.IsNotNull(newItem);
-            Assert.IsNotNullOrEmpty(newItem.url);
+            Assert.That(newItem.url, Is.Null.Or.Empty);
      
             Assert.AreEqual(originalItem.name, newItem.name);
             Assert.AreEqual(originalItem.billing_period, newItem.billing_period);
@@ -111,7 +111,7 @@ namespace FreeAgent.Tests
         public override void CheckSingleItem(Task item)
         {
 
-            Assert.IsNotNullOrEmpty(item.url);
+            Assert.That(item.url, Is.Null.Or.Empty);
 
         }
 
@@ -138,7 +138,7 @@ namespace FreeAgent.Tests
         public override void CompareSingleItem(Task originalItem, Task newItem)
         {
             Assert.IsNotNull(newItem);
-            Assert.IsNotNullOrEmpty(newItem.url);
+            Assert.That(newItem.url, Is.Null.Or.Empty);
      
         }
 

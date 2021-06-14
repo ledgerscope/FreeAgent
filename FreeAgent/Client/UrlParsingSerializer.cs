@@ -1,6 +1,7 @@
 using System;
 using RestSharp.Serializers;
 using System.Diagnostics;
+using RestSharp.Serialization.Json;
 
 namespace FreeAgent
 {

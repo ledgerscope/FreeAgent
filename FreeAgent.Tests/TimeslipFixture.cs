@@ -51,13 +51,11 @@ namespace FreeAgent.Tests
 
         public override void CheckSingleItem(Timeslip item)
         {
-
-            Assert.IsNotNullOrEmpty(item.url);
-            Assert.IsNotNullOrEmpty(item.dated_on);
-            Assert.IsNotNullOrEmpty(item.project);
-            Assert.IsNotNullOrEmpty(item.task);
-            Assert.IsNotNullOrEmpty(item.user);
-
+            Assert.That(item.url, Is.Null.Or.Empty);
+            Assert.That(item.dated_on, Is.Null.Or.Empty);
+            Assert.That(item.project, Is.Null.Or.Empty);
+            Assert.That(item.task, Is.Null.Or.Empty);
+            Assert.That(item.user, Is.Null.Or.Empty);
         }
 
 
@@ -83,7 +81,7 @@ namespace FreeAgent.Tests
         public override void CompareSingleItem(Timeslip originalItem, Timeslip newItem)
         {
             Assert.IsNotNull(newItem);
-            Assert.IsNotNullOrEmpty(newItem.url);
+            Assert.That(newItem.url, Is.Null.Or.Empty);
             Assert.IsTrue(newItem.user.EndsWith(originalItem.user));
             Assert.IsTrue(newItem.project.EndsWith(originalItem.project));
             Assert.IsTrue(newItem.task.EndsWith(originalItem.task));

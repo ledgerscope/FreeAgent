@@ -1,0 +1,132 @@
+2021-06-14 20:15:21.938 +01:00 [INF] MSBuild registered from C:\Program Files\dotnet\sdk\5.0.301\
+2021-06-14 20:15:24.473 +01:00 [INF] Initializing upgrade step Select an entrypoint
+2021-06-14 20:15:27.735 +01:00 [INF] Applying upgrade step Select an entrypoint
+2021-06-14 20:15:29.939 +01:00 [INF] Upgrade step Select an entrypoint applied successfully
+2021-06-14 20:15:31.681 +01:00 [INF] Initializing upgrade step Select project to upgrade
+2021-06-14 20:15:31.735 +01:00 [INF] Initializing upgrade step Back up project
+2021-06-14 20:15:36.863 +01:00 [INF] Skipping upgrade step Back up project
+2021-06-14 20:15:36.864 +01:00 [INF] Upgrade step Back up project skipped
+2021-06-14 20:15:37.758 +01:00 [INF] Initializing upgrade step Convert project file to SDK style
+2021-06-14 20:15:39.478 +01:00 [INF] Applying upgrade step Convert project file to SDK style
+2021-06-14 20:15:39.480 +01:00 [INF] Converting project file format with try-convert, version 0.7.226301
+2021-06-14 20:15:40.031 +01:00 [INF] [try-convert] D:\Source\Repos\FreeAgent\FreeAgent\FreeAgent.csproj contains a reference to System.Web, which is not supported on .NET Core. You may have significant work ahead of you to fully port this project.
+2021-06-14 20:15:40.033 +01:00 [INF] [try-convert] D:\Source\Repos\FreeAgent\FreeAgent\FreeAgent.csproj contains an App.config file. App.config is replaced by appsettings.json in .NET Core. You will need to delete App.config and migrate to appsettings.json if it's applicable to your project.
+2021-06-14 20:15:42.243 +01:00 [INF] [try-convert] Conversion complete!
+2021-06-14 20:15:42.473 +01:00 [INF] Project file converted successfully! The project may require additional changes to build successfully against the new .NET target.
+2021-06-14 20:15:43.552 +01:00 [INF] Upgrade step Convert project file to SDK style applied successfully
+2021-06-14 20:15:45.510 +01:00 [INF] Initializing upgrade step Clean up NuGet package references
+2021-06-14 20:15:46.528 +01:00 [INF] Marking assembly reference System.Configuration for removal based on package mapping configuration System.Configuration
+2021-06-14 20:15:46.532 +01:00 [INF] Adding package System.Configuration.ConfigurationManager based on package mapping configuration System.Configuration
+2021-06-14 20:15:47.577 +01:00 [WRN] Failed to get package versions from source https://pkgs.dev.azure.com/ledgerscope/_packaging/LSFeed/nuget/v3/index.json due to a NuGet protocol error
+2021-06-14 20:15:47.578 +01:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2021-06-14 20:15:47.581 +01:00 [WRN] No version of System.Data.DataSetExtensions found that supports ["net40"]; leaving unchanged
+2021-06-14 20:15:48.223 +01:00 [WRN] Failed to get package versions from source https://pkgs.dev.azure.com/ledgerscope/_packaging/LSFeed/nuget/v3/index.json due to a NuGet protocol error
+2021-06-14 20:15:48.225 +01:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2021-06-14 20:15:48.226 +01:00 [WRN] No version of System.Configuration.ConfigurationManager found that supports ["net40"]; leaving unchanged
+2021-06-14 20:15:48.819 +01:00 [WRN] Failed to get package versions from source https://pkgs.dev.azure.com/ledgerscope/_packaging/LSFeed/nuget/v3/index.json due to a NuGet protocol error
+2021-06-14 20:15:48.821 +01:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2021-06-14 20:15:48.824 +01:00 [WRN] .NET Upgrade Assistant analyzer NuGet package reference cannot be added because the package cannot be found
+2021-06-14 20:15:48.827 +01:00 [INF] References to be removed: System.Configuration
+2021-06-14 20:15:48.829 +01:00 [INF] Packages to be added: System.Configuration.ConfigurationManager, Version=5.0.0
+2021-06-14 20:15:51.894 +01:00 [INF] Applying upgrade step Clean up NuGet package references
+2021-06-14 20:15:51.899 +01:00 [INF] Removing outdated assembly reference: System.Configuration
+2021-06-14 20:15:51.903 +01:00 [INF] Adding package reference: System.Configuration.ConfigurationManager, Version=5.0.0
+2021-06-14 20:15:53.224 +01:00 [WRN] Failed to get package versions from source https://pkgs.dev.azure.com/ledgerscope/_packaging/LSFeed/nuget/v3/index.json due to a NuGet protocol error
+2021-06-14 20:15:53.226 +01:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2021-06-14 20:15:53.226 +01:00 [WRN] No version of System.Data.DataSetExtensions found that supports ["net40"]; leaving unchanged
+2021-06-14 20:15:53.414 +01:00 [WRN] Failed to get package versions from source https://pkgs.dev.azure.com/ledgerscope/_packaging/LSFeed/nuget/v3/index.json due to a NuGet protocol error
+2021-06-14 20:15:53.416 +01:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2021-06-14 20:15:53.417 +01:00 [WRN] No version of System.Configuration.ConfigurationManager found that supports ["net40"]; leaving unchanged
+2021-06-14 20:15:53.585 +01:00 [WRN] Failed to get package versions from source https://pkgs.dev.azure.com/ledgerscope/_packaging/LSFeed/nuget/v3/index.json due to a NuGet protocol error
+2021-06-14 20:15:53.587 +01:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2021-06-14 20:15:53.588 +01:00 [WRN] .NET Upgrade Assistant analyzer NuGet package reference cannot be added because the package cannot be found
+2021-06-14 20:15:53.589 +01:00 [INF] Upgrade step Clean up NuGet package references applied successfully
+2021-06-14 20:16:10.320 +01:00 [INF] Initializing upgrade step Update TFM
+2021-06-14 20:16:10.326 +01:00 [INF] TFM needs updated to net5.0
+2021-06-14 20:16:12.813 +01:00 [INF] Applying upgrade step Update TFM
+2021-06-14 20:16:14.105 +01:00 [INF] Updated TFM to net5.0
+2021-06-14 20:16:14.107 +01:00 [INF] Upgrade step Update TFM applied successfully
+2021-06-14 20:16:16.175 +01:00 [INF] Initializing upgrade step Update NuGet Packages
+2021-06-14 20:16:17.135 +01:00 [INF] Marking assembly reference System.Web for removal based on package mapping configuration ASP.NET
+2021-06-14 20:16:17.137 +01:00 [INF] Adding framework reference Microsoft.AspNetCore.App based on package mapping configuration ASP.NET
+2021-06-14 20:16:18.998 +01:00 [WRN] Failed to get package versions from source https://pkgs.dev.azure.com/ledgerscope/_packaging/LSFeed/nuget/v3/index.json due to a NuGet protocol error
+2021-06-14 20:16:19.000 +01:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2021-06-14 20:16:19.003 +01:00 [INF] Marking package RestSharp, Version=105.2.3 for removal because it doesn't support the target framework but a newer version (106.11.7) does
+2021-06-14 20:16:19.004 +01:00 [WRN] Package RestSharp has been upgraded across major versions (105.2.3 -> 106.11.7) which may introduce breaking changes
+2021-06-14 20:16:19.179 +01:00 [WRN] Failed to get package versions from source https://pkgs.dev.azure.com/ledgerscope/_packaging/LSFeed/nuget/v3/index.json due to a NuGet protocol error
+2021-06-14 20:16:19.181 +01:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2021-06-14 20:16:19.182 +01:00 [WRN] .NET Upgrade Assistant analyzer NuGet package reference cannot be added because the package cannot be found
+2021-06-14 20:16:19.183 +01:00 [INF] References to be removed: System.Web
+2021-06-14 20:16:19.184 +01:00 [INF] Packages to be removed: RestSharp, Version=105.2.3
+2021-06-14 20:16:19.184 +01:00 [INF] Packages to be added: RestSharp, Version=106.11.7
+2021-06-14 20:16:19.185 +01:00 [INF] Framework references to be added: Microsoft.AspNetCore.App
+2021-06-14 20:16:22.647 +01:00 [INF] Applying upgrade step Update NuGet Packages
+2021-06-14 20:16:22.649 +01:00 [INF] Removing outdated assembly reference: System.Web
+2021-06-14 20:16:22.650 +01:00 [INF] Removing outdated package reference: RestSharp, Version=105.2.3
+2021-06-14 20:16:22.650 +01:00 [INF] Adding package reference: RestSharp, Version=106.11.7
+2021-06-14 20:16:22.651 +01:00 [INF] Adding framework reference: Microsoft.AspNetCore.App
+2021-06-14 20:16:24.190 +01:00 [WRN] Failed to get package versions from source https://pkgs.dev.azure.com/ledgerscope/_packaging/LSFeed/nuget/v3/index.json due to a NuGet protocol error
+2021-06-14 20:16:24.192 +01:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2021-06-14 20:16:24.193 +01:00 [WRN] .NET Upgrade Assistant analyzer NuGet package reference cannot be added because the package cannot be found
+2021-06-14 20:16:24.194 +01:00 [INF] Upgrade step Update NuGet Packages applied successfully
+2021-06-14 20:16:32.959 +01:00 [INF] Initializing upgrade step Add template files
+2021-06-14 20:16:32.965 +01:00 [INF] 0 expected template items needed
+2021-06-14 20:16:32.966 +01:00 [INF] Initializing upgrade step Upgrade app config files
+2021-06-14 20:16:32.987 +01:00 [INF] Found 0 app settings for upgrade: 
+2021-06-14 20:16:32.992 +01:00 [INF] 0 web page namespace imports need upgraded: 
+2021-06-14 20:16:32.998 +01:00 [INF] Initializing upgrade step Update source code
+2021-06-14 20:16:34.006 +01:00 [INF] Initializing upgrade step Move to next project
+2021-06-14 20:16:40.984 +01:00 [INF] Applying upgrade step Move to next project
+2021-06-14 20:16:40.985 +01:00 [INF] Upgrade step Move to next project applied successfully
+2021-06-14 20:16:41.809 +01:00 [INF] Initializing upgrade step Select project to upgrade
+2021-06-14 20:16:41.814 +01:00 [INF] No projects need upgraded for selected entrypoint
+2021-06-14 20:16:41.815 +01:00 [INF] Initializing upgrade step Finalize upgrade
+2021-06-14 20:16:43.918 +01:00 [INF] Applying upgrade step Finalize upgrade
+2021-06-14 20:16:43.920 +01:00 [INF] Upgrade step Finalize upgrade applied successfully
+2021-06-14 20:16:44.712 +01:00 [INF] Upgrade has completed. Please review any changes.
+2021-06-14 20:16:44.716 +01:00 [INF] No state to save
+2021-06-14 20:20:09.828 +01:00 [INF] MSBuild registered from C:\Program Files\dotnet\sdk\5.0.301\
+2021-06-14 20:20:11.257 +01:00 [INF] Initializing upgrade step Select an entrypoint
+2021-06-14 20:20:13.401 +01:00 [INF] Applying upgrade step Select an entrypoint
+2021-06-14 20:20:15.468 +01:00 [INF] Upgrade step Select an entrypoint applied successfully
+2021-06-14 20:20:17.403 +01:00 [INF] Initializing upgrade step Select project to upgrade
+2021-06-14 20:20:19.103 +01:00 [INF] Applying upgrade step Select project to upgrade
+2021-06-14 20:20:21.529 +01:00 [INF] Upgrade step Select project to upgrade applied successfully
+2021-06-14 20:20:22.456 +01:00 [INF] Initializing upgrade step Back up project
+2021-06-14 20:20:24.105 +01:00 [INF] Skipping upgrade step Back up project
+2021-06-14 20:20:24.108 +01:00 [INF] Upgrade step Back up project skipped
+2021-06-14 20:20:24.952 +01:00 [INF] Initializing upgrade step Convert project file to SDK style
+2021-06-14 20:20:26.216 +01:00 [INF] Applying upgrade step Convert project file to SDK style
+2021-06-14 20:20:26.219 +01:00 [INF] Converting project file format with try-convert, version 0.7.226301
+2021-06-14 20:20:28.546 +01:00 [INF] [try-convert] Conversion complete!
+2021-06-14 20:20:28.789 +01:00 [INF] Project file converted successfully! The project may require additional changes to build successfully against the new .NET target.
+2021-06-14 20:20:29.877 +01:00 [INF] Upgrade step Convert project file to SDK style applied successfully
+2021-06-14 20:20:31.855 +01:00 [INF] Initializing upgrade step Clean up NuGet package references
+2021-06-14 20:20:33.713 +01:00 [WRN] No version of Microsoft.CSharp found that supports ["net40"]; leaving unchanged
+2021-06-14 20:20:33.720 +01:00 [WRN] No version of System.Data.DataSetExtensions found that supports ["net40"]; leaving unchanged
+2021-06-14 20:20:33.724 +01:00 [WRN] .NET Upgrade Assistant analyzer NuGet package reference cannot be added because the package cannot be found
+2021-06-14 20:20:33.727 +01:00 [INF] No package updates needed
+2021-06-14 20:20:33.729 +01:00 [INF] Initializing upgrade step Update TFM
+2021-06-14 20:20:33.757 +01:00 [INF] TFM needs updated to net5.0
+2021-06-14 20:20:35.336 +01:00 [INF] Applying upgrade step Update TFM
+2021-06-14 20:20:36.791 +01:00 [INF] Updated TFM to net5.0
+2021-06-14 20:20:36.793 +01:00 [INF] Upgrade step Update TFM applied successfully
+2021-06-14 20:20:37.687 +01:00 [INF] Initializing upgrade step Update NuGet Packages
+2021-06-14 20:20:38.749 +01:00 [INF] Marking package System.Data.DataSetExtensions for removal because it appears to be a transitive dependency
+2021-06-14 20:20:38.753 +01:00 [WRN] .NET Upgrade Assistant analyzer NuGet package reference cannot be added because the package cannot be found
+2021-06-14 20:20:38.755 +01:00 [INF] Packages to be removed: System.Data.DataSetExtensions, Version=4.5.0
+2021-06-14 20:20:40.392 +01:00 [INF] Applying upgrade step Update NuGet Packages
+2021-06-14 20:20:40.396 +01:00 [INF] Removing outdated package reference: System.Data.DataSetExtensions, Version=4.5.0
+2021-06-14 20:20:41.911 +01:00 [WRN] .NET Upgrade Assistant analyzer NuGet package reference cannot be added because the package cannot be found
+2021-06-14 20:20:41.913 +01:00 [INF] Upgrade step Update NuGet Packages applied successfully
+2021-06-14 20:20:44.799 +01:00 [INF] Initializing upgrade step Add template files
+2021-06-14 20:20:44.804 +01:00 [INF] 0 expected template items needed
+2021-06-14 20:20:44.813 +01:00 [INF] Initializing upgrade step Update source code
+2021-06-14 20:20:46.913 +01:00 [INF] Initializing upgrade step Move to next project
+2021-06-14 20:20:48.760 +01:00 [INF] Applying upgrade step Move to next project
+2021-06-14 20:20:48.761 +01:00 [INF] Upgrade step Move to next project applied successfully
+2021-06-14 20:20:49.517 +01:00 [INF] Initializing upgrade step Finalize upgrade
+2021-06-14 20:20:50.663 +01:00 [INF] Applying upgrade step Finalize upgrade
+2021-06-14 20:20:50.664 +01:00 [INF] Upgrade step Finalize upgrade applied successfully
+2021-06-14 20:20:51.345 +01:00 [INF] Upgrade has completed. Please review any changes.
+2021-06-14 20:20:51.349 +01:00 [INF] No state to save

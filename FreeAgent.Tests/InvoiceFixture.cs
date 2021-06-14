@@ -74,7 +74,7 @@ namespace FreeAgent.Tests
         public override void CheckSingleItem(Invoice item)
         {
 
-            Assert.IsNotNullOrEmpty(item.url);
+            Assert.That(item.url, Is.Null.Or.Empty);
             Assert.IsNotEmpty(item.invoice_items);
 
         }
@@ -111,7 +111,7 @@ namespace FreeAgent.Tests
         public override void CompareSingleItem(Invoice originalItem, Invoice newItem)
         {
             Assert.IsNotNull(newItem);
-            Assert.IsNotNullOrEmpty(newItem.url);
+            Assert.That(newItem.url, Is.Null.Or.Empty);
      
         }
 

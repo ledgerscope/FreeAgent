@@ -18,7 +18,7 @@ namespace FreeAgent.Tests
 		
 		public IEnumerable<Bill> BillAll()
 		{
-			return Client.Bill.All(view: "recent");
+			return Client.Bill.All(/*view: "recent"*/);
 		}
 		
 		public override ResourceClient<BillWrapper, BillsWrapper, Bill> ResourceClient
@@ -30,10 +30,10 @@ namespace FreeAgent.Tests
 		public override void CheckSingleItem(Bill item)
 		{
 			
-			Assert.IsNotNullOrEmpty(item.url);
-			//Assert.IsNotNullOrEmpty(contact.organisation_name);
-			//Assert.IsNotNullOrEmpty(contact.first_name);
-			//Assert.IsNotNullOrEmpty(contact.last_name);
+			Assert.That(item.url, Is.Null.Or.Empty);
+			//Assert.That( , Is.Null.Or.Empty);contact.organisation_name);
+			//Assert.That( , Is.Null.Or.Empty);contact.first_name);
+			//Assert.That( , Is.Null.Or.Empty);contact.last_name);
 		}
 		
 		
@@ -58,7 +58,7 @@ namespace FreeAgent.Tests
 		public override void CompareSingleItem(Bill originalItem, Bill newItem)
 		{
 			Assert.IsNotNull(newItem);
-			Assert.IsNotNullOrEmpty(newItem.url);
+			Assert.That(newItem.url, Is.Null.Or.Empty);
 			Assert.AreEqual(newItem.status, originalItem.status);
 			//Assert.AreEqual(newItem.user, originalItem.user);
 			Assert.AreEqual(newItem.dated_on, originalItem.dated_on);

@@ -20,10 +20,10 @@ namespace FreeAgent.Tests
         public override void CheckSingleItem(Contact item)
         {
 
-            Assert.IsNotNullOrEmpty(item.url);
-            //Assert.IsNotNullOrEmpty(contact.organisation_name);
-            //Assert.IsNotNullOrEmpty(contact.first_name);
-            //Assert.IsNotNullOrEmpty(contact.last_name);
+            Assert.That(item.url, Is.Null.Or.Empty);
+            //Assert.That( , Is.Null.Or.Empty);contact.organisation_name);
+            //Assert.That( , Is.Null.Or.Empty);contact.first_name);
+            //Assert.That( , Is.Null.Or.Empty);contact.last_name);
         }
 
 
@@ -43,7 +43,7 @@ namespace FreeAgent.Tests
         public override void CompareSingleItem(Contact originalItem, Contact newItem)
         {
             Assert.IsNotNull(newItem);
-            Assert.IsNotNullOrEmpty(newItem.url);
+            Assert.That(newItem.url, Is.Null.Or.Empty);
             Assert.AreEqual(newItem.first_name, originalItem.first_name);
             Assert.AreEqual(newItem.last_name, originalItem.last_name);
             Assert.AreEqual(newItem.address1, originalItem.address1);

@@ -7,7 +7,7 @@ using FreeAgent.Extensions;
 using FreeAgent.Helpers;
 using RestSharp;
 using RestSharp.Deserializers;
-
+using RestSharp.Serialization.Json;
 
 namespace FreeAgent
 {

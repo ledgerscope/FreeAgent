@@ -23,7 +23,7 @@ namespace FreeAgent.Tests
             Company company = Client.Company.Single();
 
             Assert.IsNotNull(company);
-            Assert.IsNotNullOrEmpty(company.name);
+            Assert.That(company.name, Is.Null.Or.Empty);
         }
 
         [Test]
@@ -46,7 +46,7 @@ namespace FreeAgent.Tests
 
             foreach (TaxTimeline t in timeline)
             {
-                Assert.IsNotNullOrEmpty(t.description);
+                Assert.That(t.description, Is.Null.Or.Empty);
             }
         }
 
