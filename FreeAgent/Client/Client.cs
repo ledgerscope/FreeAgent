@@ -134,8 +134,8 @@ namespace FreeAgent
             var stateParamAndValue = string.IsNullOrEmpty(state)
                 ? string.Empty
                 : $"&state={state}";
-
-            return $"{BaseUrl}/v{Version}/approve_app?response_type=code&client_id={_apiKey}{redirectUriParamAndValue}{stateParamAndValue}";
+			
+            return $"{BaseUrl}/v{Version}/approve_app?response_type=code&client_id={_apiKey}{stateParamAndValue}{redirectUriParamAndValue}";
 		}
 
 		public string ExtractCodeFromUrl(string url)
