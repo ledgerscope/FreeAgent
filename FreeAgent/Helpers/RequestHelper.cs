@@ -1,7 +1,6 @@
+using RestSharp;
 using System;
 using System.IO;
-using RestSharp;
-
 
 namespace FreeAgent.Helpers
 {
@@ -9,7 +8,7 @@ namespace FreeAgent.Helpers
     /// Helper class for creating DropNet RestSharp Requests
     /// </summary>
     public class RequestHelper
-    {       
+    {
         private readonly string _version;
 
         public string ApiKey { private get; set; }
@@ -172,35 +171,32 @@ namespace FreeAgent.Helpers
 
             return request;
         }
-		 
-		
-*/
+        */
 
-        
-		
-		public RestRequest CreateAccessTokenRequest(string code, string callbackurl = "")
-		{
-			// grant_type=authorization_code
-			// code=<the code from the url>
-			// redirect_url = <if it was provided before>
-			
-			var request = new RestRequest(Method.POST);
-			request.Resource = "v{version}/token_endpoint";
-			request.AddParameter("version", _version, ParameterType.UrlSegment);
+        public RestRequest CreateAccessTokenRequest(string code, string callbackurl = "")
+        {
+            // grant_type=authorization_code
+            // code=<the code from the url>
+            // redirect_url = <if it was provided before>
+
+            var request = new RestRequest(Method.POST)
+            {
+                Resource = "v{version}/token_endpoint"
+            };
+
+            request.AddParameter("version", _version, ParameterType.UrlSegment);
             request.AddParameter("code", code, ParameterType.GetOrPost);
             request.AddParameter("grant_type", "authorization_code", ParameterType.GetOrPost);
             request.AddParameter("client_id", ApiKey, ParameterType.GetOrPost);
             request.AddParameter("client_secret", ApiSecret, ParameterType.GetOrPost);
-			if (!string.IsNullOrEmpty(callbackurl))
-			{
-				request.AddParameter("redirect_uri", callbackurl, ParameterType.GetOrPost);
-			}
 
-				
-			return request;
-			
-		}
+            if (!string.IsNullOrEmpty(callbackurl))
+            {
+                request.AddParameter("redirect_uri", callbackurl, ParameterType.GetOrPost);
+            }
 
+            return request;
+        }
 
         public RestRequest CreateRefreshTokenRequest()
         {
@@ -208,9 +204,11 @@ namespace FreeAgent.Helpers
             // code=<the code from the url>
             // redirect_url = <if it was provided before>
 
-            
-            var request = new RestRequest(Method.POST);
-            request.Resource = "v{version}/token_endpoint";
+            var request = new RestRequest(Method.POST)
+            {
+                Resource = "v{version}/token_endpoint"
+            };
+
             request.AddParameter("version", _version, ParameterType.UrlSegment);
             request.AddParameter("grant_type", "refresh_token", ParameterType.GetOrPost);
             request.AddParameter("client_id", ApiKey, ParameterType.GetOrPost);
@@ -218,15 +216,9 @@ namespace FreeAgent.Helpers
             request.AddParameter("refresh_token", CurrentAccessToken.refresh_token, ParameterType.GetOrPost);
 
             return request;
-
         }
 
-        
-		
-		
-
-
-		/*
+        /*
         public RestRequest CreateNewAccountRequest(string apiKey, string email, string firstName, string lastName, string password)
         {
             var request = new RestRequest(Method.POST);
@@ -323,25 +315,24 @@ namespace FreeAgent.Helpers
          * 
          * */
     }
-         
 
-	internal static class StreamUtils
-	{
-		private const int STREAM_BUFFER_SIZE = 128 * 1024; // 128KB
+    internal static class StreamUtils
+    {
+        private const int STREAM_BUFFER_SIZE = 128 * 1024; // 128KB
 
-		public static void CopyStream (Stream source, Stream target)
-		{ CopyStream (source, target, new byte[STREAM_BUFFER_SIZE]); }
+        public static void CopyStream(Stream source, Stream target)
+        { CopyStream(source, target, new byte[STREAM_BUFFER_SIZE]); }
 
-		public static void CopyStream (Stream source, Stream target, byte[] buffer)
-		{
-			if (source == null) throw new ArgumentNullException ("source");
-			if (target == null) throw new ArgumentNullException ("target");
+        public static void CopyStream(Stream source, Stream target, byte[] buffer)
+        {
+            if (source == null) throw new ArgumentNullException("source");
+            if (target == null) throw new ArgumentNullException("target");
 
-			if (buffer == null) buffer = new byte[STREAM_BUFFER_SIZE];
-			int bufferLength = buffer.Length;
-			int bytesRead;
-			while ((bytesRead = source.Read (buffer, 0, bufferLength)) > 0)
-				target.Write (buffer, 0, bytesRead);
-		}
-	}
+            if (buffer == null) buffer = new byte[STREAM_BUFFER_SIZE];
+            int bufferLength = buffer.Length;
+            int bytesRead;
+            while ((bytesRead = source.Read(buffer, 0, bufferLength)) > 0)
+                target.Write(buffer, 0, bytesRead);
+        }
+    }
 }
