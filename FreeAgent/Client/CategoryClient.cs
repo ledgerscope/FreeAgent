@@ -9,7 +9,7 @@ namespace FreeAgent
 
         //need to add in the GET to have a parameter for the date filter
 
-        public override string ResouceName { get { return "categories"; } } 
+        public override string ResourceName { get { return "categories"; } } 
 
         public Categories All()
         {

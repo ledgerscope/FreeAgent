@@ -10,7 +10,7 @@ namespace FreeAgent
     {
         public InvoiceClient(FreeAgentClient client) : base(client) {}
 
-        public override string ResouceName { get { return "invoices"; } } 
+        public override string ResourceName { get { return "invoices"; } } 
 
         public override void CustomizeAllRequest(RestRequest request)
         {

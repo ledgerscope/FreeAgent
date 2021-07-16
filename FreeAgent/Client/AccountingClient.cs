@@ -8,7 +8,7 @@ namespace FreeAgent
 	{
 		public AccountingClient(FreeAgentClient client) : base(client) {}
 
-		public override string ResouceName
+		public override string ResourceName
 		{
 			get
 			{

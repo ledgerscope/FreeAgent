@@ -16,7 +16,7 @@ namespace FreeAgent
             request.AddParameter("view", "active", ParameterType.GetOrPost);
         }
 		
-        public override string ResouceName { get { return "contacts"; } } 
+        public override string ResourceName { get { return "contacts"; } } 
 
         public override ContactWrapper WrapperFromSingle(Contact single)
         {

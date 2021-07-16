@@ -14,7 +14,7 @@ namespace FreeAgent
 
 		//need to add in the GET to have a parameter for the date filter
 
-		public override string ResouceName { get { return "bank_accounts"; } }
+		public override string ResourceName { get { return "bank_accounts"; } }
 
 		public override BankAccountWrapper WrapperFromSingle(BankAccount single)
 		{
@@ -44,7 +44,7 @@ namespace FreeAgent
 
 		//need to add in the GET to have a parameter for the date filter
 
-		public override string ResouceName { get { return "bank_transactions"; } }
+		public override string ResourceName { get { return "bank_transactions"; } }
 
 		public override BankTransactionWrapper WrapperFromSingle(BankTransaction single)
 		{
@@ -83,7 +83,7 @@ namespace FreeAgent
 
 		//need to add in the GET to have a parameter for the date filter
 
-		public override string ResouceName { get { return "bank_transaction_explanations"; } }
+		public override string ResourceName { get { return "bank_transaction_explanations"; } }
 
 		public override BankTransactionExplanationWrapper WrapperFromSingle(BankTransactionExplanation single)
 		{

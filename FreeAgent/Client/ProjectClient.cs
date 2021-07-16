@@ -11,7 +11,7 @@ namespace FreeAgent
 		public ProjectClient(FreeAgentClient client) : base(client) {}
 		
 
-        public override string ResouceName { get { return "projects"; } } 
+        public override string ResourceName { get { return "projects"; } } 
 
         public override ProjectWrapper WrapperFromSingle(Project single)
         {

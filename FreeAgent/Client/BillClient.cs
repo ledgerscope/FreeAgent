@@ -9,7 +9,7 @@ namespace FreeAgent
 	{
 		public BillClient(FreeAgentClient client) : base(client) {}
 		
-		public override string ResouceName { get { return "bills"; } } 
+		public override string ResourceName { get { return "bills"; } } 
 		
 		public override BillWrapper WrapperFromSingle(Bill single)
 		{

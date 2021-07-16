@@ -12,7 +12,7 @@ namespace FreeAgent
 
         //need to add in the GET to have a parameter for the project
 
-        public override string ResouceName { get { return "tasks"; } } 
+        public override string ResourceName { get { return "tasks"; } } 
 
         public override TaskWrapper WrapperFromSingle(Task single)
         {

@@ -12,7 +12,7 @@ namespace FreeAgent
 
         //need to add in the GET to have a parameter for the date filter
 
-        public override string ResouceName { get { return "users"; } } 
+        public override string ResourceName { get { return "users"; } } 
 
         public override UserWrapper WrapperFromSingle(User single)
         {
