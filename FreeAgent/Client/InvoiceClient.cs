@@ -1,16 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
 using RestSharp;
-
+using System.Collections.Generic;
 
 namespace FreeAgent
 {
     public class InvoiceClient : ResourceClient<InvoiceWrapper, InvoicesWrapper, Invoice>
     {
-        public InvoiceClient(FreeAgentClient client) : base(client) {}
+        public InvoiceClient(FreeAgentClient client) : base(client) { }
 
-        public override string ResourceName { get { return "invoices"; } } 
+        public override string ResourceName => "invoices";
 
         public override void CustomizeAllRequest(RestRequest request)
         {
@@ -21,6 +18,7 @@ namespace FreeAgent
         {
             return new InvoiceWrapper { invoice = single };
         }
+
         public override List<Invoice> ListFromWrapper(InvoicesWrapper wrapper)
         {
             return wrapper.invoices;
@@ -33,103 +31,83 @@ namespace FreeAgent
 
         public List<Invoice> AllForProject(string projectId)
         {
-            return All((r) => {
-                r.AddParameter("project", projectId, ParameterType.GetOrPost);
-            });
+            return All((r) => r.AddParameter("project", projectId, ParameterType.GetOrPost));
         }
 
         public List<Invoice> AllForContact(string contactId)
         {
-            return All((r) => {
-                r.AddParameter("contact", contactId, ParameterType.GetOrPost);
-            });
+            return All((r) => r.AddParameter("contact", contactId, ParameterType.GetOrPost));
         }
 
         public List<Invoice> AllWithFilter(string filter)
         {
-            return All((r) => {
-                r.AddParameter("view", filter, ParameterType.GetOrPost);
-            });
+            return All((r) => r.AddParameter("view", filter, ParameterType.GetOrPost));
         }
 
-		public bool SendEmail(string invoiceId, InvoiceEmail email)
-		{
-			var request = CreateBasicRequest(Method.POST, "/{id}/send_email");
+        public bool SendEmail(string invoiceId, InvoiceEmail email)
+        {
+            var request = CreateBasicRequest(Method.POST, "/{id}/send_email");
 
-			request.RequestFormat = DataFormat.Json;
+            request.RequestFormat = DataFormat.Json;
 
-			request.AddUrlSegment ("id", invoiceId);
-			request.AddBody(new InvoiceEmailWrapper() { invoice = email });  
+            request.AddUrlSegment("id", invoiceId);
+            request.AddBody(new InvoiceEmailWrapper() { invoice = email });
 
+            var response = Client.Execute(request);
 
-			var response = Client.Execute(request);
+            if (response != null)
+                return response.StatusCode == System.Net.HttpStatusCode.OK;
 
-			if (response != null)
-				return response.StatusCode == System.Net.HttpStatusCode.OK;
+            return false;
+        }
 
-			return false;
+        public bool MarkAsSent(string invoiceId)
+        {
+            var request = CreateBasicRequest(Method.PUT, "/{id}/transitions/mark_as_sent");
 
+            request.RequestFormat = DataFormat.Json;
 
+            request.AddUrlSegment("id", invoiceId);
 
-		}
+            var response = Client.Execute(request);
 
-		public bool MarkAsSent(string invoiceId)
-		{
-			var request = CreateBasicRequest(Method.PUT, "/{id}/transitions/mark_as_sent");
+            if (response != null)
+                return response.StatusCode == System.Net.HttpStatusCode.OK;
 
-			request.RequestFormat = DataFormat.Json;
+            return false;
+        }
 
-			request.AddUrlSegment ("id", invoiceId);
+        public bool MarkAsDraft(string invoiceId)
+        {
+            var request = CreateBasicRequest(Method.PUT, "/{id}/transitions/mark_as_draft");
 
-			var response = Client.Execute(request);
+            request.RequestFormat = DataFormat.Json;
 
-			if (response != null)
-				return response.StatusCode == System.Net.HttpStatusCode.OK;
+            request.AddUrlSegment("id", invoiceId);
 
-			return false;
+            var response = Client.Execute(request);
 
+            if (response != null)
+                return response.StatusCode == System.Net.HttpStatusCode.OK;
 
+            return false;
+        }
 
-		}
+        public bool DeleteLine(string lineId)
+        {
+            var request = CreateBasicRequest(Method.DELETE, "/{id}", resourceOverride: "invoice_items");
 
-		public bool MarkAsDraft(string invoiceId)
-		{
-			var request = CreateBasicRequest(Method.PUT, "/{id}/transitions/mark_as_draft");
+            request.RequestFormat = DataFormat.Json;
 
-			request.RequestFormat = DataFormat.Json;
+            request.AddUrlSegment("id", lineId);
 
-			request.AddUrlSegment ("id", invoiceId);
+            var response = Client.Execute(request);
 
-			var response = Client.Execute(request);
+            if (response != null)
+                return response.StatusCode == System.Net.HttpStatusCode.OK;
 
-			if (response != null)
-				return response.StatusCode == System.Net.HttpStatusCode.OK;
-
-			return false;
-
-
-
-		}
-
-		public bool DeleteLine(string lineId)
-		{
-			var request = CreateBasicRequest(Method.DELETE, "/{id}", resourceOverride:"invoice_items");
-
-			request.RequestFormat = DataFormat.Json;
-
-			request.AddUrlSegment ("id", lineId);
-
-			var response = Client.Execute(request);
-
-			if (response != null)
-				return response.StatusCode == System.Net.HttpStatusCode.OK;
-
-			return false;
-		}
-
-
-        
-        
+            return false;
+        }
     }
 }
 

@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using NUnit.Framework;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FreeAgent.Tests
 {
@@ -89,7 +86,8 @@ namespace FreeAgent.Tests
             //find a project for this contact
 
             var items = new List<InvoiceItem>();
-            items.Add(new InvoiceItem {
+            items.Add(new InvoiceItem
+            {
                 item_type = InvoiceItemType.Products,
                 quantity = 1,
                 price = 100,
@@ -97,14 +95,14 @@ namespace FreeAgent.Tests
             });
 
             return new Invoice
-                       {
-                           url = "",
-                           contact = contact.UrlId(),
-                           status = InvoiceStatus.Draft,
-                           dated_on = DateTime.Now.ModelDateTime(),
-                           payment_terms_in_days = 25,
-                           invoice_items = items
-                };
+            {
+                url = "",
+                contact = contact.UrlId(),
+                status = InvoiceStatus.Draft,
+                //dated_on = DateTime.Now.ModelDateTime(),
+                payment_terms_in_days = 25,
+                invoice_items = items
+            };
 
         }
 
@@ -112,7 +110,7 @@ namespace FreeAgent.Tests
         {
             Assert.IsNotNull(newItem);
             Assert.That(newItem.url, Is.Null.Or.Empty);
-     
+
         }
 
         public override bool CanDelete(Invoice item)
@@ -123,7 +121,7 @@ namespace FreeAgent.Tests
 
 
             if (newitem.invoice_items.Count == 0) return false;
-            foreach(var invoiceitem in newitem.invoice_items)
+            foreach (var invoiceitem in newitem.invoice_items)
             {
                 if (invoiceitem.description.Contains("TEST")) return true;
             }
