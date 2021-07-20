@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -10,15 +11,24 @@ namespace FreeAgent
             invoice_items = new List<InvoiceItem>();
         }
 
-        public string status { get; set; }
-        public string long_status { get; set; }
-        public string contact { get; set; }
-        public string project { get; set; }
-        public string include_timeslips { get; set; }
-        public string include_expenses { get; set; }
-        public string include_estimates { get; set; }
-        public string reference { get; set; }
-        public DateTime dated_on { get; set; }
+        [JsonProperty("status")]
+        public string Status { get; set; }
+        [JsonProperty("long_status")]
+        public string LongStatus { get; set; }
+        [JsonProperty("contact")]
+        public Uri Contact { get; set; }
+        [JsonProperty("project")]
+        public Uri Project { get; set; }
+        [JsonProperty("include_timeslips")]
+        public string IncludeTimeslips { get; set; }
+        [JsonProperty("include_expenses")]
+        public string IncludeExpenses { get; set; }
+        [JsonProperty("include_estimates")]
+        public string IncludeEstimates { get; set; }
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+        [JsonProperty("dated_on")]
+        public DateTime DatedOn { get; set; }
 
 
 

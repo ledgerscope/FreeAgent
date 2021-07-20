@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -97,20 +98,18 @@ namespace FreeAgent.Tests
             return new Invoice
             {
                 url = "",
-                contact = contact.UrlId(),
-                status = InvoiceStatus.Draft,
-                //dated_on = DateTime.Now.ModelDateTime(),
+                //contact = contact.UrlId(),
+                Status = InvoiceStatus.Draft,
+                DatedOn = DateTime.Now,
                 payment_terms_in_days = 25,
                 invoice_items = items
             };
-
         }
 
         public override void CompareSingleItem(Invoice originalItem, Invoice newItem)
         {
             Assert.IsNotNull(newItem);
             Assert.That(newItem.url, Is.Null.Or.Empty);
-
         }
 
         public override bool CanDelete(Invoice item)
