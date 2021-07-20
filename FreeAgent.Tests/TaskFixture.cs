@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using NUnit.Framework;
+using System;
+using System.Linq;
 
 namespace FreeAgent.Tests
 {
@@ -38,7 +35,7 @@ namespace FreeAgent.Tests
 
             Assert.IsNotEmpty(tasks);
 
-            foreach(var task in tasks)
+            foreach (var task in tasks)
             {
                 var newtask = Client.Task.Get(task.Id());
                 Assert.IsNotNull(newtask);
@@ -58,7 +55,7 @@ namespace FreeAgent.Tests
                 billing_rate = 400,
                 billing_period = TaskBillingPeriod.Day,
                 status = TaskStatus.Active,
-                project=""
+                project = ""
                 //project = project.UrlId()
 
             };
@@ -66,14 +63,14 @@ namespace FreeAgent.Tests
             var newtask = Client.Task.Put(task, project.UrlId());
 
             CompareSingleItem(task, newtask);
-          
+
         }
 
         public void CompareSingleItem(Task originalItem, Task newItem)
         {
             Assert.IsNotNull(newItem);
-            Assert.That(newItem.url, Is.Null.Or.Empty);
-     
+            Assert.That(newItem.Url.ToString(), Is.Null.Or.Empty);
+
             Assert.AreEqual(originalItem.name, newItem.name);
             Assert.AreEqual(originalItem.billing_period, newItem.billing_period);
             Assert.AreEqual(originalItem.billing_rate, newItem.billing_rate);
@@ -149,6 +146,4 @@ namespace FreeAgent.Tests
 
 */
     }
-
-
 }

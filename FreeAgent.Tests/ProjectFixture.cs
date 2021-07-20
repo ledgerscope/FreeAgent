@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using NUnit.Framework;
 using System.Linq;
-using System.Text;
-using NUnit.Framework;
 
 namespace FreeAgent.Tests
 {
@@ -20,7 +16,7 @@ namespace FreeAgent.Tests
         public override void CheckSingleItem(Project item)
         {
 
-            Assert.That(item.url, Is.Null.Or.Empty);
+            Assert.That(item.Url.ToString(), Is.Null.Or.Empty);
             Assert.That(item.name, Is.Null.Or.Empty);
             Assert.That(item.contact, Is.Null.Or.Empty);
             Assert.That(item.status, Is.Null.Or.Empty);
@@ -35,24 +31,24 @@ namespace FreeAgent.Tests
 
 
             return new Project
-                       {
-                           url = "",
-                           contact = contact.UrlId(),
-                           name = "project TEST",
-                           status = ProjectStatus.Active,
-                           budget_units = ProjectBudgetUnits.Days,
-                           hours_per_day = 7.5,
-                           billing_period = ProjectBillingPeriod.Day,
-                            normal_billing_rate = 450,
-                           currency = "GBP"
-                       };
+            {
+                //url = "",
+                contact = contact.UrlId(),
+                name = "project TEST",
+                status = ProjectStatus.Active,
+                budget_units = ProjectBudgetUnits.Days,
+                hours_per_day = 7.5,
+                billing_period = ProjectBillingPeriod.Day,
+                normal_billing_rate = 450,
+                currency = "GBP"
+            };
 
         }
 
         public override void CompareSingleItem(Project originalItem, Project newItem)
         {
             Assert.IsNotNull(newItem);
-            Assert.That(newItem.url, Is.Null.Or.Empty);
+            Assert.That(newItem.Url.ToString(), Is.Null.Or.Empty);
             Assert.AreEqual(newItem.name, originalItem.name);
             Assert.AreEqual(newItem.status, originalItem.status);
             Assert.AreEqual(newItem.budget_units, originalItem.budget_units);
@@ -62,9 +58,6 @@ namespace FreeAgent.Tests
         public override bool CanDelete(Project item)
         {
             return item.name.Contains("TEST");
-
         }
     }
-
-
 }

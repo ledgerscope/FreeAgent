@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using NUnit.Framework;
+using System;
+using System.Linq;
 
 namespace FreeAgent.Tests
 {
@@ -51,7 +48,7 @@ namespace FreeAgent.Tests
 
         public override void CheckSingleItem(Timeslip item)
         {
-            Assert.That(item.url, Is.Null.Or.Empty);
+            Assert.That(item.Url.ToString(), Is.Null.Or.Empty);
             Assert.That(item.dated_on, Is.Null.Or.Empty);
             Assert.That(item.project, Is.Null.Or.Empty);
             Assert.That(item.task, Is.Null.Or.Empty);
@@ -65,9 +62,9 @@ namespace FreeAgent.Tests
             var project = Client.Project.All().First();
             var task = Client.Task.AllByProject(project.Id()).First();
 
-
-            return new Timeslip {
-                url = "",
+            return new Timeslip
+            {
+                //url = "",
                 user = user.UrlId(),
                 project = project.UrlId(),
                 task = task.UrlId(),
@@ -75,13 +72,12 @@ namespace FreeAgent.Tests
                 hours = 6.5,
                 comment = "This is a TEST"
             };
-
         }
 
         public override void CompareSingleItem(Timeslip originalItem, Timeslip newItem)
         {
             Assert.IsNotNull(newItem);
-            Assert.That(newItem.url, Is.Null.Or.Empty);
+            Assert.That(newItem.Url.ToString(), Is.Null.Or.Empty);
             Assert.IsTrue(newItem.user.EndsWith(originalItem.user));
             Assert.IsTrue(newItem.project.EndsWith(originalItem.project));
             Assert.IsTrue(newItem.task.EndsWith(originalItem.task));
@@ -94,7 +90,6 @@ namespace FreeAgent.Tests
             //return false;
             if (string.IsNullOrEmpty(item.comment)) return false;
             return (item.comment.Contains("TEST"));
-
         }
     }
 }

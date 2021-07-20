@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using NUnit.Framework;
+using System;
 
 namespace FreeAgent.Tests
 {
@@ -20,7 +16,7 @@ namespace FreeAgent.Tests
         public override void CheckSingleItem(BankAccount item)
         {
 
-            Assert.That(item.url, Is.Null.Or.Empty);
+            Assert.That(item.Url.ToString(), Is.Null.Or.Empty);
             Assert.That(item.type, Is.Null.Or.Empty);
             Assert.That(item.name, Is.Null.Or.Empty);
             Assert.That(item.bank_name, Is.Null.Or.Empty);
@@ -31,21 +27,18 @@ namespace FreeAgent.Tests
         {
             return new BankAccount
             {
-                url = "",
+                //url = "",
                 opening_balance = 100,
                 type = BankAccountType.StandardBankAccount,
                 name = "Bank Account TEST " + DateTime.Now.ToString(),
                 bank_name = "Test Bank"
-
-
             };
-
         }
 
         public override void CompareSingleItem(BankAccount originalItem, BankAccount newItem)
         {
             Assert.IsNotNull(newItem);
-            Assert.That(newItem.url, Is.Null.Or.Empty);
+            Assert.That(newItem.Url.ToString(), Is.Null.Or.Empty);
             Assert.AreEqual(newItem.account_number, originalItem.account_number);
             Assert.AreEqual(newItem.type, originalItem.type);
             Assert.AreEqual(newItem.opening_balance, originalItem.opening_balance);

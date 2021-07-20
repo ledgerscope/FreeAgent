@@ -6,9 +6,9 @@ namespace FreeAgent
 {
     public class Invoice : UpdatableModel, IRemoveUrlOnSerialization, IRemoveRecurringOnSerialization
     {
-        public Invoice() : base()
+        public Invoice()
         {
-            invoice_items = new List<InvoiceItem>();
+            InvoiceItems = new List<InvoiceItem>();
         }
 
         [JsonProperty("status")]
@@ -29,56 +29,108 @@ namespace FreeAgent
         public string Reference { get; set; }
         [JsonProperty("dated_on")]
         public DateTime DatedOn { get; set; }
-
-
-
-        public double discount_percent { get; set; }
-
-
-        public string due_on { get; set; }
-
-        public double exchange_rate { get; set; }
-
-        public int payment_terms_in_days { get; set; }
-
-        public string currency { get; set; }
-
-        public string ec_status { get; set; }
-
-        public string written_off_date { get; set; }
-
-        public double net_value { get; set; }
-
-        public double sales_tax_value { get; set; }
-
-        public double due_value { get; set; }
-
-        public double paid_value { get; set; }
-
-        public string comments { get; set; }
-
-        public List<InvoiceItem> invoice_items { get; set; }
+        [JsonProperty("due_on")]
+        public DateTime DueOn { get; set; }
+        [JsonProperty("payment_terms_in_days")]
+        public int PaymentTermsInDays { get; set; }
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+        [JsonProperty("cis_rate")]
+        public string CisRate { get; set; }
+        [JsonProperty("cis_deduction_rate")]
+        public decimal CisDeductionRate { get; set; }
+        [JsonProperty("cis_deduction")]
+        public decimal CisDeduction { get; set; }
+        [JsonProperty("cis_deduction_suffered")]
+        public decimal CisDeductionSuffered { get; set; }
+        [JsonProperty("comments")]
+        public string Comments { get; set; }
+        [JsonProperty("send_new_invoice_emails")]
+        public bool SendNewInvoiceEmails { get; set; }
+        [JsonProperty("send_reminder_emails")]
+        public bool SendReminderEmails { get; set; }
+        [JsonProperty("send_thank_you_emails")]
+        public bool SendThankYouEmails { get; set; }
+        [JsonProperty("discount_percent")]
+        public decimal DiscountPercent { get; set; }
+        [JsonProperty("client_contact_name")]
+        public string ClientContactName { get; set; }
+        [JsonProperty("payment_terms")]
+        public string PaymentTerms { get; set; }
+        [JsonProperty("po_reference")]
+        public string PoReference { get; set; }
+        [JsonProperty("bank_account")]
+        public string BankAccount { get; set; }
+        [JsonProperty("omit_header")]
+        public bool OmitHeader { get; set; }
+        [JsonProperty("show_project_name")]
+        public bool ShowProjectName { get; set; }
+        [JsonProperty("always_show_bic_and_iban")]
+        public bool AlwaysShowBicAndIban { get; set; }
+        [JsonProperty("ec_status")]
+        public string EcStatus { get; set; }
+        [JsonProperty("place_of_supply")]
+        public string PlaceOfSupply { get; set; }
+        [JsonProperty("net_value")]
+        public decimal NetValue { get; set; }
+        [JsonProperty("exchange_rate")]
+        public decimal ExchangeRate { get; set; }
+        [JsonProperty("involves_sales_tax")]
+        public bool InvolvesSalesTax { get; set; }
+        [JsonProperty("sales_tax_value")]
+        public decimal SalesTaxValue { get; set; }
+        [JsonProperty("second_sales_tax_value")]
+        public decimal SecondSalesTaxValue { get; set; }
+        [JsonProperty("total_value")]
+        public decimal TotalValue { get; set; }
+        [JsonProperty("paid_value")]
+        public decimal PaidValue { get; set; }
+        [JsonProperty("due_value")]
+        public decimal DueValue { get; set; }
+        [JsonProperty("is_interim_uk_vat")]
+        public bool IsInterimUKVat { get; set; }
+        [JsonProperty("paid_on")]
+        public DateTime PaidOn { get; set; }
+        [JsonProperty("written_off_date")]
+        public DateTime WrittenOffDate { get; set; }
+        [JsonProperty("recurring_invoice")]
+        public Uri RecurringInvoice { get; set; }
+        [JsonProperty("payment_url")]
+        public Uri PaymentUrl { get; set; }
+        [JsonProperty("payment_methods")]
+        public Dictionary<string, bool> PaymentMethods { get; set; }
+        [JsonProperty("invoice_items")]
+        public List<InvoiceItem> InvoiceItems { get; set; }
     }
 
     public class InvoiceItem
     {
-        public string url { get; set; }
-
-        public int position { get; set; }
-
-        public string item_type { get; set; }
-
-        public double quantity { get; set; }
-
-        public double price { get; set; }
-
-        public string description { get; set; }
-
-        public double sales_tax_rate { get; set; }
-
-        public double second_sales_tax_rate { get; set; }
-
-        public string category { get; set; }
+        [JsonProperty("url")]
+        public string Url { get; set; }
+        [JsonProperty("position")]
+        public decimal Position { get; set; }
+        [JsonProperty("item_type")]
+        public string ItemType { get; set; }
+        [JsonProperty("quantity")]
+        public decimal Quantity { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
+        [JsonProperty("price")]
+        public decimal Price { get; set; }
+        [JsonProperty("sales_tax_rate")]
+        public decimal SalesTaxRate { get; set; }
+        [JsonProperty("second_sales_tax_rate")]
+        public decimal SecondSalesTaxRate { get; set; }
+        [JsonProperty("sales_tax_status")]
+        public string SalesTaxStatus { get; set; }
+        [JsonProperty("second_sales_tax_status")]
+        public string SecondSalesTaxStatus { get; set; }
+        [JsonProperty("stock_item")]
+        public Uri StockItem { get; set; }
+        [JsonProperty("category")]
+        public Uri Category { get; set; }
+        [JsonProperty("project")]
+        public Uri Project { get; set; }
     }
 
     public static class InvoiceStatus
@@ -97,9 +149,10 @@ namespace FreeAgent
 
     public static class InvoiceECStatus
     {
-        public static string NonEc = "Non-Ec";
+        public static string UKNonEc = "UK/Non-EC";
         public static string ECGoods = "EC Goods";
         public static string ECServices = "EC Services";
+        public static string ECVatMoss = "EC VAT MOSS";
     }
 
     public static class InvoiceItemType

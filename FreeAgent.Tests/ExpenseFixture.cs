@@ -1,9 +1,6 @@
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
 
 namespace FreeAgent.Tests
 {
@@ -30,7 +27,7 @@ namespace FreeAgent.Tests
         public override void CheckSingleItem(Expense item)
         {
 
-            Assert.That(item.url, Is.Null.Or.Empty);
+            Assert.That(item.Url.ToString(), Is.Null.Or.Empty);
             //Assert.That( , Is.Null.Or.Empty);contact.organisation_name);
             //Assert.That( , Is.Null.Or.Empty);contact.first_name);
             //Assert.That( , Is.Null.Or.Empty);contact.last_name);
@@ -46,24 +43,20 @@ namespace FreeAgent.Tests
 
             return new Expense
             {
-                url = "",
+                //url = "",
                 user = user.UrlId(),
                 gross_value = 100.00,
                 description = "Expense TEST",
                 dated_on = DateTime.Now.ModelDate(),
                 category = cat.UrlId(),
                 //recurring = false
-
-
             };
-              
-
         }
 
         public override void CompareSingleItem(Expense originalItem, Expense newItem)
         {
             Assert.IsNotNull(newItem);
-            Assert.That(newItem.url, Is.Null.Or.Empty);
+            Assert.That(newItem.Url.ToString(), Is.Null.Or.Empty);
             Assert.AreEqual(newItem.description, originalItem.description);
             //Assert.AreEqual(newItem.user, originalItem.user);
             Assert.AreEqual(newItem.dated_on, originalItem.dated_on);
@@ -75,8 +68,5 @@ namespace FreeAgent.Tests
             return item.description.Contains("TEST");
 
         }
-        
-
-        
     }
 }

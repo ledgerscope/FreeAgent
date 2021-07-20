@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using NUnit.Framework;
 
 namespace FreeAgent.Tests
@@ -19,21 +14,18 @@ namespace FreeAgent.Tests
 
         public override void CheckSingleItem(User item)
         {
-
-            Assert.That(item.url, Is.Null.Or.Empty);
+            Assert.That(item.Url.ToString(), Is.Null.Or.Empty);
             Assert.That(item.first_name, Is.Null.Or.Empty);
             Assert.That(item.last_name, Is.Null.Or.Empty);
             Assert.That(item.email, Is.Null.Or.Empty);
             Assert.That(item.role, Is.Null.Or.Empty);
-
         }
-
 
         public override User CreateSingleItemForInsert()
         {
             return new User
             {
-                url = "",
+                //url = "",
                 first_name = "Nic TEST",
                 last_name = "Wise",
                 email = "nic.wise@mycompany.com",
@@ -49,7 +41,7 @@ namespace FreeAgent.Tests
         public override void CompareSingleItem(User originalItem, User newItem)
         {
             Assert.IsNotNull(newItem);
-            Assert.That(newItem.url, Is.Null.Or.Empty);
+            Assert.That(newItem.Url.ToString(), Is.Null.Or.Empty);
             Assert.AreEqual(newItem.first_name, originalItem.first_name);
             Assert.AreEqual(newItem.last_name, originalItem.last_name);
             Assert.AreEqual(newItem.email, originalItem.email);
@@ -58,7 +50,6 @@ namespace FreeAgent.Tests
         public override bool CanDelete(User item)
         {
             return item.first_name.Contains("TEST");
-
         }
 
         [Test]
