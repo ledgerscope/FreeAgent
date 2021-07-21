@@ -1,3 +1,5 @@
+using FreeAgent.Client;
+using FreeAgent.Models;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -44,8 +46,8 @@ namespace FreeAgent.Tests
             return new Bill
             {
                 //url = "",
-                dated_on = DateTime.Now.ModelDate(),
-                category = cat.UrlId(),
+                DatedOn = DateTime.Now,
+                //category = cat.UrlId(),
                 //recurring = false
             };
         }
@@ -54,16 +56,15 @@ namespace FreeAgent.Tests
         {
             Assert.IsNotNull(newItem);
             Assert.That(newItem.Url.ToString(), Is.Null.Or.Empty);
-            Assert.AreEqual(newItem.status, originalItem.status);
+            Assert.AreEqual(newItem.Status, originalItem.Status);
             //Assert.AreEqual(newItem.user, originalItem.user);
-            Assert.AreEqual(newItem.dated_on, originalItem.dated_on);
+            Assert.AreEqual(newItem.DatedOn, originalItem.DatedOn);
         }
 
         public override bool CanDelete(Bill item)
         {
             return false;
-            return item.status.Contains("TEST");
-
+            return item.Status.Contains("TEST");
         }
     }
 }

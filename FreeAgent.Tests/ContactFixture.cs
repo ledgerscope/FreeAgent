@@ -1,3 +1,5 @@
+using FreeAgent.Client;
+using FreeAgent.Models;
 using NUnit.Framework;
 using System;
 
@@ -6,22 +8,18 @@ namespace FreeAgent.Tests
     [TestFixture]
     public class ContactFixture : ResourceFixture<ContactWrapper, ContactsWrapper, Contact>
     {
-
         public override ResourceClient<ContactWrapper, ContactsWrapper, Contact> ResourceClient
         {
             get { return Client.Contact; }
         }
 
-
         public override void CheckSingleItem(Contact item)
         {
-
             Assert.That(item.Url.ToString(), Is.Null.Or.Empty);
             //Assert.That( , Is.Null.Or.Empty);contact.organisation_name);
             //Assert.That( , Is.Null.Or.Empty);contact.first_name);
             //Assert.That( , Is.Null.Or.Empty);contact.last_name);
         }
-
 
         public override Contact CreateSingleItemForInsert()
         {
@@ -33,7 +31,6 @@ namespace FreeAgent.Tests
                 organisation_name = "foo",
                 address1 = DateTime.Now.ToLongTimeString()
             };
-
         }
 
         public override void CompareSingleItem(Contact originalItem, Contact newItem)

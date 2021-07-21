@@ -1,8 +1,9 @@
+using FreeAgent.Client;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace FreeAgent
+namespace FreeAgent.Models
 {
     public class Invoice : UpdatableModel, IRemoveUrlOnSerialization, IRemoveRecurringOnSerialization
     {
@@ -106,7 +107,7 @@ namespace FreeAgent
     public class InvoiceItem
     {
         [JsonProperty("url")]
-        public string Url { get; set; }
+        public Uri Url { get; set; }
         [JsonProperty("position")]
         public decimal Position { get; set; }
         [JsonProperty("item_type")]

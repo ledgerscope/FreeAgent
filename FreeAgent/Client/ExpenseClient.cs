@@ -1,20 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
+using FreeAgent.Models;
 using RestSharp;
+using System.Collections.Generic;
 
-namespace FreeAgent
+namespace FreeAgent.Client
 {
     public class ExpenseClient : ResourceClient<ExpenseWrapper, ExpensesWrapper, Expense>
     {
-        public ExpenseClient(FreeAgentClient client) : base(client) {}
+        public ExpenseClient(FreeAgentClient client) : base(client) { }
 
-        public override string ResourceName { get { return "expenses"; } } 
+        public override string ResourceName => "expenses";
 
         public override ExpenseWrapper WrapperFromSingle(Expense single)
         {
             return new ExpenseWrapper { expense = single };
         }
+
         public override List<Expense> ListFromWrapper(ExpensesWrapper wrapper)
         {
             return wrapper.expenses;
@@ -37,10 +37,11 @@ namespace FreeAgent
         /// <param name='to_date'>
         /// To_date.
         /// </param>
-        /// 
+        ///
         public List<Expense> All(string view = "", string from_date = "", string to_date = "")
         {
-            return All((r) => {
+            return All((r) =>
+            {
                 if (!string.IsNullOrEmpty(from_date))
                 {
                     r.AddParameter("from_date", from_date, ParameterType.GetOrPost);
@@ -54,10 +55,7 @@ namespace FreeAgent
                     r.AddParameter("view", view, ParameterType.GetOrPost);
                 }
             });
-
         }
-        
-        
     }
 }
 

@@ -1,3 +1,6 @@
+using FreeAgent.Client;
+using FreeAgent.Extensions;
+using FreeAgent.Models;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿using FreeAgent.Client;
+using FreeAgent.Extensions;
+using FreeAgent.Models;
+using NUnit.Framework;
 using System.Linq;
 
 namespace FreeAgent.Tests
@@ -6,29 +9,24 @@ namespace FreeAgent.Tests
     [TestFixture]
     public class ProjectFixture : ResourceFixture<ProjectWrapper, ProjectsWrapper, Project>
     {
-
         public override ResourceClient<ProjectWrapper, ProjectsWrapper, Project> ResourceClient
         {
             get { return Client.Project; }
         }
 
-
         public override void CheckSingleItem(Project item)
         {
-
             Assert.That(item.Url.ToString(), Is.Null.Or.Empty);
             Assert.That(item.name, Is.Null.Or.Empty);
             Assert.That(item.contact, Is.Null.Or.Empty);
             Assert.That(item.status, Is.Null.Or.Empty);
         }
 
-
         public override Project CreateSingleItemForInsert()
         {
             var contact = Client.Contact.All().First();
 
             Assert.IsNotNull(contact);
-
 
             return new Project
             {

@@ -1,10 +1,12 @@
 using FreeAgent.Exceptions;
+using FreeAgent.Extensions;
+using FreeAgent.Models;
 using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Net;
 
-namespace FreeAgent
+namespace FreeAgent.Client
 {
     public abstract class ResourceClient<TSingleWrapper, TListWrapper, TSingle> : BaseClient
         where TSingle : BaseModel

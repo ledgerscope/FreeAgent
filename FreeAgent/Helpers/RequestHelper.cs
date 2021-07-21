@@ -1,3 +1,4 @@
+using FreeAgent.Models;
 using RestSharp;
 using System;
 using System.IO;

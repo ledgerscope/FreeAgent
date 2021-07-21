@@ -1,7 +1,8 @@
-﻿using RestSharp;
+﻿using FreeAgent.Models;
+using RestSharp;
 using System.Collections.Generic;
 
-namespace FreeAgent
+namespace FreeAgent.Client
 {
     public class CompanyClient : BaseClient
     {

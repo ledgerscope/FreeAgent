@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-
+﻿using FreeAgent.Models;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace FreeAgent.Tests
 {
@@ -23,7 +19,7 @@ namespace FreeAgent.Tests
             Company company = Client.Company.Single();
 
             Assert.IsNotNull(company);
-            Assert.That(company.name, Is.Null.Or.Empty);
+            Assert.That(company.Name, Is.Null.Or.Empty);
         }
 
         [Test]
@@ -33,7 +29,6 @@ namespace FreeAgent.Tests
 
             Assert.IsNotNull(timeline);
             Assert.IsNotEmpty(timeline);
-
         }
 
         [Test]
@@ -49,6 +44,5 @@ namespace FreeAgent.Tests
                 Assert.That(t.description, Is.Null.Or.Empty);
             }
         }
-
     }
 }

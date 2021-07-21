@@ -1,3 +1,6 @@
+using FreeAgent.Client;
+using FreeAgent.Extensions;
+using FreeAgent.Models;
 using NUnit.Framework;
 using System;
 using System.Linq;
@@ -6,34 +9,27 @@ namespace FreeAgent.Tests
 {
     public class TimeslipFixture : ResourceFixture<TimeslipWrapper, TimeslipsWrapper, Timeslip>
     {
-
         public override void Configure()
         {
             ExecuteCanGetList = false;
             ExecuteCanGetListWithContent = false;
             //ExecuteCanDeleteAndCleanup = false;
-
         }
-
 
         [Test]
         public void CanGetListOfTimeslips()
         {
-
             var list = Client.Timeslip.All(DateTime.Now.AddMonths(-6).ModelDateTime(), DateTime.Now.ModelDateTime());
 
             Assert.IsNotNull(list);
-
         }
 
         [Test]
         public void CanGetListOfTimeslipWithContent()
         {
-
             var list = Client.Timeslip.All(DateTime.Now.AddMonths(-6).ModelDateTime(), DateTime.Now.ModelDateTime());
 
             CheckAllList(list);
-
 
             foreach (var item in list)
             {

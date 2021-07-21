@@ -1,3 +1,6 @@
+using FreeAgent.Client;
+using FreeAgent.Extensions;
+using FreeAgent.Models;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -23,20 +26,16 @@ namespace FreeAgent.Tests
             get { return Client.Expense; }
         }
 
-
         public override void CheckSingleItem(Expense item)
         {
-
             Assert.That(item.Url.ToString(), Is.Null.Or.Empty);
             //Assert.That( , Is.Null.Or.Empty);contact.organisation_name);
             //Assert.That( , Is.Null.Or.Empty);contact.first_name);
             //Assert.That( , Is.Null.Or.Empty);contact.last_name);
         }
 
-
         public override Expense CreateSingleItemForInsert()
         {
-
             Assert.Ignore("IGNORING EXPENSE INSERTING UNTIL IT WORKS");
             var user = Client.User.Me;
             var cat = Client.Categories.Single("250");
@@ -48,7 +47,7 @@ namespace FreeAgent.Tests
                 gross_value = 100.00,
                 description = "Expense TEST",
                 dated_on = DateTime.Now.ModelDate(),
-                category = cat.UrlId(),
+                //category = cat.UrlId(),
                 //recurring = false
             };
         }
@@ -66,7 +65,6 @@ namespace FreeAgent.Tests
         {
             return false;
             return item.description.Contains("TEST");
-
         }
     }
 }

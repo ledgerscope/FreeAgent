@@ -1,3 +1,5 @@
+using FreeAgent.Client;
+using FreeAgent.Models;
 using NUnit.Framework;
 
 namespace FreeAgent.Tests
@@ -5,12 +7,10 @@ namespace FreeAgent.Tests
     [TestFixture]
     public class UserFixture : ResourceFixture<UserWrapper, UsersWrapper, User>
     {
-
         public override ResourceClient<UserWrapper, UsersWrapper, User> ResourceClient
         {
             get { return Client.User; }
         }
-
 
         public override void CheckSingleItem(User item)
         {
@@ -35,7 +35,6 @@ namespace FreeAgent.Tests
                 permission_level = (int)UserPermission.Full,
                 role = UserRole.Director
             };
-
         }
 
         public override void CompareSingleItem(User originalItem, User newItem)

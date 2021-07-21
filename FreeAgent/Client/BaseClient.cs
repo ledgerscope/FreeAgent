@@ -1,7 +1,7 @@
 using FreeAgent.Helpers;
 using RestSharp;
 
-namespace FreeAgent
+namespace FreeAgent.Client
 {
     public abstract class BaseClient
     {

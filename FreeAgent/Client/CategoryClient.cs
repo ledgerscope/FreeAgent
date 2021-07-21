@@ -1,15 +1,15 @@
-using System;
+using FreeAgent.Models;
 using RestSharp;
 
-namespace FreeAgent
+namespace FreeAgent.Client
 {
     public class CategoryClient : BaseClient
     {
-        public CategoryClient(FreeAgentClient client) : base(client) {}
+        public CategoryClient(FreeAgentClient client) : base(client) { }
 
         //need to add in the GET to have a parameter for the date filter
 
-        public override string ResourceName { get { return "categories"; } } 
+        public override string ResourceName => "categories";
 
         public Categories All()
         {
@@ -18,8 +18,7 @@ namespace FreeAgent
 
             if (response != null) return response;
 
-            return null;    
-        
+            return null;
         }
 
         // OMFG this is going to be so slow. Caching?
@@ -29,27 +28,26 @@ namespace FreeAgent
         {
             if (all == null) all = All();
 
-            foreach(var cat in all.admin_expenses_categories)
+            foreach (var cat in all.admin_expenses_categories)
             {
                 if (cat.nominal_code == id) return cat;
             }
-            foreach(var cat in all.cost_of_sales_categories)
-            {
-                if (cat.nominal_code == id) return cat;
-            }
-
-            foreach(var cat in all.general_categories)
+            foreach (var cat in all.cost_of_sales_categories)
             {
                 if (cat.nominal_code == id) return cat;
             }
 
-            foreach(var cat in all.income_categories)
+            foreach (var cat in all.general_categories)
+            {
+                if (cat.nominal_code == id) return cat;
+            }
+
+            foreach (var cat in all.income_categories)
             {
                 if (cat.nominal_code == id) return cat;
             }
 
             return null;
-
         }
 
         /* Disabled
@@ -70,8 +68,6 @@ namespace FreeAgent
         
         }
         */
-
-        
     }
 }
 

@@ -1,13 +1,14 @@
 using FreeAgent.Exceptions;
 using FreeAgent.Extensions;
 using FreeAgent.Helpers;
+using FreeAgent.Models;
 using RestSharp;
 using RestSharp.Serialization.Json;
 using System;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace FreeAgent
+namespace FreeAgent.Client
 {
     public partial class FreeAgentClient
     {

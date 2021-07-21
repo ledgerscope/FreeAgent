@@ -1,23 +1,17 @@
+using FreeAgent.Models;
+using RestSharp;
 using System;
 using System.Collections.Generic;
-using RestSharp;
 
-namespace FreeAgent
+namespace FreeAgent.Client
 {
-	public class AccountingClient : BaseClient
-	{
-		public AccountingClient(FreeAgentClient client) : base(client) {}
+    public class AccountingClient : BaseClient
+    {
+        public AccountingClient(FreeAgentClient client) : base(client) { }
 
-		public override string ResourceName
-		{
-			get
-			{
-				return "accounting";
-			}
-		}
+        public override string ResourceName => "accounting";
 
-
-		public List<TrialBalanceSummary> TrialBalanceSummary(DateTime? from = null, DateTime? to = null)
+        public List<TrialBalanceSummary> TrialBalanceSummary(DateTime? from = null, DateTime? to = null)
         {
             var path = getTrialBalanceRequestPath(from, to);
             var request = CreateBasicRequest(Method.GET, path);
@@ -26,7 +20,6 @@ namespace FreeAgent
             if (response != null) return response.trial_balance_summary;
 
             return null;
-
         }
 
         private static string getTrialBalanceRequestPath(DateTime? from, DateTime? to)

@@ -1,27 +1,25 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
+using FreeAgent.Models;
 using RestSharp;
+using System.Collections.Generic;
 
-
-namespace FreeAgent
+namespace FreeAgent.Client
 {
-	public class ContactClient : ResourceClient<ContactWrapper, ContactsWrapper, Contact>
-	{
-		public ContactClient(FreeAgentClient client) : base(client) {}
-		
-		
-		public override void CustomizeAllRequest(RestRequest request)
+    public class ContactClient : ResourceClient<ContactWrapper, ContactsWrapper, Contact>
+    {
+        public ContactClient(FreeAgentClient client) : base(client) { }
+
+        public override void CustomizeAllRequest(RestRequest request)
         {
             request.AddParameter("view", "active", ParameterType.GetOrPost);
         }
-		
-        public override string ResourceName { get { return "contacts"; } } 
+
+        public override string ResourceName => "contacts";
 
         public override ContactWrapper WrapperFromSingle(Contact single)
         {
             return new ContactWrapper { contact = single };
         }
+
         public override List<Contact> ListFromWrapper(ContactsWrapper wrapper)
         {
             return wrapper.contacts;
@@ -31,10 +29,6 @@ namespace FreeAgent
         {
             return wrapper.contact;
         }
-
-		
-		
-		
-	}
+    }
 }
 

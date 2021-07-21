@@ -1,23 +1,21 @@
-using System;
+using FreeAgent.Models;
 using System.Collections.Generic;
-using System.IO;
-using RestSharp;
 
-
-namespace FreeAgent
+namespace FreeAgent.Client
 {
     public class UserClient : ResourceClient<UserWrapper, UsersWrapper, User>
     {
-        public UserClient(FreeAgentClient client) : base(client) {}
+        public UserClient(FreeAgentClient client) : base(client) { }
 
         //need to add in the GET to have a parameter for the date filter
 
-        public override string ResourceName { get { return "users"; } } 
+        public override string ResourceName => "users";
 
         public override UserWrapper WrapperFromSingle(User single)
         {
             return new UserWrapper { user = single };
         }
+
         public override List<User> ListFromWrapper(UsersWrapper wrapper)
         {
             return wrapper.users;
@@ -32,10 +30,6 @@ namespace FreeAgent
         {
             get { return Get("me"); }
         }
-
-        
-        
-        
     }
 }
 

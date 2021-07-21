@@ -1,3 +1,5 @@
+using FreeAgent.Extensions;
+using FreeAgent.Models;
 using NUnit.Framework;
 using System;
 using System.Linq;
@@ -13,7 +15,6 @@ namespace FreeAgent.Tests
             SetupClient();
         }
 
-
         [Test]
         public void CanGetTasksForProject()
         {
@@ -22,9 +23,7 @@ namespace FreeAgent.Tests
             var tasks = Client.Task.AllByProject(project.Id());
 
             Assert.IsNotEmpty(tasks);
-
         }
-
 
         [Test]
         public void CanGetSingleTaskForProject()
@@ -63,7 +62,6 @@ namespace FreeAgent.Tests
             var newtask = Client.Task.Put(task, project.UrlId());
 
             CompareSingleItem(task, newtask);
-
         }
 
         public void CompareSingleItem(Task originalItem, Task newItem)

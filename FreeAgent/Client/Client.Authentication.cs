@@ -1,4 +1,6 @@
-﻿namespace FreeAgent
+﻿using FreeAgent.Models;
+
+namespace FreeAgent.Client
 {
     public partial class FreeAgentClient
     {

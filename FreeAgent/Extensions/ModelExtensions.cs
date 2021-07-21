@@ -1,7 +1,7 @@
-using FreeAgent.Extensions;
+using FreeAgent.Models;
 using System;
 
-namespace FreeAgent
+namespace FreeAgent.Extensions
 {
     public static class ModelExtensions
     {

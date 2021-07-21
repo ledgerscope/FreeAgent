@@ -1,3 +1,5 @@
+using FreeAgent.Client;
+using FreeAgent.Models;
 using NUnit.Framework;
 using System;
 
@@ -6,22 +8,18 @@ namespace FreeAgent.Tests
     [TestFixture]
     public class BankAccountFixture : ResourceFixture<BankAccountWrapper, BankAccountsWrapper, BankAccount>
     {
-
         public override ResourceClient<BankAccountWrapper, BankAccountsWrapper, BankAccount> ResourceClient
         {
             get { return Client.BankAccount; }
         }
 
-
         public override void CheckSingleItem(BankAccount item)
         {
-
             Assert.That(item.Url.ToString(), Is.Null.Or.Empty);
             Assert.That(item.type, Is.Null.Or.Empty);
             Assert.That(item.name, Is.Null.Or.Empty);
             Assert.That(item.bank_name, Is.Null.Or.Empty);
         }
-
 
         public override BankAccount CreateSingleItemForInsert()
         {

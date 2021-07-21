@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using FreeAgent.Client;
+using FreeAgent.Extensions;
+using FreeAgent.Models;
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 
 namespace FreeAgent.Tests
 {
-   
     public class ResourceFixture<TSingleWrapper, TListWrapper, TSingle> : BaseFixture
         where TSingle : BaseModel
         where TListWrapper : new()
@@ -16,12 +16,9 @@ namespace FreeAgent.Tests
 
         protected Func<IEnumerable<TSingle>> GetAll = null;
 
-
-
         [SetUp]
         public void Setup()
         {
-
             SetupClient();
         }
 
@@ -39,7 +36,7 @@ namespace FreeAgent.Tests
         [Test]
         public void CanGetList()
         {
-            if (!ExecuteCanGetList) 
+            if (!ExecuteCanGetList)
             {
                 Assert.Ignore("CanGetList is being ignored");
                 return;
@@ -54,7 +51,7 @@ namespace FreeAgent.Tests
         [Test]
         public void CanGetListWithContent()
         {
-            if (!ExecuteCanGetListWithContent) 
+            if (!ExecuteCanGetListWithContent)
             {
                 Assert.Ignore("ExecuteCanGetListWithContent is being ignored");
                 return;
@@ -80,7 +77,7 @@ namespace FreeAgent.Tests
 
         public virtual void CheckSingleItem(TSingle item)
         {
-            
+
         }
 
         [Test]
@@ -121,7 +118,6 @@ namespace FreeAgent.Tests
             }
         }
 
-
         public virtual TSingle CreateSingleItemForInsert()
         {
             throw new NotImplementedException("needs to be overridden");
@@ -131,10 +127,6 @@ namespace FreeAgent.Tests
         {
             throw new NotImplementedException("needs to be overridden");
         }
-
-
-
-
 
         [Test]
         public void CanDeleteAndCleanup()
@@ -166,6 +158,6 @@ namespace FreeAgent.Tests
             return false;
         }
 
-        public virtual ResourceClient<TSingleWrapper, TListWrapper, TSingle> ResourceClient { get { throw new NotImplementedException("oops!");} }
+        public virtual ResourceClient<TSingleWrapper, TListWrapper, TSingle> ResourceClient { get { throw new NotImplementedException("oops!"); } }
     }
 }
