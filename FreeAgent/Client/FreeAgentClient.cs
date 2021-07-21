@@ -151,9 +151,9 @@ namespace FreeAgent.Client
         public AccountingClient Accounting = null;
         public ContactClient Contact = null;
         public ProjectClient Project = null;
-
         public ExpenseClient Expense = null;
         public InvoiceClient Invoice = null;
+        public CreditNoteClient CreditNote = null;
         public TaskClient Task = null;
         public TimeslipClient Timeslip = null;
         public UserClient User = null;
@@ -171,6 +171,7 @@ namespace FreeAgent.Client
             Project = new ProjectClient(this);
             Expense = new ExpenseClient(this);
             Invoice = new InvoiceClient(this);
+            CreditNote = new CreditNoteClient(this);
             Task = new TaskClient(this);
             Timeslip = new TimeslipClient(this);
             User = new UserClient(this);
