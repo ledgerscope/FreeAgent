@@ -38,7 +38,7 @@ namespace FreeAgent.Tests
         {
             Assert.Ignore("IGNORING EXPENSE INSERTING UNTIL IT WORKS");
             var user = Client.User.Me;
-            var cat = Client.Categories.Single("250");
+            var cat = Client.Category.Single("250");
 
             return new Expense
             {

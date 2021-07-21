@@ -25,23 +25,19 @@ namespace FreeAgent.Tests
             get { return Client.Bill; }
         }
 
-
         public override void CheckSingleItem(Bill item)
         {
-
             Assert.That(item.Url.ToString(), Is.Null.Or.Empty);
             //Assert.That( , Is.Null.Or.Empty);contact.organisation_name);
             //Assert.That( , Is.Null.Or.Empty);contact.first_name);
             //Assert.That( , Is.Null.Or.Empty);contact.last_name);
         }
 
-
         public override Bill CreateSingleItemForInsert()
         {
-
             Assert.Ignore("IGNORING Bill INSERTING UNTIL IT WORKS");
             var user = Client.User.Me;
-            var cat = Client.Categories.Single("250");
+            var cat = Client.Category.Single("250");
 
             return new Bill
             {

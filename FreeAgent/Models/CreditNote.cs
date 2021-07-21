@@ -9,7 +9,7 @@ namespace FreeAgent.Models
     {
         public CreditNote()
         {
-            CreditNoteItems = new List<CreditNoteItem>();
+            //CreditNoteItems = new List<CreditNoteItem>();
         }
 
         [JsonProperty("refunded_value")]

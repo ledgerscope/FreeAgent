@@ -147,39 +147,41 @@ namespace FreeAgent.Client
             return "";
         }
 
-        public CompanyClient Company = null;
-        public AccountingClient Accounting = null;
-        public ContactClient Contact = null;
-        public ProjectClient Project = null;
-        public ExpenseClient Expense = null;
-        public InvoiceClient Invoice = null;
-        public CreditNoteClient CreditNote = null;
-        public TaskClient Task = null;
-        public TimeslipClient Timeslip = null;
-        public UserClient User = null;
-        public BankAccountClient BankAccount = null;
-        public CategoryClient Categories = null;
-        public BankTransactionClient BankTransaction = null;
-        public BankTransactionExplanationClient BankTransactionExplanation = null;
-        public BillClient Bill = null;
+        public CompanyClient Company;
+        public ContactClient Contact;
+        public CategoryClient Category;
+        public InvoiceClient Invoice;
+        public CreditNoteClient CreditNote;
+        public BillClient Bill;
+        public BankAccountClient BankAccount;
+        public BankTransactionClient BankTransaction;
+        public BankTransactionExplanationClient BankTransactionExplanation;
+        public AccountingClient Accounting;
+
+        public ProjectClient Project;
+        public ExpenseClient Expense;
+        public TaskClient Task;
+        public TimeslipClient Timeslip;
+        public UserClient User;
 
         private void SetupClients()
         {
             Company = new CompanyClient(this);
-            Accounting = new AccountingClient(this);
             Contact = new ContactClient(this);
-            Project = new ProjectClient(this);
-            Expense = new ExpenseClient(this);
+            Category = new CategoryClient(this);
             Invoice = new InvoiceClient(this);
             CreditNote = new CreditNoteClient(this);
+            Bill = new BillClient(this);
+            BankAccount = new BankAccountClient(this);
+            BankTransaction = new BankTransactionClient(this);
+            BankTransactionExplanation = new BankTransactionExplanationClient(this);
+            Accounting = new AccountingClient(this);
+
+            Project = new ProjectClient(this);
+            Expense = new ExpenseClient(this);
             Task = new TaskClient(this);
             Timeslip = new TimeslipClient(this);
             User = new UserClient(this);
-            BankAccount = new BankAccountClient(this);
-            Categories = new CategoryClient(this);
-            BankTransaction = new BankTransactionClient(this);
-            BankTransactionExplanation = new BankTransactionExplanationClient(this);
-            Bill = new BillClient(this);
         }
 
         private bool IsSuccess(HttpStatusCode code)

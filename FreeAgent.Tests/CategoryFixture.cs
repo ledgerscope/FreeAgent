@@ -1,4 +1,3 @@
-using System;
 using NUnit.Framework;
 
 namespace FreeAgent.Tests
@@ -15,7 +14,7 @@ namespace FreeAgent.Tests
         [Test]
         public void CanGetListOfCategories()
         {
-            var cats = Client.Categories.All();
+            var cats = Client.Category.All();
             Assert.IsNotEmpty(cats.admin_expenses_categories);
             Assert.IsNotEmpty(cats.cost_of_sales_categories);
             Assert.IsNotEmpty(cats.general_categories);

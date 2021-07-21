@@ -16,9 +16,9 @@ namespace FreeAgent.Tests
         public override void CheckSingleItem(BankAccount item)
         {
             Assert.That(item.Url.ToString(), Is.Null.Or.Empty);
-            Assert.That(item.type, Is.Null.Or.Empty);
-            Assert.That(item.name, Is.Null.Or.Empty);
-            Assert.That(item.bank_name, Is.Null.Or.Empty);
+            Assert.That(item.Type, Is.Null.Or.Empty);
+            Assert.That(item.Name, Is.Null.Or.Empty);
+            Assert.That(item.BankName, Is.Null.Or.Empty);
         }
 
         public override BankAccount CreateSingleItemForInsert()
@@ -26,10 +26,10 @@ namespace FreeAgent.Tests
             return new BankAccount
             {
                 //url = "",
-                opening_balance = 100,
-                type = BankAccountType.StandardBankAccount,
-                name = "Bank Account TEST " + DateTime.Now.ToString(),
-                bank_name = "Test Bank"
+                OpeningBalance = 100,
+                Type = BankAccountType.StandardBankAccount,
+                Name = "Bank Account TEST " + DateTime.Now.ToString(),
+                BankName = "Test Bank"
             };
         }
 
@@ -37,14 +37,14 @@ namespace FreeAgent.Tests
         {
             Assert.IsNotNull(newItem);
             Assert.That(newItem.Url.ToString(), Is.Null.Or.Empty);
-            Assert.AreEqual(newItem.account_number, originalItem.account_number);
-            Assert.AreEqual(newItem.type, originalItem.type);
-            Assert.AreEqual(newItem.opening_balance, originalItem.opening_balance);
+            Assert.AreEqual(newItem.AccountNumber, originalItem.AccountNumber);
+            Assert.AreEqual(newItem.Type, originalItem.Type);
+            Assert.AreEqual(newItem.OpeningBalance, originalItem.OpeningBalance);
         }
 
         public override bool CanDelete(BankAccount item)
         {
-            return item.name.Contains("TEST");
+            return item.Name.Contains("TEST");
         }
     }
 }

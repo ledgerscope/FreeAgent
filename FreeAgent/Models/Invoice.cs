@@ -9,7 +9,7 @@ namespace FreeAgent.Models
     {
         public Invoice()
         {
-            InvoiceItems = new List<InvoiceItem>();
+            //InvoiceItems = new List<InvoiceItem>();
         }
 
         [JsonProperty("include_timeslips")]
