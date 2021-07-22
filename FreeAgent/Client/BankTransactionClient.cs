@@ -29,13 +29,21 @@ namespace FreeAgent.Client
             return wrapper.bank_transaction;
         }
 
-        public List<BankTransaction> AllForAccount(string bankAccountId, string from_date, string to_date)
+        public List<BankTransaction> AllForAccount(string bankAccountId, string from_date = "", string to_date = "")
         {
-            return All((r) =>
+            return All((request) =>
             {
-                r.AddParameter("bank_account", bankAccountId, ParameterType.GetOrPost);
-                r.AddParameter("from_date", from_date, ParameterType.GetOrPost);
-                r.AddParameter("to_date", to_date, ParameterType.GetOrPost);
+                request.AddParameter("bank_account", bankAccountId, ParameterType.GetOrPost);
+
+                if (!string.IsNullOrEmpty(from_date))
+                {
+                    request.AddParameter("from_date", from_date, ParameterType.GetOrPost);
+                }
+
+                if (!string.IsNullOrEmpty(to_date))
+                {
+                    request.AddParameter("to_date", to_date, ParameterType.GetOrPost);
+                }
             });
         }
     }
