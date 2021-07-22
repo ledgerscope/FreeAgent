@@ -158,9 +158,10 @@ namespace FreeAgent.Client
         public BankAccountClient BankAccount;
         public BankTransactionClient BankTransaction;
         public BankTransactionExplanationClient BankTransactionExplanation;
+        public JournalSetClient JournalSet;
         public AccountingClient Accounting;
-
         public ProjectClient Project;
+
         public TaskClient Task;
         public TimeslipClient Timeslip;
         public UserClient User;
@@ -178,9 +179,10 @@ namespace FreeAgent.Client
             BankAccount = new BankAccountClient(this);
             BankTransaction = new BankTransactionClient(this);
             BankTransactionExplanation = new BankTransactionExplanationClient(this);
+            JournalSet = new JournalSetClient(this);
             Accounting = new AccountingClient(this);
-
             Project = new ProjectClient(this);
+
             Task = new TaskClient(this);
             Timeslip = new TimeslipClient(this);
             User = new UserClient(this);

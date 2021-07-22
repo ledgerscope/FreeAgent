@@ -1,8 +1,6 @@
 ﻿using FreeAgent.Client;
-using FreeAgent.Extensions;
 using FreeAgent.Models;
 using NUnit.Framework;
-using System.Linq;
 
 namespace FreeAgent.Tests
 {
@@ -17,45 +15,44 @@ namespace FreeAgent.Tests
         public override void CheckSingleItem(Project item)
         {
             Assert.That(item.Url.ToString(), Is.Null.Or.Empty);
-            Assert.That(item.name, Is.Null.Or.Empty);
-            Assert.That(item.contact, Is.Null.Or.Empty);
-            Assert.That(item.status, Is.Null.Or.Empty);
+            Assert.That(item.Name, Is.Null.Or.Empty);
+            Assert.That(item.Contact, Is.Null.Or.Empty);
+            Assert.That(item.Status, Is.Null.Or.Empty);
         }
 
         public override Project CreateSingleItemForInsert()
         {
-            var contact = Client.Contact.All().First();
+            var contact = Client.Contact.All()[0];
 
             Assert.IsNotNull(contact);
 
             return new Project
             {
                 //url = "",
-                contact = contact.UrlId(),
-                name = "project TEST",
-                status = ProjectStatus.Active,
-                budget_units = ProjectBudgetUnits.Days,
-                hours_per_day = 7.5,
-                billing_period = ProjectBillingPeriod.Day,
-                normal_billing_rate = 450,
-                currency = "GBP"
+                //Contact = contact.UrlId(),
+                Name = "project TEST",
+                Status = ProjectStatus.Active,
+                BudgetUnits = ProjectBudgetUnits.Days,
+                HoursPerDay = 7.5M,
+                BillingPeriod = ProjectBillingPeriod.Day,
+                NormalBillingRate = 450M,
+                Currency = "GBP"
             };
-
         }
 
         public override void CompareSingleItem(Project originalItem, Project newItem)
         {
             Assert.IsNotNull(newItem);
             Assert.That(newItem.Url.ToString(), Is.Null.Or.Empty);
-            Assert.AreEqual(newItem.name, originalItem.name);
-            Assert.AreEqual(newItem.status, originalItem.status);
-            Assert.AreEqual(newItem.budget_units, originalItem.budget_units);
-            Assert.AreEqual(newItem.currency, originalItem.currency);
+            Assert.AreEqual(newItem.Name, originalItem.Name);
+            Assert.AreEqual(newItem.Status, originalItem.Status);
+            Assert.AreEqual(newItem.BudgetUnits, originalItem.BudgetUnits);
+            Assert.AreEqual(newItem.Currency, originalItem.Currency);
         }
 
         public override bool CanDelete(Project item)
         {
-            return item.name.Contains("TEST");
+            return item.Name.Contains("TEST");
         }
     }
 }

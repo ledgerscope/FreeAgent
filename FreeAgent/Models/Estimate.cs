@@ -33,9 +33,12 @@ namespace FreeAgent.Models
         public string PlaceOfSupply { get; set; }
         [JsonProperty("net_value")]
         public decimal NetValue { get; set; }
+        [JsonProperty("total_value")]
+        public decimal TotalValue { get; set; }
         [JsonProperty("include_sales_tax_on_total_value")]
         public bool IncludeSalesTaxOnTotalValue { get; set; }
-
+        [JsonProperty("involves_sales_tax")]
+        public bool InvolvesSalesTax { get; set; }
         [JsonProperty("estimate_items")]
         public List<EstimateItem> EstimateItems { get; set; }
     }
