@@ -7,11 +7,6 @@ namespace FreeAgent.Models
 {
     public class Invoice : SalesTransactionModel, IRemoveUrlOnSerialization, IRemoveRecurringOnSerialization
     {
-        //public Invoice()
-        //{
-        //    //InvoiceItems = new List<InvoiceItem>();
-        //}
-
         [JsonProperty("include_timeslips")]
         public string IncludeTimeslips { get; set; }
         [JsonProperty("include_expenses")]

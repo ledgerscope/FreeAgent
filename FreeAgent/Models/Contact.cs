@@ -5,14 +5,6 @@ namespace FreeAgent.Models
 {
     public class Contact : UpdatableModel
     {
-        //public Contact()
-        //{
-        //    //locale = "en";
-        //    //organisation_name = "";
-        //    //first_name = "";
-        //    //last_name = "";
-        //}
-
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
         [JsonProperty("last_name")]

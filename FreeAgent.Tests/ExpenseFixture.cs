@@ -1,5 +1,4 @@
 using FreeAgent.Client;
-using FreeAgent.Extensions;
 using FreeAgent.Models;
 using NUnit.Framework;
 using System;
@@ -43,10 +42,10 @@ namespace FreeAgent.Tests
             return new Expense
             {
                 //url = "",
-                user = user.UrlId(),
-                gross_value = 100.00,
-                description = "Expense TEST",
-                dated_on = DateTime.Now.ModelDate(),
+                //User = user.UrlId(),
+                GrossValue = 100M,
+                Description = "Expense TEST",
+                DatedOn = DateTime.Now,
                 //category = cat.UrlId(),
                 //recurring = false
             };
@@ -56,15 +55,15 @@ namespace FreeAgent.Tests
         {
             Assert.IsNotNull(newItem);
             Assert.That(newItem.Url.ToString(), Is.Null.Or.Empty);
-            Assert.AreEqual(newItem.description, originalItem.description);
+            Assert.AreEqual(newItem.Description, originalItem.Description);
             //Assert.AreEqual(newItem.user, originalItem.user);
-            Assert.AreEqual(newItem.dated_on, originalItem.dated_on);
+            Assert.AreEqual(newItem.DatedOn, originalItem.DatedOn);
         }
 
         public override bool CanDelete(Expense item)
         {
             return false;
-            return item.description.Contains("TEST");
+            return item.Description.Contains("TEST");
         }
     }
 }

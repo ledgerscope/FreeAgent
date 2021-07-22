@@ -1,66 +1,112 @@
 using FreeAgent.Client;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace FreeAgent.Models
 {
     public class Expense : UpdatableModel, IRemoveUrlOnSerialization, IRemoveRecurringOnSerialization
     {
-        public Expense()
-        {
-            //recurring = false;
-            have_vat_receipt = false;
-            ec_status = ExpenseECStatus.None;
-        }
+        [JsonProperty("user")]
+        public Uri User { get; set; }
+        [JsonProperty("type")]
+        public string Type { get; set; }
+        [JsonProperty("category")]
+        public Uri Category { get; set; } // TODO_FA: Uri or string ?
+        [JsonProperty("dated_on")]
+        public DateTime DatedOn { get; set; }
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+        [JsonProperty("gross_value")]
+        public decimal GrossValue { get; set; }
+        [JsonProperty("native_gross_value")]
+        public decimal NativeGrossValue { get; set; }
+        [JsonProperty("sales_tax_rate")]
+        public decimal SalesTaxRate { get; set; }
+        [JsonProperty("sales_tax_value")]
+        public decimal SalesTaxValue { get; set; }
+        [JsonProperty("native_sales_tax_value")]
+        public decimal NativeSalesTaxValue { get; set; }
+        [JsonProperty("second_sales_tax_rate")]
+        public decimal SecondSalesTaxRate { get; set; }
+        [JsonProperty("manual_sales_tax_amount")]
+        public decimal ManualSalesTaxAmount { get; set; }
+        [JsonProperty("sales_tax_status")]
+        public string SalesTaxStatus { get; set; }
+        [JsonProperty("second_sales_tax_status")]
+        public string SecondSalesTaxStatus { get; set; }
+        [JsonProperty("ec_status")]
+        public string EcStatus { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
+        [JsonProperty("receipt_reference")]
+        public string ReceiptReference { get; set; }
+        [JsonProperty("project")]
+        public Uri Project { get; set; }
+        [JsonProperty("rebill_type")]
+        public string RebillType { get; set; }
+        [JsonProperty("rebill_factor")]
+        public decimal RebillFactor { get; set; }
+        [JsonProperty("rebill_to_project")]
+        public Uri RebillToProject { get; set; }
+        [JsonProperty("rebilled_on_invoice")]
+        public Uri RebilledOnInvoice { get; set; }
+        [JsonProperty("recurring")]
+        public bool Recurring { get; set; }
+        [JsonProperty("next_recurs_on")]
+        public DateTime NextRecursOn { get; set; }
+        [JsonProperty("recurring_end_date")]
+        public DateTime RecurringEndDate { get; set; }
+        [JsonProperty("attachment")]
+        public Attachment Attachment { get; set; }
 
-        public string user { get; set; }
-        public string project { get; set; }
-        public double gross_value { get; set; }
-        public double sales_tax_rate { get; set; }
-        public string description { get; set; }
-        public string dated_on { get; set; }
-        public string category { get; set; }
-        public double mileage { get; set; }
-        public double reclaim_mileage_rate { get; set; }
-        public double rebill_mileage_rate { get; set; }
-        //public bool recurring { get; set;}
-        //public string recurring_end_date { get; set; }
-        public string rebill_type { get; set; }
-        public double initial_rate_mileage { get; set; }
-        public string receipt_reference { get; set; }
-        public int ec_status { get; set; }
-        public string currency { get; set; }
-        public double manual_sales_tax_amount { get; set; }
-        public double rebill_factor { get; set; }
-        public string vehicle_type { get; set; }
-        public int engine_size_index { get; set; }
-        public int engine_type_index { get; set; }
-        public bool have_vat_receipt { get; set; }
-        public ExpenseAttachment attachment { get; set; }
+        // Additional properties for Mileage claims
+        [JsonProperty("mileage")]
+        public decimal Mileage { get; set; }
+        [JsonProperty("vehicle_type")]
+        public string VehicleType { get; set; }
+        [JsonProperty("engine_type")]
+        public string EngineType { get; set; }
+        [JsonProperty("engine_size")]
+        public string EngineSize { get; set; }
+        [JsonProperty("reclaim_mileage")]
+        public int ReclaimMileage { get; set; }
+        [JsonProperty("initial_rate_mileage")]
+        public decimal InitialRateMileage { get; set; }
+        [JsonProperty("reclaim_mileage_rate")]
+        public decimal ReclaimMileageRate { get; set; }
+        [JsonProperty("rebill_mileage_rate")]
+        public decimal RebillMileageRate { get; set; }
+        [JsonProperty("have_vat_receipt")]
+        public bool HaveVatReceipt { get; set; }
     }
 
-    public class ExpenseAttachment
+    public static class ExpenseType
     {
-        public string data { get; set; }
-        public string file_name { get; set; }
-        public string description { get; set; }
-        public string content_type { get; set; }
-    }
-
-    public static class ExpenseAttachmentContentType
-    {
-        public const string Png = "image/png";
-        public const string XPng = "image/x-png";
-        public const string Jpeg = "image/jpeg";
-        public const string Jpg = "image/jpg";
-        public const string Gif = "image/gif";
-        public const string Pdf = "application/x-pdf";
+        public static string Payment = "Payment";
+        public static string Refund = "Refund";
     }
 
     public static class ExpenseECStatus
     {
-        public const int None = 0;
-        public const int Goods = 2;
-        public const int Service = 1;
+        public static string UKNonEc = "UK/Non-EC";
+        public static string ECGoods = "EC Goods";
+        public static string ECServices = "EC Services";
+    }
+
+    public static class VehicleType
+    {
+        public static string Car = "Car";
+        public static string Motorcycle = "Motorcycle";
+        public static string Bicycle = "Bicycle";
+    }
+
+    public static class EngineType
+    {
+        public static string Petrol = "Petrol";
+        public static string Diesel = "Diesel";
+        public static string LPG = "LPG";
+        public static string Electric = "Electric";
     }
 
     public class ExpenseWrapper
