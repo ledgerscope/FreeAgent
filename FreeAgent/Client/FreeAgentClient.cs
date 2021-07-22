@@ -152,14 +152,15 @@ namespace FreeAgent.Client
         public CategoryClient Category;
         public InvoiceClient Invoice;
         public CreditNoteClient CreditNote;
+        public EstimateClient Estimate;
         public BillClient Bill;
+        public ExpenseClient Expense;
         public BankAccountClient BankAccount;
         public BankTransactionClient BankTransaction;
         public BankTransactionExplanationClient BankTransactionExplanation;
         public AccountingClient Accounting;
 
         public ProjectClient Project;
-        public ExpenseClient Expense;
         public TaskClient Task;
         public TimeslipClient Timeslip;
         public UserClient User;
@@ -171,14 +172,15 @@ namespace FreeAgent.Client
             Category = new CategoryClient(this);
             Invoice = new InvoiceClient(this);
             CreditNote = new CreditNoteClient(this);
+            Estimate = new EstimateClient(this);
             Bill = new BillClient(this);
+            Expense = new ExpenseClient(this);
             BankAccount = new BankAccountClient(this);
             BankTransaction = new BankTransactionClient(this);
             BankTransactionExplanation = new BankTransactionExplanationClient(this);
             Accounting = new AccountingClient(this);
 
             Project = new ProjectClient(this);
-            Expense = new ExpenseClient(this);
             Task = new TaskClient(this);
             Timeslip = new TimeslipClient(this);
             User = new UserClient(this);
