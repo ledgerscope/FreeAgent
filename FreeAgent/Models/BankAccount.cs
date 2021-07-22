@@ -29,6 +29,14 @@ namespace FreeAgent.Models
         public decimal CurrentBalance { get; set; }
         [JsonProperty("latest_activity_date")]
         public DateTime LatestActivityDate { get; set; }
+        [JsonProperty("manually_added_transaction_count")]
+        public int ManuallyAddedTransactionCount { get; set; }
+        [JsonProperty("marked_for_review_count")]
+        public int MarkedForReviewCount { get; set; }
+        [JsonProperty("total_count")]
+        public int TotalCount { get; set; }
+        [JsonProperty("unexplained_transaction_count")]
+        public int UnexplainedTransactionCount { get; set; }
 
         // Additional StandardBankAccount properties (AccountNumber applicable also for CreditCardAccount type)
         [JsonProperty("account_number")]

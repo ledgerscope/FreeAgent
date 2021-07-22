@@ -11,6 +11,8 @@ namespace FreeAgent.Models
         public string LongStatus { get; set; }
         [JsonProperty("contact")]
         public Uri Contact { get; set; }
+        [JsonProperty("contact_name")]
+        public string ContactName { get; set; }
         [JsonProperty("project")]
         public Uri Project { get; set; }
         [JsonProperty("reference")]

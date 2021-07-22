@@ -7,12 +7,14 @@ namespace FreeAgent.Models
 {
     public class Bill : ControlTransactionModel, IRemoveUrlOnSerialization, IRemoveRecurringOnSerialization
     {
-        public Bill()
-        {
-            //BillItems = new List<BillItem>();
-            //EcStatus = ExpenseECStatus.None;
-        }
+        //public Bill()
+        //{
+        //    //BillItems = new List<BillItem>();
+        //    //EcStatus = ExpenseECStatus.None;
+        //}
 
+        [JsonProperty("category")]
+        public Uri Category { get; set; }
         [JsonProperty("rebill_type")]
         public Uri RebillType { get; set; }
         [JsonProperty("rebill_factor")]

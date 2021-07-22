@@ -26,10 +26,10 @@ namespace FreeAgent.Tests
             return new Contact
             {
                 //url = "",
-                first_name = "Nic TEST",
-                last_name = "Wise",
-                organisation_name = "foo",
-                address1 = DateTime.Now.ToLongTimeString()
+                FirstName = "Nic TEST",
+                LastName = "Wise",
+                OrganisationName = "foo",
+                Address1 = DateTime.Now.ToLongTimeString()
             };
         }
 
@@ -37,14 +37,14 @@ namespace FreeAgent.Tests
         {
             Assert.IsNotNull(newItem);
             Assert.That(newItem.Url.ToString(), Is.Null.Or.Empty);
-            Assert.AreEqual(newItem.first_name, originalItem.first_name);
-            Assert.AreEqual(newItem.last_name, originalItem.last_name);
-            Assert.AreEqual(newItem.address1, originalItem.address1);
+            Assert.AreEqual(newItem.FirstName, originalItem.FirstName);
+            Assert.AreEqual(newItem.LastName, originalItem.LastName);
+            Assert.AreEqual(newItem.Address1, originalItem.Address1);
         }
 
         public override bool CanDelete(Contact item)
         {
-            return item.first_name.Contains("TEST");
+            return item.FirstName.Contains("TEST");
         }
     }
 }

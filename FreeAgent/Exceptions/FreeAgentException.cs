@@ -1,7 +1,6 @@
-﻿using System;
-using RestSharp;
+﻿using RestSharp;
+using System;
 using System.Net;
-using System.Collections.Generic;
 
 namespace FreeAgent.Exceptions
 {
@@ -17,11 +16,7 @@ namespace FreeAgent.Exceptions
         {
         }
 
-        public FreeAgentException(string message)
-            : base(message)
-        {
-
-        }
+        public FreeAgentException(string message) : base(message) { }
 
         public FreeAgentException(IRestResponse r) : base()
         {
@@ -35,10 +30,11 @@ namespace FreeAgent.Exceptions
                 {
                     Errors = json;
                 }
-            } catch {
+            }
+            catch
+            {
                 //do nothing
             }
-
         }
 
         public string Errors = "";
@@ -47,7 +43,5 @@ namespace FreeAgent.Exceptions
         {
             return string.Format("[FreeAgentException: StatusCode={0}, Response={1}, Content={2}]", StatusCode, Response, Response.Content);
         }
-
     }
-
 }

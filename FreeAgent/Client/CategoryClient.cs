@@ -21,7 +21,7 @@ namespace FreeAgent.Client
             return null;
         }
 
-        // OMFG this is going to be so slow. Caching?
+        // Slow? Caching?
         private Categories all;
 
         public Category Single(string id)
@@ -30,21 +30,21 @@ namespace FreeAgent.Client
 
             foreach (var cat in all.admin_expenses_categories)
             {
-                if (cat.nominal_code == id) return cat;
+                if (cat.NominalCode == id) return cat;
             }
             foreach (var cat in all.cost_of_sales_categories)
             {
-                if (cat.nominal_code == id) return cat;
+                if (cat.NominalCode == id) return cat;
             }
 
             foreach (var cat in all.general_categories)
             {
-                if (cat.nominal_code == id) return cat;
+                if (cat.NominalCode == id) return cat;
             }
 
             foreach (var cat in all.income_categories)
             {
-                if (cat.nominal_code == id) return cat;
+                if (cat.NominalCode == id) return cat;
             }
 
             return null;

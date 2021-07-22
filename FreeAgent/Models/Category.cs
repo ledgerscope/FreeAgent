@@ -1,15 +1,22 @@
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace FreeAgent.Models
 {
     public class Category : BaseModel
     {
-        //public string url { get; set; }
-        public string description { get; set; }
-        public string nominal_code { get; set; }
-        public bool allowable_for_tax { get; set; }
-        public string tax_reporting_name { get; set; }
-        public string auto_sales_tax_rate { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
+        [JsonProperty("nominal_code")]
+        public string NominalCode { get; set; }
+        [JsonProperty("group_description")]
+        public string GroupDescription { get; set; }
+        [JsonProperty("auto_sales_tax_rate")]
+        public string AutoSalesTaxRate { get; set; }
+        [JsonProperty("allowable_for_tax")]
+        public bool AllowableForTax { get; set; }
+        [JsonProperty("tax_reporting_name")]
+        public string TaxReportingName { get; set; }
     }
 
     public class Categories

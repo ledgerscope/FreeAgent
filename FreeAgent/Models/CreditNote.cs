@@ -7,10 +7,10 @@ namespace FreeAgent.Models
 {
     public class CreditNote : SalesTransactionModel, IRemoveUrlOnSerialization, IRemoveRecurringOnSerialization
     {
-        public CreditNote()
-        {
-            //CreditNoteItems = new List<CreditNoteItem>();
-        }
+        //public CreditNote()
+        //{
+        //    //CreditNoteItems = new List<CreditNoteItem>();
+        //}
 
         [JsonProperty("refunded_value")]
         public decimal RefundedValue { get; set; }

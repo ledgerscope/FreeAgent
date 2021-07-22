@@ -4,10 +4,8 @@ using System.Collections.Generic;
 
 namespace FreeAgent.Models
 {
-    public class Company
+    public class Company : BaseModel
     {
-        [JsonProperty("url")]
-        public Uri Url { get; set; }
         [JsonProperty("id")]
         public int Id { get; set; }
         [JsonProperty("name")]
@@ -72,6 +70,8 @@ namespace FreeAgent.Models
         public bool CisEnabled { get; set; }
         [JsonProperty("locked_attributes")]
         public List<string> LockedAttributes { get; set; }
+        [JsonProperty("time_zone")]
+        public string TimeZone { get; set; }
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; }
         [JsonProperty("updated_at")]
