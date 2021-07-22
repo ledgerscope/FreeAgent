@@ -6,11 +6,7 @@ namespace FreeAgent.Client
 {
     public class BankTransactionClient : ResourceClient<BankTransactionWrapper, BankTransactionsWrapper, BankTransaction>
     {
-        public BankTransactionClient(FreeAgentClient client) : base(client)
-        {
-        }
-
-        //need to add in the GET to have a parameter for the date filter
+        public BankTransactionClient(FreeAgentClient client) : base(client) { }
 
         public override string ResourceName => "bank_transactions";
 
@@ -29,11 +25,11 @@ namespace FreeAgent.Client
             return wrapper.bank_transaction;
         }
 
-        public List<BankTransaction> AllForAccount(string bankAccountId, string from_date = "", string to_date = "")
+        public List<BankTransaction> AllForAccount(string bankAccount, string from_date = "", string to_date = "")
         {
             return All((request) =>
             {
-                request.AddParameter("bank_account", bankAccountId, ParameterType.GetOrPost);
+                request.AddParameter("bank_account", bankAccount, ParameterType.GetOrPost);
 
                 if (!string.IsNullOrEmpty(from_date))
                 {
