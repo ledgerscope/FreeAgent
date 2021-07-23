@@ -23,10 +23,10 @@ namespace FreeAgent.Models
 
         // Additional properties for timeslips with running timers
         [JsonProperty("timer")]
-        public Timer Timer { get; set; }
+        public RunningTimer Timer { get; set; }
     }
 
-    public class Timer
+    public class RunningTimer
     {
         [JsonProperty("running")]
         public bool Running { get; set; }
