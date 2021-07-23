@@ -10,8 +10,6 @@ namespace FreeAgent.Client
     {
         public TimeslipClient(FreeAgentClient client) : base(client) { }
 
-        //need to add in the GET to have a parameter for the date filter
-
         public override string ResourceName => "timeslips";
 
         public override TimeslipWrapper WrapperFromSingle(Timeslip single)
@@ -31,10 +29,10 @@ namespace FreeAgent.Client
 
         public List<Timeslip> All(string from_date, string to_date)
         {
-            return All((r) =>
+            return All((request) =>
             {
-                r.AddParameter("from_date", from_date, ParameterType.GetOrPost);
-                r.AddParameter("to_date", to_date, ParameterType.GetOrPost);
+                request.AddParameter("from_date", from_date, ParameterType.GetOrPost);
+                request.AddParameter("to_date", to_date, ParameterType.GetOrPost);
             });
         }
 
@@ -42,10 +40,10 @@ namespace FreeAgent.Client
         {
             DateTime now = DateTime.Now;
 
-            return All((r) =>
+            return All((request) =>
             {
-                r.AddParameter("from_date", now.AddDays(-20).ModelDate(), ParameterType.GetOrPost);
-                r.AddParameter("to_date", now.ModelDate(), ParameterType.GetOrPost);
+                request.AddParameter("from_date", now.AddDays(-20).ModelDate(), ParameterType.GetOrPost);
+                request.AddParameter("to_date", now.ModelDate(), ParameterType.GetOrPost);
             });
         }
     }

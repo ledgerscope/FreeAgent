@@ -79,9 +79,9 @@ namespace FreeAgent.Extensions
             return DateTime.Parse(modeldate);
         }
 
-        public static UserPermission PermissionLevel(this User user)
+        public static PermissionLevel PermissionLevel(this User user)
         {
-            return (UserPermission)user.permission_level;
+            return (PermissionLevel)user.PermissionLevel;
         }
     }
 }

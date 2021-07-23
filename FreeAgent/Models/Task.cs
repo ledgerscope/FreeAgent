@@ -1,21 +1,26 @@
 using FreeAgent.Client;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace FreeAgent.Models
 {
-    public class Task : BaseModel, IRemoveUrlOnSerialization
+    public class Task : UpdatableModel, IRemoveUrlOnSerialization
     {
-        public Task() : base()
-        {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        [JsonProperty("is_billable")]
+        public bool IsBillable { get; set; }
+        [JsonProperty("status")]
+        public string Status { get; set; }
+        [JsonProperty("project")]
+        public Uri Project { get; set; }
 
-        }
-
-        public string project { get; set; }
-        public string name { get; set; }
-        public bool is_billable { get; set; }
-        public double billing_rate { get; set; }
-        public string billing_period { get; set; }
-        public string status { get; set; }
+        // Additional properties available to users with Contacts & Projects permission level
+        [JsonProperty("billing_rate")]
+        public decimal BillingRate { get; set; }
+        [JsonProperty("billing_period")]
+        public string BillingPeriod { get; set; }
     }
 
     public static class TaskBillingPeriod

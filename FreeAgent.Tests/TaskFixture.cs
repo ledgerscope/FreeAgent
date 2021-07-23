@@ -18,9 +18,9 @@ namespace FreeAgent.Tests
         [Test]
         public void CanGetTasksForProject()
         {
-            var project = Client.Project.All().First();
+            var project = Client.Project.All()[0];
 
-            var tasks = Client.Task.AllByProject(project.Id());
+            var tasks = Client.Task.AllForProject(project.Id());
 
             Assert.IsNotEmpty(tasks);
         }
@@ -28,9 +28,9 @@ namespace FreeAgent.Tests
         [Test]
         public void CanGetSingleTaskForProject()
         {
-            var project = Client.Project.All().First();
+            var project = Client.Project.All()[0];
 
-            var tasks = Client.Task.AllByProject(project.Id());
+            var tasks = Client.Task.AllForProject(project.Id());
 
             Assert.IsNotEmpty(tasks);
 
@@ -38,7 +38,7 @@ namespace FreeAgent.Tests
             {
                 var newtask = Client.Task.Get(task.Id());
                 Assert.IsNotNull(newtask);
-                Assert.That(newtask.name, Is.Null.Or.Empty);
+                Assert.That(newtask.Name, Is.Null.Or.Empty);
             }
         }
 
@@ -49,12 +49,12 @@ namespace FreeAgent.Tests
 
             var task = new Task
             {
-                name = "Task TEST " + DateTime.Now.ToString(),
-                is_billable = true,
-                billing_rate = 400,
-                billing_period = TaskBillingPeriod.Day,
-                status = TaskStatus.Active,
-                project = ""
+                Name = "Task TEST " + DateTime.Now.ToString(),
+                IsBillable = true,
+                BillingRate = 400M,
+                BillingPeriod = TaskBillingPeriod.Day,
+                Status = TaskStatus.Active,
+                //project = ""
                 //project = project.UrlId()
 
             };
@@ -69,23 +69,23 @@ namespace FreeAgent.Tests
             Assert.IsNotNull(newItem);
             Assert.That(newItem.Url.ToString(), Is.Null.Or.Empty);
 
-            Assert.AreEqual(originalItem.name, newItem.name);
-            Assert.AreEqual(originalItem.billing_period, newItem.billing_period);
-            Assert.AreEqual(originalItem.billing_rate, newItem.billing_rate);
-            Assert.AreEqual(originalItem.status, newItem.status);
+            Assert.AreEqual(originalItem.Name, newItem.Name);
+            Assert.AreEqual(originalItem.BillingPeriod, newItem.BillingPeriod);
+            Assert.AreEqual(originalItem.BillingRate, newItem.BillingRate);
+            Assert.AreEqual(originalItem.Status, newItem.Status);
             //Assert.AreEqual(originalItem.project, newItem.project);
         }
 
         [Test]
         public void CanDeleteAndCleanup()
         {
-            var project = Client.Project.All().First();
+            var project = Client.Project.All()[0];
 
-            var tasks = Client.Task.AllByProject(project.Id());
+            var tasks = Client.Task.AllForProject(project.Id());
 
             foreach (var item in tasks)
             {
-                if (!item.name.Contains("TEST")) continue;
+                if (!item.Name.Contains("TEST")) continue;
 
                 Client.Task.Delete(item.Id());
 
@@ -94,7 +94,6 @@ namespace FreeAgent.Tests
                 Assert.IsNull(deleted);
             }
         }
-
 
         /*
         public override ResourceClient<TaskWrapper, TasksWrapper, Task> ResourceClient

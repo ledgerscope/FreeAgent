@@ -45,28 +45,27 @@ namespace FreeAgent.Tests
         public override void CheckSingleItem(Timeslip item)
         {
             Assert.That(item.Url.ToString(), Is.Null.Or.Empty);
-            Assert.That(item.dated_on, Is.Null.Or.Empty);
-            Assert.That(item.project, Is.Null.Or.Empty);
-            Assert.That(item.task, Is.Null.Or.Empty);
-            Assert.That(item.user, Is.Null.Or.Empty);
+            Assert.That(item.DatedOn, Is.Null.Or.Empty);
+            Assert.That(item.Project, Is.Null.Or.Empty);
+            Assert.That(item.Task, Is.Null.Or.Empty);
+            Assert.That(item.User, Is.Null.Or.Empty);
         }
-
 
         public override Timeslip CreateSingleItemForInsert()
         {
             var user = Client.User.Me;
             var project = Client.Project.All().First();
-            var task = Client.Task.AllByProject(project.Id()).First();
+            var task = Client.Task.AllForProject(project.Id())[0];
 
             return new Timeslip
             {
                 //url = "",
-                user = user.UrlId(),
-                project = project.UrlId(),
-                task = task.UrlId(),
-                dated_on = DateTime.Now.ModelDate(),
-                hours = 6.5,
-                comment = "This is a TEST"
+                //User = user.UrlId(),
+                //Project = project.UrlId(),
+                //Task = task.UrlId(),
+                DatedOn = DateTime.Now,
+                Hours = 6.5M,
+                Comment = "This is a TEST"
             };
         }
 
@@ -74,18 +73,18 @@ namespace FreeAgent.Tests
         {
             Assert.IsNotNull(newItem);
             Assert.That(newItem.Url.ToString(), Is.Null.Or.Empty);
-            Assert.IsTrue(newItem.user.EndsWith(originalItem.user));
-            Assert.IsTrue(newItem.project.EndsWith(originalItem.project));
-            Assert.IsTrue(newItem.task.EndsWith(originalItem.task));
-            Assert.AreEqual(newItem.dated_on, originalItem.dated_on);
-            Assert.AreEqual(newItem.hours, originalItem.hours);
+            //Assert.IsTrue(newItem.User.EndsWith(originalItem.User));
+            //Assert.IsTrue(newItem.project.EndsWith(originalItem.project));
+            //Assert.IsTrue(newItem.task.EndsWith(originalItem.task));
+            Assert.AreEqual(newItem.DatedOn, originalItem.DatedOn);
+            Assert.AreEqual(newItem.Hours, originalItem.Hours);
         }
 
         public override bool CanDelete(Timeslip item)
         {
             //return false;
-            if (string.IsNullOrEmpty(item.comment)) return false;
-            return (item.comment.Contains("TEST"));
+            if (string.IsNullOrEmpty(item.Comment)) return false;
+            return (item.Comment.Contains("TEST"));
         }
     }
 }

@@ -7,8 +7,6 @@ namespace FreeAgent.Client
     {
         public UserClient(FreeAgentClient client) : base(client) { }
 
-        //need to add in the GET to have a parameter for the date filter
-
         public override string ResourceName => "users";
 
         public override UserWrapper WrapperFromSingle(User single)

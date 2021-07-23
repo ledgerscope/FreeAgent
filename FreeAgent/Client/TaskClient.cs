@@ -8,8 +8,6 @@ namespace FreeAgent.Client
     {
         public TaskClient(FreeAgentClient client) : base(client) { }
 
-        //need to add in the GET to have a parameter for the project
-
         public override string ResourceName => "tasks";
 
         public override TaskWrapper WrapperFromSingle(Task single)
@@ -27,20 +25,17 @@ namespace FreeAgent.Client
             return wrapper.task;
         }
 
-        public List<Task> AllByProject(string projectId)
+        public List<Task> AllForProject(string project)
         {
-            return All(delegate (RestRequest req)
-            {
-                req.AddParameter("project", projectId, ParameterType.GetOrPost);
-            });
+            return All((request) => request.AddParameter("project", project, ParameterType.GetOrPost));
         }
 
-        public Task Put(Task item, string projectId)
+        public Task Put(Task item, string project)
         {
             var request = CreatePutRequest(item);
             request.Resource += "?project={project}";
 
-            request.AddParameter("project", projectId, ParameterType.UrlSegment);
+            request.AddParameter("project", project, ParameterType.UrlSegment);
 
             var response = Client.Execute<TaskWrapper>(request);
 

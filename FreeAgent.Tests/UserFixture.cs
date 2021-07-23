@@ -15,10 +15,10 @@ namespace FreeAgent.Tests
         public override void CheckSingleItem(User item)
         {
             Assert.That(item.Url.ToString(), Is.Null.Or.Empty);
-            Assert.That(item.first_name, Is.Null.Or.Empty);
-            Assert.That(item.last_name, Is.Null.Or.Empty);
-            Assert.That(item.email, Is.Null.Or.Empty);
-            Assert.That(item.role, Is.Null.Or.Empty);
+            Assert.That(item.FirstName, Is.Null.Or.Empty);
+            Assert.That(item.LastName, Is.Null.Or.Empty);
+            Assert.That(item.Email, Is.Null.Or.Empty);
+            Assert.That(item.Role, Is.Null.Or.Empty);
         }
 
         public override User CreateSingleItemForInsert()
@@ -26,14 +26,14 @@ namespace FreeAgent.Tests
             return new User
             {
                 //url = "",
-                first_name = "Nic TEST",
-                last_name = "Wise",
-                email = "nic.wise@mycompany.com",
-                password = "foobarbaz",
-                password_confirmation = "foobarbaz",
-                opening_mileage = 100,
-                permission_level = (int)UserPermission.Full,
-                role = UserRole.Director
+                FirstName = "Nic TEST",
+                LastName = "Wise",
+                Email = "nic.wise@mycompany.com",
+                //password = "foobarbaz",
+                //password_confirmation = "foobarbaz",
+                OpeningMileage = 100,
+                PermissionLevel = (int)PermissionLevel.Full,
+                Role = UserRole.Director
             };
         }
 
@@ -41,14 +41,14 @@ namespace FreeAgent.Tests
         {
             Assert.IsNotNull(newItem);
             Assert.That(newItem.Url.ToString(), Is.Null.Or.Empty);
-            Assert.AreEqual(newItem.first_name, originalItem.first_name);
-            Assert.AreEqual(newItem.last_name, originalItem.last_name);
-            Assert.AreEqual(newItem.email, originalItem.email);
+            Assert.AreEqual(newItem.FirstName, originalItem.FirstName);
+            Assert.AreEqual(newItem.LastName, originalItem.LastName);
+            Assert.AreEqual(newItem.Email, originalItem.Email);
         }
 
         public override bool CanDelete(User item)
         {
-            return item.first_name.Contains("TEST");
+            return item.FirstName.Contains("TEST");
         }
 
         [Test]
@@ -57,9 +57,9 @@ namespace FreeAgent.Tests
             var me = Client.User.Me;
 
             Assert.IsNotNull(me);
-            Assert.That(me.first_name, Is.Null.Or.Empty);
-            Assert.That(me.last_name, Is.Null.Or.Empty);
-            Assert.That(me.email, Is.Null.Or.Empty);
+            Assert.That(me.FirstName, Is.Null.Or.Empty);
+            Assert.That(me.LastName, Is.Null.Or.Empty);
+            Assert.That(me.Email, Is.Null.Or.Empty);
         }
     }
 }

@@ -160,10 +160,14 @@ namespace FreeAgent.Client
         public BankTransactionExplanationClient BankTransactionExplanation;
         public JournalSetClient JournalSet;
         public AccountingClient Accounting;
-        public ProjectClient Project;
-
+        public PriceListItemClient PriceListItem;
+        public NoteClient Note;
+        public StockItemClient StockItem;
         public TaskClient Task;
+        public ProjectClient Project;
         public TimeslipClient Timeslip;
+        public SalesTaxPeriodClient SalesTaxPeriod;
+        public CISBandClient CISBand;
         public UserClient User;
 
         private void SetupClients()
@@ -181,10 +185,14 @@ namespace FreeAgent.Client
             BankTransactionExplanation = new BankTransactionExplanationClient(this);
             JournalSet = new JournalSetClient(this);
             Accounting = new AccountingClient(this);
-            Project = new ProjectClient(this);
-
+            PriceListItem = new PriceListItemClient(this);
+            Note = new NoteClient(this);
+            StockItem = new StockItemClient(this);
             Task = new TaskClient(this);
+            Project = new ProjectClient(this);
             Timeslip = new TimeslipClient(this);
+            SalesTaxPeriod = new SalesTaxPeriodClient(this);
+            CISBand = new CISBandClient(this);
             User = new UserClient(this);
         }
 
