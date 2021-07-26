@@ -2,21 +2,21 @@
 
 namespace FreeAgent.Models
 {
-    /// <summary>
-    /// Verified sender email address
-    /// </summary>
-    public class EmailAddress
-    {
-        public List<string> EmailAddresses { get; set; }
-    }
+    ///// <summary>
+    ///// Verified sender email address
+    ///// </summary>
+    //public class EmailAddress
+    //{
+    //    public List<string> EmailAddresses { get; set; }
+    //}
 
     public class EmailAddressesWrapper
     {
         public EmailAddressesWrapper()
         {
-            emailAddresses = new List<EmailAddress>();
+            emailAddresses = new List<string>();
         }
 
-        public List<EmailAddress> emailAddresses { get; set; }
+        public List<string> emailAddresses { get; set; }
     }
 }

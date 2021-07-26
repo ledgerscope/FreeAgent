@@ -10,7 +10,7 @@ namespace FreeAgent.Client
 
         public override string ResourceName => "email_addresses";
 
-        public List<EmailAddress> All()
+        public List<string> All()
         {
             var request = CreateBasicRequest(Method.GET);
             var response = Client.Execute<EmailAddressesWrapper>(request);
