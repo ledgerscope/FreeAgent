@@ -169,6 +169,7 @@ namespace FreeAgent.Client
         public SalesTaxPeriodClient SalesTaxPeriod;
         public CISBandClient CISBand;
         public UserClient User;
+        public EmailAddressClient EmailAddress;
 
         private void SetupClients()
         {
@@ -194,6 +195,7 @@ namespace FreeAgent.Client
             SalesTaxPeriod = new SalesTaxPeriodClient(this);
             CISBand = new CISBandClient(this);
             User = new UserClient(this);
+            EmailAddress = new EmailAddressClient(this);
         }
 
         private bool IsSuccess(HttpStatusCode code)
