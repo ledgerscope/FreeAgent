@@ -151,6 +151,7 @@ namespace FreeAgent.Client
         public ContactClient Contact;
         public CategoryClient Category;
         public InvoiceClient Invoice;
+        public RecurringInvoiceClient RecurringInvoice;
         public CreditNoteClient CreditNote;
         public EstimateClient Estimate;
         public BillClient Bill;
@@ -177,6 +178,7 @@ namespace FreeAgent.Client
             Contact = new ContactClient(this);
             Category = new CategoryClient(this);
             Invoice = new InvoiceClient(this);
+            RecurringInvoice = new RecurringInvoiceClient(this);
             CreditNote = new CreditNoteClient(this);
             Estimate = new EstimateClient(this);
             Bill = new BillClient(this);
