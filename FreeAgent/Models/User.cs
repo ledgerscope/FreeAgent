@@ -12,6 +12,8 @@ namespace FreeAgent.Models
         public string FirstName { get; set; }
         [JsonProperty("last_name")]
         public string LastName { get; set; }
+        [JsonProperty("hidden")]
+        public bool Hidden { get; set; }
         [JsonProperty("ni_number")]
         public string NiNumber { get; set; }
         [JsonProperty("unique_tax_reference")]
