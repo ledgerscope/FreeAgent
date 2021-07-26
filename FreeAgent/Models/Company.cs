@@ -124,11 +124,16 @@ namespace FreeAgent.Models
 
     public class TaxTimeline
     {
-        public string description { get; set; }
-        public string nature { get; set; }
-        public string dated_on { get; set; }
-        public float amount_due { get; set; }
-        public bool is_personal { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
+        [JsonProperty("nature")]
+        public string Nature { get; set; }
+        [JsonProperty("dated_on")]
+        public DateTime DatedOn { get; set; }
+        [JsonProperty("amount_due")]
+        public decimal AmountDue { get; set; }
+        [JsonProperty("is_personal")]
+        public bool IsPersonal { get; set; }
     }
 
     public class TaxTimelineWrapper

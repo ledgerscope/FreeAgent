@@ -41,7 +41,7 @@ namespace FreeAgent.Tests
 
             foreach (TaxTimeline t in timeline)
             {
-                Assert.That(t.description, Is.Null.Or.Empty);
+                Assert.That(t.Description, Is.Null.Or.Empty);
             }
         }
     }
