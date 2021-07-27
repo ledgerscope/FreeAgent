@@ -9,11 +9,6 @@ namespace FreeAgent.Client
 
         public override string ResourceName => "recurring_invoices";
 
-        //public override void CustomizeAllRequest(RestRequest request)
-        //{
-        //    request.AddParameter("nested_invoice_items", "true", ParameterType.GetOrPost);
-        //}
-
         public override RecurringInvoiceWrapper WrapperFromSingle(RecurringInvoice single)
         {
             return new RecurringInvoiceWrapper { recurringInvoice = single };

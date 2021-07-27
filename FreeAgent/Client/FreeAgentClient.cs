@@ -150,9 +150,12 @@ namespace FreeAgent.Client
         public CompanyClient Company;
         public ContactClient Contact;
         public CategoryClient Category;
+        public CapitalAssetClient CapitalAsset;
+        public CapitalAssetTypeClient CapitalAssetType;
         public InvoiceClient Invoice;
         public RecurringInvoiceClient RecurringInvoice;
         public CreditNoteClient CreditNote;
+        public CreditNoteReconciliationClient CreditNoteReconciliation;
         public EstimateClient Estimate;
         public BillClient Bill;
         public ExpenseClient Expense;
@@ -177,9 +180,12 @@ namespace FreeAgent.Client
             Company = new CompanyClient(this);
             Contact = new ContactClient(this);
             Category = new CategoryClient(this);
+            CapitalAsset = new CapitalAssetClient(this);
+            CapitalAssetType = new CapitalAssetTypeClient(this);
             Invoice = new InvoiceClient(this);
             RecurringInvoice = new RecurringInvoiceClient(this);
             CreditNote = new CreditNoteClient(this);
+            CreditNoteReconciliation = new CreditNoteReconciliationClient(this);
             Estimate = new EstimateClient(this);
             Bill = new BillClient(this);
             Expense = new ExpenseClient(this);
