@@ -112,6 +112,12 @@ namespace FreeAgent.Models
         public static string UniversalCompany = "UniversalCompany";
     }
 
+    public static class CompanyVatBasis
+    {
+        public static string Invoice = "Invoice";
+        public static string Cash = "Cash";
+    }
+
     public class CompanyWrapper
     {
         public CompanyWrapper()
