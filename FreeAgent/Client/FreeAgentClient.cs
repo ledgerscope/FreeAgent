@@ -6,7 +6,6 @@ using RestSharp;
 using RestSharp.Serialization.Json;
 using System;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace FreeAgent.Client
 {
@@ -213,12 +212,6 @@ namespace FreeAgent.Client
             return val < 299;
         }
 
-        private void SetAuthentication(RestRequest request)
-        {
-            request.AddHeader("Authorization", "Bearer " + CurrentAccessToken.access_token);
-        }
-
-#if !WINDOWS_PHONE
         internal T Execute<T>(IRestRequest request) where T : new()
         {
             IRestResponse<T> response;
@@ -253,82 +246,6 @@ namespace FreeAgent.Client
             }
 
             return response;
-        }
-#endif
-
-        protected void ExecuteAsync(IRestRequest request, Action<IRestResponse> success, Action<FreeAgentException> failure)
-        {
-#if WINDOWS_PHONE
-    //check for network connection
-            if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
-            {
-                //do nothing
-                failure(new DropboxException
-                {
-                    StatusCode = System.Net.HttpStatusCode.BadGateway
-                });
-                return;
-            }
-#endif
-
-            _restClient.ExecuteAsync(request, (response, asynchandler) =>
-            {
-                if (response.StatusCode != HttpStatusCode.OK)
-                {
-                    failure(new FreeAgentException(response));
-                }
-                else
-                {
-                    success(response);
-                }
-            });
-        }
-
-        protected void ExecuteAsync<T>(IRestRequest request, Action<T> success, Action<FreeAgentException> failure) where T : new()
-        {
-#if WINDOWS_PHONE
-    //check for network connection
-            if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
-            {
-                //do nothing
-                failure(new DropboxException
-                {
-                    StatusCode = System.Net.HttpStatusCode.BadGateway
-                });
-                return;
-            }
-#endif
-
-            _restClient.ExecuteAsync<T>(request, (response, asynchandler) =>
-            {
-                if (response.StatusCode != HttpStatusCode.OK)
-                {
-                    failure(new FreeAgentException(response));
-                }
-                else
-                {
-                    success(response.Data);
-                }
-            });
-        }
-
-        private Task<T> ExecuteTask<T>(IRestRequest request) where T : new()
-        {
-            return _restClient.ExecuteTask<T>(request);
-        }
-
-        private Task<IRestResponse> ExecuteTask(IRestRequest request)
-        {
-            return _restClient.ExecuteTask(request);
-        }
-
-        private void SetAuthProviders()
-        {
-            //if (UserLogin != null)
-            //{
-            //Set the OauthAuthenticator only when the UserLogin property changes
-            //   _restClient.Authenticator = new OAuthAuthenticator(_restClient.BaseUrl, _apiKey, _appsecret, UserLogin.Token, UserLogin.Secret);
-            //}
         }
     }
 }

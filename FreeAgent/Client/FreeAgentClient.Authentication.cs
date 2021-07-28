@@ -4,10 +4,6 @@ namespace FreeAgent.Client
 {
     public partial class FreeAgentClient
     {
-        /// <summary>
-        /// Gets a token from the almightly dropbox.com (Token cant be used until authorized!)
-        /// </summary>
-        /// <returns></returns>
         public AccessToken GetAccessToken(string code, string redirectUri = "")
         {
             _restClient.BaseUrl = BaseUrl;
