@@ -96,26 +96,26 @@ namespace FreeAgent.Models
         public List<string> SecondSalesTaxRates { get; set; }
         [JsonProperty("second_sales_tax_is_compound")]
         public bool SecondSalesTaxIsCompound { get; set; }
-    }
 
-    public static class CompanyType
-    {
-        public static string UkLimitedCompany = "UkLimitedCompany";
-        public static string UkSoleTrader = "UkSoleTrader";
-        public static string UkPartnership = "UkPartnership";
-        public static string UkLimitedLiabilityPartnership = "UkLimitedLiabilityPartnership";
-        public static string UsSoleProprietor = "UsSoleProprietor";
-        public static string UsPartnership = "UsPartnership";
-        public static string UsLimitedLiabilityCompany = "UsLimitedLiabilityCompany";
-        public static string UsSCorp = "UsSCorp";
-        public static string UsCCorp = "UsCCorp";
-        public static string UniversalCompany = "UniversalCompany";
-    }
+        public static class CompanyType
+        {
+            public static string UkLimitedCompany = "UkLimitedCompany";
+            public static string UkSoleTrader = "UkSoleTrader";
+            public static string UkPartnership = "UkPartnership";
+            public static string UkLimitedLiabilityPartnership = "UkLimitedLiabilityPartnership";
+            public static string UsSoleProprietor = "UsSoleProprietor";
+            public static string UsPartnership = "UsPartnership";
+            public static string UsLimitedLiabilityCompany = "UsLimitedLiabilityCompany";
+            public static string UsSCorp = "UsSCorp";
+            public static string UsCCorp = "UsCCorp";
+            public static string UniversalCompany = "UniversalCompany";
+        }
 
-    public static class CompanyVatBasis
-    {
-        public const string Invoice = "Invoice";
-        public const string Cash = "Cash";
+        public static class VatBasis
+        {
+            public const string Invoice = "Invoice";
+            public const string Cash = "Cash";
+        }
     }
 
     public class CompanyWrapper
