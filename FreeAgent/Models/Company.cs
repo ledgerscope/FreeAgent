@@ -114,8 +114,8 @@ namespace FreeAgent.Models
 
     public static class CompanyVatBasis
     {
-        public static string Invoice = "Invoice";
-        public static string Cash = "Cash";
+        public const string Invoice = "Invoice";
+        public const string Cash = "Cash";
     }
 
     public class CompanyWrapper
