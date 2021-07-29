@@ -31,10 +31,10 @@ namespace FreeAgent.Tests
                 //url = "",
                 //Contact = contact.UrlId(),
                 Name = "project TEST",
-                Status = ProjectStatus.Active,
-                BudgetUnits = ProjectBudgetUnits.Days,
+                Status = Project.ProjectStatus.Active,
+                BudgetUnits = Project.ProjectBudgetUnits.Days,
                 HoursPerDay = 7.5M,
-                BillingPeriod = ProjectBillingPeriod.Day,
+                BillingPeriod = Project.ProjectBillingPeriod.Day,
                 NormalBillingRate = 450M,
                 Currency = "GBP"
             };

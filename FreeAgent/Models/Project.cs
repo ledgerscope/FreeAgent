@@ -39,27 +39,27 @@ namespace FreeAgent.Models
         public DateTime EndsOn { get; set; }
         [JsonProperty("include_unbilled_time_in_profitability")]
         public bool IncludeUnbilledTimeInProfitability { get; set; }
-    }
 
-    public static class ProjectBudgetUnits
-    {
-        public static string Hours = "Hours";
-        public static string Days = "Days";
-        public static string Monetary = "Monetary";
-    }
+        public static class ProjectBudgetUnits
+        {
+            public static string Hours = "Hours";
+            public static string Days = "Days";
+            public static string Monetary = "Monetary";
+        }
 
-    public static class ProjectStatus
-    {
-        public static string Active = "Active";
-        public static string Completed = "Completed";
-        public static string Cancelled = "Cancelled";
-        public static string Hidden = "Hidden";
-    }
+        public static class ProjectStatus
+        {
+            public const string Active = "Active";
+            public const string Completed = "Completed";
+            public const string Cancelled = "Cancelled";
+            public const string Hidden = "Hidden";
+        }
 
-    public static class ProjectBillingPeriod
-    {
-        public static string Hour = "hour";
-        public static string Day = "day";
+        public static class ProjectBillingPeriod
+        {
+            public static string Hour = "hour";
+            public static string Day = "day";
+        }
     }
 
     public class ProjectWrapper
