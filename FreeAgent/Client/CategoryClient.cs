@@ -7,13 +7,17 @@ namespace FreeAgent.Client
     {
         public CategoryClient(FreeAgentClient client) : base(client) { }
 
-        //need to add in the GET to have a parameter for the date filter
-
         public override string ResourceName => "categories";
 
-        public Categories All()
+        public Categories All(bool includeSubAccounts = false)
         {
             var request = CreateBasicRequest(Method.GET);
+
+            if (includeSubAccounts)
+            {
+                request.AddParameter("sub_accounts", "true", ParameterType.GetOrPost);
+            }
+
             var response = Client.Execute<Categories>(request);
 
             if (response != null) return response;
