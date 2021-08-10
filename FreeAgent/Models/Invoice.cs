@@ -31,23 +31,23 @@ namespace FreeAgent.Models
         public Dictionary<string, bool> PaymentMethods { get; set; }
         [JsonProperty("invoice_items")]
         public List<InvoiceItem> InvoiceItems { get; set; }
+
+        public static class InvoiceStatus
+        {
+            public static string Draft = "Draft";
+            public static string ScheduledToEmail = "Scheduled To Email";
+            public static string Open = "Open";
+            public static string ZeroValue = "Zero Value";
+            public static string Overdue = "Overdue";
+            public static string Paid = "Paid";
+            public static string Overpaid = "Overpaid";
+            public static string Refunded = "Refunded";
+            public static string WrittenOff = "Written-off";
+            public static string PartWrittenOff = "Part written-off";
+        }
     }
 
     public class InvoiceItem : SalesTransactionItemModel { }
-
-    public static class InvoiceStatus
-    {
-        public static string Draft = "Draft";
-        public static string ScheduledToEmail = "Scheduled To Email";
-        public static string Open = "Open";
-        public static string ZeroValue = "Zero Value";
-        public static string Overdue = "Overdue";
-        public static string Paid = "Paid";
-        public static string Overpaid = "Overpaid";
-        public static string Refunded = "Refunded";
-        public static string WrittenOff = "Written-off";
-        public static string PartWrittenOff = "Part written-off";
-    }
 
     public static class InvoiceECStatus
     {

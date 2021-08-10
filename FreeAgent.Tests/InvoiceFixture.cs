@@ -93,7 +93,7 @@ namespace FreeAgent.Tests
             {
                 //url = "",
                 //contact = contact.UrlId(),
-                Status = InvoiceStatus.Draft,
+                Status = Invoice.InvoiceStatus.Draft,
                 DatedOn = DateTime.Now,
                 PaymentTermsInDays = 25,
                 InvoiceItems = items
