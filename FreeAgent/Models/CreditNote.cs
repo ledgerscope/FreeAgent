@@ -13,18 +13,18 @@ namespace FreeAgent.Models
         public DateTime RefundedOn { get; set; }
         [JsonProperty("credit_note_items")]
         public List<CreditNoteItem> CreditNoteItems { get; set; }
+
+        public static class CreditNoteStatus
+        {
+            public static string Draft = "Draft";
+            public static string Open = "Open";
+            public static string Overdue = "Overdue";
+            public static string Refunded = "Refunded";
+            public static string WrittenOff = "Written-off";
+        }
     }
 
     public class CreditNoteItem : SalesTransactionItemModel { }
-
-    public static class CreditNoteStatus
-    {
-        public static string Draft = "Draft";
-        public static string Open = "Open";
-        public static string Overdue = "Overdue";
-        public static string Refunded = "Refunded";
-        public static string WrittenOff = "Written-off";
-    }
 
     public static class CreditNoteECStatus
     {
