@@ -25,15 +25,15 @@ namespace FreeAgent.Models
         public Attachment Attachment { get; set; }
         [JsonProperty("bill_items")]
         public List<BillItem> BillItems { get; set; }
-    }
 
-    public static class BillStatus
-    {
-        public static string ZeroValue = "Zero Value";
-        public static string Open = "Open";
-        public static string Paid = "Paid";
-        public static string Overdue = "Overdue";
-        public static string Refunded = "Refunded";
+        public static class BillStatus
+        {
+            public static string ZeroValue = "Zero Value";
+            public static string Open = "Open";
+            public static string Paid = "Paid";
+            public static string Overdue = "Overdue";
+            public static string Refunded = "Refunded";
+        }
     }
 
     public static class BillECStatus

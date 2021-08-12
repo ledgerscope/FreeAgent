@@ -10,6 +10,11 @@ namespace FreeAgent.Client
 
         public override string ResourceName => "bills";
 
+        public override void CustomizeAllRequest(RestRequest request)
+        {
+            request.AddParameter("nested_bill_items", "true", ParameterType.GetOrPost);
+        }
+
         public override BillWrapper WrapperFromSingle(Bill single)
         {
             return new BillWrapper { bill = single };
