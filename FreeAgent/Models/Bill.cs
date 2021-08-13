@@ -7,8 +7,6 @@ namespace FreeAgent.Models
 {
     public class Bill : ControlTransactionModel, IRemoveUrlOnSerialization, IRemoveRecurringOnSerialization
     {
-        [JsonProperty("category")]
-        public Uri Category { get; set; }
         [JsonProperty("rebill_type")]
         public Uri RebillType { get; set; }
         [JsonProperty("rebill_factor")]
