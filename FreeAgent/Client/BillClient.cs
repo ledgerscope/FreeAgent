@@ -12,6 +12,9 @@ namespace FreeAgent.Client
 
         public override void CustomizeAllRequest(RestRequest request)
         {
+            // By supplying the header FreeAgent-Feature: bill_items we're able to retrieve, create and update bills with the new schema
+            request.AddHeader("FreeAgent-Features", "bill_items");
+
             request.AddParameter("nested_bill_items", "true", ParameterType.GetOrPost);
         }
 

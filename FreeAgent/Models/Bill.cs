@@ -53,6 +53,8 @@ namespace FreeAgent.Models
         public string Unit { get; set; }
         [JsonProperty("depreciation_schedule")]
         public string DepreciationSchedule { get; set; }
+        [JsonProperty("manual_sales_tax_amount")]
+        public string ManualSalesTaxAmount { get; set; }
     }
 
     public class BillWrapper
