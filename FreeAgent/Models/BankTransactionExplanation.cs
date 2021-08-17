@@ -96,6 +96,31 @@ namespace FreeAgent.Models
         public int AssetLifeYears { get; set; }
         [JsonProperty("disposed_asset")]
         public Uri DisposedAsset { get; set; }
+
+        public static class BankTransactionExplanationType
+        {
+            // Money Out
+            public static string SalesRefund = "Sales Refund";
+            public static string Payment = "Payment";
+            public static string BillPayment = "Bill Payment";
+            public static string TransferToAnotherAccount = "Transfer to Another Account";
+            public static string MoneyPaidToUser = "Money Paid to User";
+            public static string PurchaseOfCapitalAsset = "Purchase of Capital Asset";
+            public static string PurchaseOfStock = "Purchase of Stock";
+            public static string CreditNoteRefund = "Credit Note Refund";
+            public static string PaymentOfHPAgreement = "Payment of HP Agreement";
+            public static string OtherMoneyOut = "Other Money Out";
+
+            // Money In
+            public static string InvoiceReceipt = "Invoice Receipt";
+            public static string Sales = "Sales";
+            public static string TransferFromAnotherAccount = "Transfer from Another Account";
+            public static string Refund = "Refund";
+            public static string BillRefund = "Bill Refund";
+            public static string MoneyReceivedFromUser = "Money Received from User";
+            public static string DisposalOfCapitalAsset = "Disposal of Capital Asset";
+            public static string SaleOfStock = "Sale of Stock";
+        }
     }
 
     public static class BankTransactionExplanationECStatus
