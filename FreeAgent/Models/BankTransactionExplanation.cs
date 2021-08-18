@@ -121,6 +121,13 @@ namespace FreeAgent.Models
             public static string DisposalOfCapitalAsset = "Disposal of Capital Asset";
             public static string SaleOfStock = "Sale of Stock";
         }
+
+        public static class BankTransactionExplanationSalesTaxStatus
+        {
+            public static string Taxable = "TAXABLE";
+            public static string Exempt = "EXEMPT";
+            public static string OutOfScope = "OUT_OF_SCOPE";
+        }
     }
 
     public static class BankTransactionExplanationECStatus
