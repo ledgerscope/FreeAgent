@@ -121,13 +121,6 @@ namespace FreeAgent.Models
             public static string DisposalOfCapitalAsset = "Disposal of Capital Asset";
             public static string SaleOfStock = "Sale of Stock";
         }
-
-        public static class BankTransactionExplanationSalesTaxStatus
-        {
-            public const string Taxable = "TAXABLE";
-            public const string Exempt = "EXEMPT";
-            public const string OutOfScope = "OUT_OF_SCOPE";
-        }
     }
 
     public static class BankTransactionExplanationECStatus
