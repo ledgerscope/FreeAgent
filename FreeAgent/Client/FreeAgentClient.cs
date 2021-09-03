@@ -3,7 +3,7 @@ using FreeAgent.Extensions;
 using FreeAgent.Helpers;
 using FreeAgent.Models;
 using RestSharp;
-using RestSharp.Serialization.Json;
+using RestSharp.Serializers.NewtonsoftJson;
 using System;
 using System.Net;
 
@@ -86,8 +86,7 @@ namespace FreeAgent.Client
         {
             _restClient = new RestClient(BaseUrl);
             _restClient.ClearHandlers();
-            //_restClient.AddHandler("application/json", new JsonDeserializer());
-            _restClient.AddHandler("application/json", () => new JsonDeserializer());
+            _restClient.UseNewtonsoftJson();
 
             _requestHelper = new RequestHelper(Version)
             {
