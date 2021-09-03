@@ -1,10 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using FreeAgent.Client;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
 namespace FreeAgent.Models
 {
-    public class BankTransaction : UpdatableModel
+    public class BankTransaction : UpdatableModel, IRemoveUrlOnSerialization
     {
         [JsonProperty("amount")]
         public decimal Amount { get; set; }

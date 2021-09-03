@@ -1,3 +1,4 @@
+using FreeAgent.Client;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ namespace FreeAgent.Models
     /// <summary>
     /// Contacts and Projects can both have Notes
     /// </summary>
-    public class Note : UpdatableModel
+    public class Note : UpdatableModel, IRemoveUrlOnSerialization
     {
         [JsonProperty("note")]
         public string NoteContent { get; set; }

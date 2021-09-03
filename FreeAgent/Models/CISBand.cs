@@ -1,3 +1,4 @@
+using FreeAgent.Client;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -6,7 +7,7 @@ namespace FreeAgent.Models
     /// <summary>
     /// Only available to UK companies enrolled in the Construction Industry Scheme
     /// </summary>
-    public class CISBand : BaseModel
+    public class CISBand : BaseModel, IRemoveUrlOnSerialization
     {
         [JsonProperty("name")]
         public string Name { get; set; }

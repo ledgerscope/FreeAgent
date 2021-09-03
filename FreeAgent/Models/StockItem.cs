@@ -1,10 +1,11 @@
+using FreeAgent.Client;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
 namespace FreeAgent.Models
 {
-    public class StockItem : BaseModel
+    public class StockItem : BaseModel, IRemoveUrlOnSerialization
     {
         [JsonProperty("description")]
         public string Description { get; set; }

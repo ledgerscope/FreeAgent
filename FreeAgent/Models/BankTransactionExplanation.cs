@@ -1,10 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using FreeAgent.Client;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
 namespace FreeAgent.Models
 {
-    public class BankTransactionExplanation : UpdatableModel
+    public class BankTransactionExplanation : UpdatableModel, IRemoveUrlOnSerialization
     {
         [JsonProperty("bank_account")]
         public Uri BankAccount { get; set; }

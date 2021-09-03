@@ -1,3 +1,4 @@
+using FreeAgent.Client;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ namespace FreeAgent.Models
     /// <summary>
     /// Only available to US and Universal companies
     /// </summary>
-    public class SalesTaxPeriod : BaseModel
+    public class SalesTaxPeriod : BaseModel, IRemoveUrlOnSerialization
     {
         [JsonProperty("sales_tax_name")]
         public string SalesTaxName { get; set; }

@@ -1,9 +1,10 @@
+using FreeAgent.Client;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace FreeAgent.Models
 {
-    public class Category : BaseModel
+    public class Category : BaseModel, IRemoveUrlOnSerialization
     {
         [JsonProperty("description")]
         public string Description { get; set; }

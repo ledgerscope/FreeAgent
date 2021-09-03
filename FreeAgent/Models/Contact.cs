@@ -1,9 +1,10 @@
+using FreeAgent.Client;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace FreeAgent.Models
 {
-    public class Contact : UpdatableModel
+    public class Contact : UpdatableModel, IRemoveUrlOnSerialization
     {
         [JsonProperty("first_name")]
         public string FirstName { get; set; }

@@ -173,6 +173,7 @@ namespace FreeAgent.Client
         public CISBandClient CISBand;
         public UserClient User;
         public EmailAddressClient EmailAddress;
+        public PayrollClient Payroll;
 
         private void SetupClients()
         {
@@ -203,6 +204,7 @@ namespace FreeAgent.Client
             CISBand = new CISBandClient(this);
             User = new UserClient(this);
             EmailAddress = new EmailAddressClient(this);
+            Payroll = new PayrollClient(this);
         }
 
         private bool IsSuccess(HttpStatusCode code)

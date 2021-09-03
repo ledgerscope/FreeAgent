@@ -1,10 +1,11 @@
+using FreeAgent.Client;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
 namespace FreeAgent.Models
 {
-    public class Timeslip : UpdatableModel
+    public class Timeslip : UpdatableModel, IRemoveUrlOnSerialization
     {
         [JsonProperty("user")]
         public Uri User { get; set; }
