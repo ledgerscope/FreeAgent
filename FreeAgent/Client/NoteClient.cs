@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 namespace FreeAgent.Client
 {
-    // test test test
     public class NoteClient : ResourceClient<NoteWrapper, NotesWrapper, Note>
     {
         public NoteClient(FreeAgentClient client) : base(client) { }
