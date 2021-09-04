@@ -9,8 +9,6 @@ namespace FreeAgent.Client
         {
         }
 
-        //need to add in the GET to have a parameter for the date filter
-
         public override string ResourceName => "bank_accounts";
 
         public override BankAccountWrapper WrapperFromSingle(BankAccount single)

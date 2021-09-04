@@ -86,6 +86,8 @@ namespace FreeAgent.Client
         {
             _restClient = new RestClient(BaseUrl);
             _restClient.ClearHandlers();
+
+            // Will take Newtonsoft.Json.JsonPropertyAttribute into account upon deserializing (see Note.NoteContent property)
             _restClient.UseNewtonsoftJson();
 
             _requestHelper = new RequestHelper(Version)
