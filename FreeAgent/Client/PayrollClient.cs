@@ -27,7 +27,7 @@ namespace FreeAgent.Client
 
         public List<Period> AllPeriods(int year)
         {
-            return All((request) => request.AddParameter("year", year, ParameterType.UrlSegment));
+            return All((request) => request.AddParameter("year", year, ParameterType.GetOrPost));
         }
     }
 
