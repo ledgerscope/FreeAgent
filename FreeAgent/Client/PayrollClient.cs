@@ -1,68 +1,64 @@
 using FreeAgent.Models;
 using RestSharp;
-using System.Collections.Generic;
 
 namespace FreeAgent.Client
 {
-    public class PayrollClient : ResourceClient<PeriodWrapper, PeriodsWrapper, Period>
+    public class PayrollClient : BaseClient
     {
         public PayrollClient(FreeAgentClient client) : base(client) { }
 
         public override string ResourceName => "payroll";
 
-        public override PeriodWrapper WrapperFromSingle(Period single)
+        public Periods AllPeriods(int year)
         {
-            return new PeriodWrapper { period = single };
+            var request = CreateBasicRequest(Method.GET, "/{year}");
+            request.AddParameter("year", year, ParameterType.UrlSegment);
+
+            var response = Client.Execute<Periods>(request);
+
+            if (response != null) return response;
+
+            return null;
         }
 
-        public override List<Period> ListFromWrapper(PeriodsWrapper wrapper)
+        public Period AllPayslipsForAPeriod(int year, byte period)
         {
-            return wrapper.periods;
-        }
+            var request = CreateBasicRequest(Method.GET, "/{year}/{period}");
+            request.AddParameter("year", year, ParameterType.UrlSegment);
+            request.AddParameter("period", period, ParameterType.UrlSegment);
 
-        public override Period SingleFromWrapper(PeriodWrapper wrapper)
-        {
-            return wrapper.period;
-        }
+            var response = Client.Execute<Period>(request);
 
-        public List<Period> AllPeriods(int year)
-        {
-            return All((request) => request.AddParameter("year", year, ParameterType.GetOrPost));
+            if (response != null) return response;
+
+            return null;
         }
     }
 
-    //public class PayrollClient : BaseClient
+    //public class PayrollClient : ResourceClient<PeriodWrapper, PeriodsWrapper, Period>
     //{
     //    public PayrollClient(FreeAgentClient client) : base(client) { }
 
     //    public override string ResourceName => "payroll";
 
-    //    // TODO_FA: If this is (not) working, try to redo this PayrollClient to be like BankTransactionClient
-    //    // (using ResourceClient<PeriodWrapper, PeriodsWrapper, Period> + see how AllForAccount works)
+    //    public override PeriodWrapper WrapperFromSingle(Period single)
+    //    {
+    //        return new PeriodWrapper { period = single };
+    //    }
+
+    //    public override List<Period> ListFromWrapper(PeriodsWrapper wrapper)
+    //    {
+    //        return wrapper.periods;
+    //    }
+
+    //    public override Period SingleFromWrapper(PeriodWrapper wrapper)
+    //    {
+    //        return wrapper.period;
+    //    }
 
     //    public List<Period> AllPeriods(int year)
     //    {
-    //        var request = CreateBasicRequest(Method.GET, "/{year}");
-    //        request.AddParameter("year", year, ParameterType.UrlSegment);
-
-    //        var response = Client.Execute<List<Period>>(request);
-
-    //        if (response != null) return response;
-
-    //        return null;
-    //    }
-
-    //    public Period AllPayslipsForAPeriod(int year, byte period)
-    //    {
-    //        var request = CreateBasicRequest(Method.GET, "/{year}/{period}");
-    //        request.AddParameter("year", year, ParameterType.UrlSegment);
-    //        request.AddParameter("period", period, ParameterType.UrlSegment);
-
-    //        var response = Client.Execute<Period>(request);
-
-    //        if (response != null) return response;
-
-    //        return null;
+    //        return All((request) => request.AddParameter("year", year, ParameterType.GetOrPost));
     //    }
     //}
 }

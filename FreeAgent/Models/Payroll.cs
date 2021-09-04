@@ -117,6 +117,16 @@ namespace FreeAgent.Models
         public decimal HoursWorked { get; set; }
     }
 
+    public class Periods
+    {
+        public Periods()
+        {
+            periods = new List<Period>();
+        }
+
+        public List<Period> periods { get; set; }
+    }
+
     public class PeriodWrapper
     {
         public PeriodWrapper()

@@ -21,7 +21,7 @@ namespace FreeAgent.Client
         public abstract List<TSingle> ListFromWrapper(TListWrapper wrapper);
         public abstract TSingle SingleFromWrapper(TSingleWrapper wrapper);
 
-        const int PageSize = 50;
+        private const int PageSize = 50;
 
         public List<TSingle> All(Action<RestRequest> customizeRequest = null)
         {
@@ -56,8 +56,6 @@ namespace FreeAgent.Client
 
                 page++;
             }
-
-            return null;
         }
 
         public TSingle Get(string id)
