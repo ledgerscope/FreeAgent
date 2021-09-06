@@ -19,13 +19,13 @@ namespace FreeAgent.Client
             return response;
         }
 
-        public Period AllPayslipsForYearPeriod(int year, byte period)
+        public Periods AllPayslipsForYearPeriod(int year, byte period)
         {
             var request = CreateBasicRequest(Method.GET, "/{year}/{period}");
             request.AddParameter("year", year, ParameterType.UrlSegment);
             request.AddParameter("period", period, ParameterType.UrlSegment);
 
-            var response = Client.Execute<Period>(request);
+            var response = Client.Execute<Periods>(request);
 
             return response;
         }
