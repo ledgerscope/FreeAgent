@@ -115,6 +115,10 @@ namespace FreeAgent.Models
         public decimal DeductionFreePay { get; set; }
         [JsonProperty("hours_worked")]
         public decimal HoursWorked { get; set; }
+        [JsonProperty("updated_at")]
+        public DateTime UpdatedAt { get; set; }
+        [JsonProperty("created_at")]
+        public DateTime CreatedAt { get; set; }
     }
 
     public class PeriodWrapper
