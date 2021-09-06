@@ -9,23 +9,23 @@ namespace FreeAgent.Client
 
         public override string ResourceName => "payroll";
 
-        public Periods AllPeriods(int year)
+        public PeriodsWrapper AllPeriods(int year)
         {
             var request = CreateBasicRequest(Method.GET, "/{year}");
             request.AddParameter("year", year, ParameterType.UrlSegment);
 
-            var response = Client.Execute<Periods>(request);
+            var response = Client.Execute<PeriodsWrapper>(request);
 
             return response;
         }
 
-        public Period AllPayslipsForYearPeriod(int year, byte period)
+        public PeriodWrapper AllPayslipsForYearPeriod(int year, byte period)
         {
             var request = CreateBasicRequest(Method.GET, "/{year}/{period}");
             request.AddParameter("year", year, ParameterType.UrlSegment);
             request.AddParameter("period", period, ParameterType.UrlSegment);
 
-            var response = Client.Execute<Period>(request);
+            var response = Client.Execute<PeriodWrapper>(request);
 
             return response;
         }
