@@ -126,25 +126,5 @@ namespace FreeAgent.Models
 
         public List<Period> periods { get; set; }
     }
-
-    public class PeriodWrapper
-    {
-        public PeriodWrapper()
-        {
-            period = null;
-        }
-
-        public Period period { get; set; }
-    }
-
-    public class PeriodsWrapper
-    {
-        public PeriodsWrapper()
-        {
-            periods = new List<Period>();
-        }
-
-        public List<Period> periods { get; set; }
-    }
 }
 
