@@ -33,7 +33,7 @@ namespace FreeAgent.Tests
                 //password_confirmation = "foobarbaz",
                 OpeningMileage = 100,
                 PermissionLevel = (int)PermissionLevel.Full,
-                Role = UserRole.Director
+                Role = User.UserRole.Director
             };
         }
 

@@ -26,17 +26,19 @@ namespace FreeAgent.Models
         public bool SendInvitation { get; set; }
         [JsonProperty("permission_level")]
         public int PermissionLevel { get; set; }
-    }
 
-    public static class UserRole
-    {
-        public static string Owner = "Owner";
-        public static string Director = "Director";
-        public static string Partner = "Partner";
-        public static string CompanySecretary = "Company Secretary";
-        public static string Employee = "Employee";
-        public static string Shareholder = "Shareholder";
-        public static string Accountant = "Accountant";
+        // TODO_FA: See docs for additional props: current_payroll_profile
+
+        public static class UserRole
+        {
+            public static string Owner = "Owner";
+            public static string Director = "Director";
+            public static string Partner = "Partner";
+            public static string CompanySecretary = "Company Secretary";
+            public static string Employee = "Employee";
+            public static string Shareholder = "Shareholder";
+            public static string Accountant = "Accountant";
+        }
     }
 
     public enum PermissionLevel
