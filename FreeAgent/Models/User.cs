@@ -31,13 +31,13 @@ namespace FreeAgent.Models
 
         public static class UserRole
         {
-            public static string Owner = "Owner";
-            public static string Director = "Director";
-            public static string Partner = "Partner";
-            public static string CompanySecretary = "Company Secretary";
-            public static string Employee = "Employee";
-            public static string Shareholder = "Shareholder";
-            public static string Accountant = "Accountant";
+            public const string Owner = "Owner";
+            public const string Director = "Director";
+            public const string Partner = "Partner";
+            public const string CompanySecretary = "Company Secretary";
+            public const string Employee = "Employee";
+            public const string Shareholder = "Shareholder";
+            public const string Accountant = "Accountant";
         }
     }
 
