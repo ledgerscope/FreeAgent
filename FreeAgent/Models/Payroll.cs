@@ -59,7 +59,7 @@ namespace FreeAgent.Models
         public decimal StudentLoanDeduction { get; set; }
         [JsonProperty("postgrad_loan_deduction")]
         public decimal PostgradLoanDeduction { get; set; }
-        [JsonProperty("overtime	")]
+        [JsonProperty("overtime")]
         public decimal Overtime { get; set; }
         [JsonProperty("commission")]
         public decimal Commission { get; set; }
@@ -73,7 +73,7 @@ namespace FreeAgent.Models
         public decimal StatutoryMaternityPay { get; set; }
         [JsonProperty("statutory_paternity_pay")]
         public decimal StatutoryPaternityPay { get; set; }
-        [JsonProperty("statutory_adoption_pay	")]
+        [JsonProperty("statutory_adoption_pay")]
         public decimal StatutoryAdoptionPay { get; set; }
         [JsonProperty("statutory_parental_bereavement_pay")]
         public decimal StatutoryParentalBereavementPay { get; set; }
