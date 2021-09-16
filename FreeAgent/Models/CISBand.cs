@@ -25,20 +25,20 @@ namespace FreeAgent.Models
     {
         public CISBandWrapper()
         {
-            cisBand = null;
+            available_band = null;
         }
 
-        public CISBand cisBand { get; set; }
+        public CISBand available_band { get; set; }
     }
 
     public class CISBandsWrapper
     {
         public CISBandsWrapper()
         {
-            cisBands = new List<CISBand>();
+            available_bands = new List<CISBand>();
         }
 
-        public List<CISBand> cisBands { get; set; }
+        public List<CISBand> available_bands { get; set; }
     }
 }
 

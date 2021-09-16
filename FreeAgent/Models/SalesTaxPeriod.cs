@@ -54,20 +54,20 @@ namespace FreeAgent.Models
     {
         public SalesTaxPeriodWrapper()
         {
-            salesTaxPeriod = null;
+            sales_tax_period = null;
         }
 
-        public SalesTaxPeriod salesTaxPeriod { get; set; }
+        public SalesTaxPeriod sales_tax_period { get; set; }
     }
 
     public class SalesTaxPeriodsWrapper
     {
         public SalesTaxPeriodsWrapper()
         {
-            salesTaxPeriods = new List<SalesTaxPeriod>();
+            sales_tax_periods = new List<SalesTaxPeriod>();
         }
 
-        public List<SalesTaxPeriod> salesTaxPeriods { get; set; }
+        public List<SalesTaxPeriod> sales_tax_periods { get; set; }
     }
 }
 

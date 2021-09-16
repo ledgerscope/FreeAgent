@@ -11,17 +11,17 @@ namespace FreeAgent.Client
 
         public override CISBandWrapper WrapperFromSingle(CISBand single)
         {
-            return new CISBandWrapper { cisBand = single };
+            return new CISBandWrapper { available_band = single };
         }
 
         public override List<CISBand> ListFromWrapper(CISBandsWrapper wrapper)
         {
-            return wrapper.cisBands;
+            return wrapper.available_bands;
         }
 
         public override CISBand SingleFromWrapper(CISBandWrapper wrapper)
         {
-            return wrapper.cisBand;
+            return wrapper.available_band;
         }
     }
 }

@@ -11,17 +11,17 @@ namespace FreeAgent.Client
 
         public override JournalSetWrapper WrapperFromSingle(JournalSet single)
         {
-            return new JournalSetWrapper { journalSet = single };
+            return new JournalSetWrapper { journal_set = single };
         }
 
         public override List<JournalSet> ListFromWrapper(JournalSetsWrapper wrapper)
         {
-            return wrapper.journalSets;
+            return wrapper.journal_sets;
         }
 
         public override JournalSet SingleFromWrapper(JournalSetWrapper wrapper)
         {
-            return wrapper.journalSet;
+            return wrapper.journal_set;
         }
     }
 }

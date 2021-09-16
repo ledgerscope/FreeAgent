@@ -6,9 +6,9 @@ namespace FreeAgent.Models
     {
         public EmailAddressesWrapper()
         {
-            emailAddresses = new List<string>();
+            email_addresses = new List<string>();
         }
 
-        public List<string> emailAddresses { get; set; }
+        public List<string> email_addresses { get; set; }
     }
 }

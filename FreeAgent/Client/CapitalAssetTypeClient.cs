@@ -11,17 +11,17 @@ namespace FreeAgent.Client
 
         public override CapitalAssetTypeWrapper WrapperFromSingle(CapitalAssetType single)
         {
-            return new CapitalAssetTypeWrapper { capitalAssetType = single };
+            return new CapitalAssetTypeWrapper { capital_asset_type = single };
         }
 
         public override List<CapitalAssetType> ListFromWrapper(CapitalAssetTypesWrapper wrapper)
         {
-            return wrapper.capitalAssetTypes;
+            return wrapper.capital_asset_types;
         }
 
         public override CapitalAssetType SingleFromWrapper(CapitalAssetTypeWrapper wrapper)
         {
-            return wrapper.capitalAssetType;
+            return wrapper.capital_asset_type;
         }
     }
 }

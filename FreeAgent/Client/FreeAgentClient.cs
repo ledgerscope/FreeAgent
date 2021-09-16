@@ -87,8 +87,13 @@ namespace FreeAgent.Client
             _restClient = new RestClient(BaseUrl);
             _restClient.ClearHandlers();
 
-            // Will take Newtonsoft.Json.JsonPropertyAttribute into account upon deserializing
-            // (See Note.NoteContent or Period.PayrollPeriod)
+            // Remark 1: Will take Newtonsoft.Json.JsonPropertyAttribute into account upon deserializing (See Note.NoteContent or Period.PayrollPeriod)
+            // Remark 2: For deserialization to work properly, you must either put a JsonProperty attribute on every entity Wrapper property
+            //           or name the Wrapper property accordingly.
+            //           For example (CreditNoteWrapper / CreditNotesWrapper):
+            //              a) Either name the props as credit_note / credit_notes or
+            //              b) Mark the props with a [JsonProperty("credit_note")] / [JsonProperty("credit_notes")] attributes
+            //                 if they have names different then credit_note / credit_notes, like creditNote / creditNotes)
             _restClient.UseNewtonsoftJson();
 
             _requestHelper = new RequestHelper(Version)

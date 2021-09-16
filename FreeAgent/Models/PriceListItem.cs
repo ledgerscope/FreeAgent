@@ -59,20 +59,20 @@ namespace FreeAgent.Models
     {
         public PriceListItemWrapper()
         {
-            priceListItem = null;
+            price_list_item = null;
         }
 
-        public PriceListItem priceListItem { get; set; }
+        public PriceListItem price_list_item { get; set; }
     }
 
     public class PriceListItemsWrapper
     {
         public PriceListItemsWrapper()
         {
-            priceListItems = new List<PriceListItem>();
+            price_list_items = new List<PriceListItem>();
         }
 
-        public List<PriceListItem> priceListItems { get; set; }
+        public List<PriceListItem> price_list_items { get; set; }
     }
 }
 

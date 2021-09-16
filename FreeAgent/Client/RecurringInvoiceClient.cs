@@ -11,17 +11,17 @@ namespace FreeAgent.Client
 
         public override RecurringInvoiceWrapper WrapperFromSingle(RecurringInvoice single)
         {
-            return new RecurringInvoiceWrapper { recurringInvoice = single };
+            return new RecurringInvoiceWrapper { recurring_invoice = single };
         }
 
         public override List<RecurringInvoice> ListFromWrapper(RecurringInvoicesWrapper wrapper)
         {
-            return wrapper.recurringInvoices;
+            return wrapper.recurring_invoices;
         }
 
         public override RecurringInvoice SingleFromWrapper(RecurringInvoiceWrapper wrapper)
         {
-            return wrapper.recurringInvoice;
+            return wrapper.recurring_invoice;
         }
     }
 }

@@ -39,20 +39,20 @@ namespace FreeAgent.Models
     {
         public RecurringInvoiceWrapper()
         {
-            recurringInvoice = null;
+            recurring_invoice = null;
         }
 
-        public RecurringInvoice recurringInvoice { get; set; }
+        public RecurringInvoice recurring_invoice { get; set; }
     }
 
     public class RecurringInvoicesWrapper
     {
         public RecurringInvoicesWrapper()
         {
-            recurringInvoices = new List<RecurringInvoice>();
+            recurring_invoices = new List<RecurringInvoice>();
         }
 
-        public List<RecurringInvoice> recurringInvoices { get; set; }
+        public List<RecurringInvoice> recurring_invoices { get; set; }
     }
 }
 

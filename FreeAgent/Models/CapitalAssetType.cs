@@ -16,20 +16,20 @@ namespace FreeAgent.Models
     {
         public CapitalAssetTypeWrapper()
         {
-            capitalAssetType = null;
+            capital_asset_type = null;
         }
 
-        public CapitalAssetType capitalAssetType { get; set; }
+        public CapitalAssetType capital_asset_type { get; set; }
     }
 
     public class CapitalAssetTypesWrapper
     {
         public CapitalAssetTypesWrapper()
         {
-            capitalAssetTypes = new List<CapitalAssetType>();
+            capital_asset_types = new List<CapitalAssetType>();
         }
 
-        public List<CapitalAssetType> capitalAssetTypes { get; set; }
+        public List<CapitalAssetType> capital_asset_types { get; set; }
     }
 }
 

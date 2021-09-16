@@ -52,7 +52,7 @@ namespace FreeAgent.Client
             request.RequestFormat = DataFormat.Json;
 
             request.AddUrlSegment("id", creditNoteId);
-            request.AddJsonBody(new CreditNoteEmailWrapper() { creditNote = email });
+            request.AddJsonBody(new CreditNoteEmailWrapper() { credit_note = email });
 
             var response = Client.Execute(request);
 

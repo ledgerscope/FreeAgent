@@ -11,17 +11,17 @@ namespace FreeAgent.Client
 
         public override CreditNoteReconciliationWrapper WrapperFromSingle(CreditNoteReconciliation single)
         {
-            return new CreditNoteReconciliationWrapper { creditNoteReconciliation = single };
+            return new CreditNoteReconciliationWrapper { credit_note_reconciliation = single };
         }
 
         public override List<CreditNoteReconciliation> ListFromWrapper(CreditNoteReconciliationsWrapper wrapper)
         {
-            return wrapper.creditNoteReconciliations;
+            return wrapper.credit_note_reconciliations;
         }
 
         public override CreditNoteReconciliation SingleFromWrapper(CreditNoteReconciliationWrapper wrapper)
         {
-            return wrapper.creditNoteReconciliation;
+            return wrapper.credit_note_reconciliation;
         }
     }
 }

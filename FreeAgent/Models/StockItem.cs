@@ -23,20 +23,20 @@ namespace FreeAgent.Models
     {
         public StockItemWrapper()
         {
-            stockItem = null;
+            stock_item = null;
         }
 
-        public StockItem stockItem { get; set; }
+        public StockItem stock_item { get; set; }
     }
 
     public class StockItemsWrapper
     {
         public StockItemsWrapper()
         {
-            stockItems = new List<StockItem>();
+            stock_items = new List<StockItem>();
         }
 
-        public List<StockItem> stockItems { get; set; }
+        public List<StockItem> stock_items { get; set; }
     }
 }
 

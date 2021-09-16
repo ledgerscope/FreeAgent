@@ -25,20 +25,20 @@ namespace FreeAgent.Models
     {
         public CreditNoteReconciliationWrapper()
         {
-            creditNoteReconciliation = null;
+            credit_note_reconciliation = null;
         }
 
-        public CreditNoteReconciliation creditNoteReconciliation { get; set; }
+        public CreditNoteReconciliation credit_note_reconciliation { get; set; }
     }
 
     public class CreditNoteReconciliationsWrapper
     {
         public CreditNoteReconciliationsWrapper()
         {
-            creditNoteReconciliations = new List<CreditNoteReconciliation>();
+            credit_note_reconciliations = new List<CreditNoteReconciliation>();
         }
 
-        public List<CreditNoteReconciliation> creditNoteReconciliations { get; set; }
+        public List<CreditNoteReconciliation> credit_note_reconciliations { get; set; }
     }
 }
 

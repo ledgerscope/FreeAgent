@@ -11,17 +11,17 @@ namespace FreeAgent.Client
 
         public override PriceListItemWrapper WrapperFromSingle(PriceListItem single)
         {
-            return new PriceListItemWrapper { priceListItem = single };
+            return new PriceListItemWrapper { price_list_item = single };
         }
 
         public override List<PriceListItem> ListFromWrapper(PriceListItemsWrapper wrapper)
         {
-            return wrapper.priceListItems;
+            return wrapper.price_list_items;
         }
 
         public override PriceListItem SingleFromWrapper(PriceListItemWrapper wrapper)
         {
-            return wrapper.priceListItem;
+            return wrapper.price_list_item;
         }
     }
 }

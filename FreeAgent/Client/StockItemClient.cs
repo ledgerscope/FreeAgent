@@ -11,17 +11,17 @@ namespace FreeAgent.Client
 
         public override StockItemWrapper WrapperFromSingle(StockItem single)
         {
-            return new StockItemWrapper { stockItem = single };
+            return new StockItemWrapper { stock_item = single };
         }
 
         public override List<StockItem> ListFromWrapper(StockItemsWrapper wrapper)
         {
-            return wrapper.stockItems;
+            return wrapper.stock_items;
         }
 
         public override StockItem SingleFromWrapper(StockItemWrapper wrapper)
         {
-            return wrapper.stockItem;
+            return wrapper.stock_item;
         }
     }
 }

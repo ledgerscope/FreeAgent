@@ -37,20 +37,20 @@ namespace FreeAgent.Models
     {
         public CapitalAssetWrapper()
         {
-            capitalAsset = null;
+            capital_asset = null;
         }
 
-        public CapitalAsset capitalAsset { get; set; }
+        public CapitalAsset capital_asset { get; set; }
     }
 
     public class CapitalAssetsWrapper
     {
         public CapitalAssetsWrapper()
         {
-            capitalAssets = new List<CapitalAsset>();
+            capital_assets = new List<CapitalAsset>();
         }
 
-        public List<CapitalAsset> capitalAssets { get; set; }
+        public List<CapitalAsset> capital_assets { get; set; }
     }
 }
 

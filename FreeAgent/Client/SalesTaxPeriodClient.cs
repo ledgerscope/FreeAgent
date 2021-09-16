@@ -11,17 +11,17 @@ namespace FreeAgent.Client
 
         public override SalesTaxPeriodWrapper WrapperFromSingle(SalesTaxPeriod single)
         {
-            return new SalesTaxPeriodWrapper { salesTaxPeriod = single };
+            return new SalesTaxPeriodWrapper { sales_tax_period = single };
         }
 
         public override List<SalesTaxPeriod> ListFromWrapper(SalesTaxPeriodsWrapper wrapper)
         {
-            return wrapper.salesTaxPeriods;
+            return wrapper.sales_tax_periods;
         }
 
         public override SalesTaxPeriod SingleFromWrapper(SalesTaxPeriodWrapper wrapper)
         {
-            return wrapper.salesTaxPeriod;
+            return wrapper.sales_tax_period;
         }
     }
 }

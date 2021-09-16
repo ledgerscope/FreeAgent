@@ -55,20 +55,20 @@ namespace FreeAgent.Models
     {
         public JournalSetWrapper()
         {
-            journalSet = null;
+            journal_set = null;
         }
 
-        public JournalSet journalSet { get; set; }
+        public JournalSet journal_set { get; set; }
     }
 
     public class JournalSetsWrapper
     {
         public JournalSetsWrapper()
         {
-            journalSets = new List<JournalSet>();
+            journal_sets = new List<JournalSet>();
         }
 
-        public List<JournalSet> journalSets { get; set; }
+        public List<JournalSet> journal_sets { get; set; }
     }
 }
 

@@ -15,7 +15,7 @@ namespace FreeAgent.Client
             var request = CreateBasicRequest(Method.GET);
             var response = Client.Execute<EmailAddressesWrapper>(request);
 
-            if (response != null) return response.emailAddresses;
+            if (response != null) return response.email_addresses;
 
             return null;
         }

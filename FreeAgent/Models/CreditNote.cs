@@ -93,10 +93,10 @@ namespace FreeAgent.Models
     {
         public CreditNoteEmailWrapper()
         {
-            creditNote = new CreditNoteEmail();
+            credit_note = new CreditNoteEmail();
         }
 
-        public CreditNoteEmail creditNote { get; set; }
+        public CreditNoteEmail credit_note { get; set; }
     }
 
     public class CreditNoteEmail
