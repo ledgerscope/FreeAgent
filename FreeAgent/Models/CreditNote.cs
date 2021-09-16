@@ -76,6 +76,7 @@ namespace FreeAgent.Models
             creditNote = null;
         }
 
+        [JsonProperty("credit_note")]
         public CreditNote creditNote { get; set; }
     }
 
@@ -86,6 +87,7 @@ namespace FreeAgent.Models
             creditNotes = new List<CreditNote>();
         }
 
+        [JsonProperty("credit_notes")]
         public List<CreditNote> creditNotes { get; set; }
     }
 
