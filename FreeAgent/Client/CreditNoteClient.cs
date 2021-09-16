@@ -17,17 +17,17 @@ namespace FreeAgent.Client
 
         public override CreditNoteWrapper WrapperFromSingle(CreditNote single)
         {
-            return new CreditNoteWrapper { creditNote = single };
+            return new CreditNoteWrapper { credit_note = single };
         }
 
         public override List<CreditNote> ListFromWrapper(CreditNotesWrapper wrapper)
         {
-            return wrapper.creditNotes;
+            return wrapper.credit_notes;
         }
 
         public override CreditNote SingleFromWrapper(CreditNoteWrapper wrapper)
         {
-            return wrapper.creditNote;
+            return wrapper.credit_note;
         }
 
         public List<CreditNote> AllForProject(string projectId)

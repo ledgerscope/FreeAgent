@@ -73,22 +73,20 @@ namespace FreeAgent.Models
     {
         public CreditNoteWrapper()
         {
-            creditNote = null;
+            credit_note = null;
         }
 
-        [JsonProperty("credit_note")]
-        public CreditNote creditNote { get; set; }
+        public CreditNote credit_note { get; set; }
     }
 
     public class CreditNotesWrapper
     {
         public CreditNotesWrapper()
         {
-            creditNotes = new List<CreditNote>();
+            credit_notes = new List<CreditNote>();
         }
 
-        [JsonProperty("credit_notes")]
-        public List<CreditNote> creditNotes { get; set; }
+        public List<CreditNote> credit_notes { get; set; }
     }
 
     public class CreditNoteEmailWrapper
