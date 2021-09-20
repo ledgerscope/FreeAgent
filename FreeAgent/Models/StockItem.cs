@@ -10,13 +10,13 @@ namespace FreeAgent.Models
         [JsonProperty("description")]
         public string Description { get; set; }
         [JsonProperty("opening_quantity")]
-        public int OpeningQuantity { get; set; }
+        public decimal OpeningQuantity { get; set; }
         [JsonProperty("opening_balance")]
         public decimal OpeningBalance { get; set; }
         [JsonProperty("cost_of_sale_category")]
         public Uri CostOfSaleCategory { get; set; }
         [JsonProperty("stock_on_hand")]
-        public int StockOnHand { get; set; }
+        public decimal StockOnHand { get; set; }
     }
 
     public class StockItemWrapper
