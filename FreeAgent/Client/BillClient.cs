@@ -33,6 +33,25 @@ namespace FreeAgent.Client
             return wrapper.bill;
         }
 
+        public enum Order { Earliest, Latest };
+
+        public List<Bill> GetBillSorted(Order order)
+        {
+            var request = CreateBasicRequest(Method.GET);
+
+            request.AddParameter("page", 1, ParameterType.GetOrPost);
+            request.AddParameter("per_page", 1, ParameterType.GetOrPost);
+
+            // To sort in descending order, the sort parameter can be prefixed with a hyphen
+            var sort = order == Order.Earliest ? "dated_on" : "-dated_on";
+
+            request.AddParameter("sort", sort, ParameterType.GetOrPost);
+
+            var response = Client.Execute<BillsWrapper>(request);
+
+            return response.bills;
+        }
+
         public List<Bill> All(string from_date = "", string to_date = "")
         {
             return All((request) =>
