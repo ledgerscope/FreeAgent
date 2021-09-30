@@ -34,7 +34,7 @@ namespace FreeAgent.Client
 
         public List<Invoice> GetInvoiceSorted(Order order)
         {
-            var request = CreateAllRequest();
+            var request = CreateBasicRequest(Method.GET);
 
             request.AddParameter("page", 1, ParameterType.GetOrPost);
             request.AddParameter("per_page", 1, ParameterType.GetOrPost);
