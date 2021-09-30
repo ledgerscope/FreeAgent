@@ -30,6 +30,25 @@ namespace FreeAgent.Client
             return wrapper.credit_note;
         }
 
+        public enum Order { Earliest, Latest };
+
+        public List<CreditNote> GetCreditNoteSorted(Order order)
+        {
+            var request = CreateBasicRequest(Method.GET);
+
+            request.AddParameter("page", 1, ParameterType.GetOrPost);
+            request.AddParameter("per_page", 1, ParameterType.GetOrPost);
+
+            // To sort in descending order, the sort parameter can be prefixed with a hyphen
+            var sort = order == Order.Earliest ? "dated_on" : "-dated_on";
+
+            request.AddParameter("sort", sort, ParameterType.GetOrPost);
+
+            var response = Client.Execute<CreditNotesWrapper>(request);
+
+            return response.credit_notes;
+        }
+
         public List<CreditNote> AllForProject(string projectId)
         {
             return All((request) => request.AddParameter("project", projectId, ParameterType.GetOrPost));
