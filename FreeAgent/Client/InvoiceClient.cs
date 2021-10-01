@@ -30,25 +30,6 @@ namespace FreeAgent.Client
             return wrapper.invoice;
         }
 
-        //public enum Order { Earliest, Latest };
-
-        //public List<Invoice> GetInvoiceSorted(Order order)
-        //{
-        //    var request = CreateBasicRequest(Method.GET);
-
-        //    request.AddParameter("page", 1, ParameterType.GetOrPost);
-        //    request.AddParameter("per_page", 1, ParameterType.GetOrPost);
-
-        //    // To sort in descending order, the sort parameter can be prefixed with a hyphen
-        //    var sort = order == Order.Earliest ? "dated_on" : "-dated_on";
-
-        //    request.AddParameter("sort", sort, ParameterType.GetOrPost);
-
-        //    var response = Client.Execute<InvoicesWrapper>(request);
-
-        //    return response.invoices;
-        //}
-
         public List<Invoice> AllForProject(string projectId)
         {
             return All((request) => request.AddParameter("project", projectId, ParameterType.GetOrPost));
