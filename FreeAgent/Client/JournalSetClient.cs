@@ -1,4 +1,5 @@
 using FreeAgent.Models;
+using RestSharp;
 using System.Collections.Generic;
 
 namespace FreeAgent.Client
@@ -22,6 +23,25 @@ namespace FreeAgent.Client
         public override JournalSet SingleFromWrapper(JournalSetWrapper wrapper)
         {
             return wrapper.journal_set;
+        }
+
+        public List<JournalSet> All(string from_date = "", string to_date = "", string tag = "")
+        {
+            return All((request) =>
+            {
+                if (!string.IsNullOrEmpty(from_date))
+                {
+                    request.AddParameter("from_date", from_date, ParameterType.GetOrPost);
+                }
+                if (!string.IsNullOrEmpty(to_date))
+                {
+                    request.AddParameter("to_date", to_date, ParameterType.GetOrPost);
+                }
+                if (!string.IsNullOrEmpty(tag))
+                {
+                    request.AddParameter("tag", tag, ParameterType.GetOrPost);
+                }
+            });
         }
     }
 }
