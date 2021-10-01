@@ -58,8 +58,6 @@ namespace FreeAgent.Client
             }
         }
 
-        public enum Order { Earliest, Latest };
-
         public TSingle GetModelSorted(Order order)
         {
             var request = CreateBasicRequest(Method.GET);
