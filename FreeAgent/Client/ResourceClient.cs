@@ -58,7 +58,7 @@ namespace FreeAgent.Client
             }
         }
 
-        public TSingle GetModelSorted(Order order)
+        public TSingle GetModelSorted(Order order, string bankAccountUrl = null)
         {
             var request = CreateBasicRequest(Method.GET);
 
@@ -67,6 +67,11 @@ namespace FreeAgent.Client
 
             // To sort in descending order, the sort parameter can be prefixed with a hyphen
             var sort = order == Order.Earliest ? "dated_on" : "-dated_on";
+
+            if (!string.IsNullOrEmpty(bankAccountUrl))
+            {
+                request.AddParameter("bank_account", bankAccountUrl, ParameterType.GetOrPost);
+            }
 
             request.AddParameter("sort", sort, ParameterType.GetOrPost);
 
