@@ -6,12 +6,14 @@ namespace FreeAgent.Exceptions
 {
     public class FreeAgentException : Exception
     {
-        public HttpStatusCode StatusCode { get; set; }
-
         /// <summary>
         /// The response of the error call (for Debugging use)
         /// </summary>
-        public IRestResponse Response { get; private set; }
+        public IRestResponse Response { get; }
+        public HttpStatusCode StatusCode { get; }
+        public string ResourceType { get; }
+
+        public string Errors = "";
 
         public FreeAgentException() : base() { }
 
@@ -19,10 +21,11 @@ namespace FreeAgent.Exceptions
 
         public FreeAgentException(string message, Exception innerException) : base(message, innerException) { }
 
-        public FreeAgentException(IRestResponse r) : base()
+        public FreeAgentException(IRestResponse response, string resourceType = null) : base()
         {
-            Response = r;
-            StatusCode = r.StatusCode;
+            Response = response;
+            StatusCode = response.StatusCode;
+            ResourceType = resourceType;
 
             try
             {
@@ -38,11 +41,9 @@ namespace FreeAgent.Exceptions
             }
         }
 
-        public string Errors = "";
-
         public override string ToString()
         {
-            return string.Format("FreeAgentException: StatusCode={0}, Content={1}", StatusCode, Response.Content);
+            return string.Format("FreeAgentException: StatusCode={0}, Content={1}, Failing Type={2}", StatusCode, Response.Content, ResourceType);
         }
     }
 }

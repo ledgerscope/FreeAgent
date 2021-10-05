@@ -231,9 +231,8 @@ namespace FreeAgent.Client
 
             if (!IsSuccess(response.StatusCode))
             {
-                var test = typeof(T);
                 //Console.WriteLine(response.Content);
-                throw new FreeAgentException(response);
+                throw new FreeAgentException(response, typeof(T).Name);
             }
 
             if (response.Data == null)
