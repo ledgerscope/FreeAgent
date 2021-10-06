@@ -21,7 +21,7 @@ namespace FreeAgent.Exceptions
 
         public FreeAgentException(string message, Exception innerException) : base(message, innerException) { }
 
-        public FreeAgentException(IRestResponse response, string resourceType = null) : base()
+        public FreeAgentException(IRestResponse response, string resourceType = null, Exception innerException = null) : base(null, innerException)
         {
             Response = response;
             StatusCode = response.StatusCode;
@@ -43,7 +43,7 @@ namespace FreeAgent.Exceptions
 
         public override string ToString()
         {
-            return string.Format("FreeAgentException: StatusCode={0}, Content={1}, Failing Type={2}", StatusCode, Response.Content, ResourceType);
+            return string.Format("FreeAgentException: StatusCode={0}, Content={1}, Resource Type={2}", StatusCode, Response.Content, ResourceType);
         }
     }
 }

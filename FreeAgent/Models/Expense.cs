@@ -52,7 +52,7 @@ namespace FreeAgent.Models
         [JsonProperty("rebilled_on_invoice")]
         public Uri RebilledOnInvoice { get; set; }
         [JsonProperty("recurring")]
-        public bool Recurring { get; set; }
+        public string Recurring { get; set; }
         [JsonProperty("next_recurs_on")]
         public DateTime NextRecursOn { get; set; }
         [JsonProperty("recurring_end_date")]

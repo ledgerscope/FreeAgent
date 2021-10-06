@@ -88,7 +88,7 @@ namespace FreeAgent.Models
         [JsonProperty("stock_item")]
         public Uri StockItem { get; set; }
         [JsonProperty("stock_altering_quantity")]
-        public int StockAlteringQuantity { get; set; }
+        public decimal StockAlteringQuantity { get; set; }
 
         // Additional properties for Purchase of Capital Asset/Disposal of Capital Asset
         [JsonProperty("capital_asset")]

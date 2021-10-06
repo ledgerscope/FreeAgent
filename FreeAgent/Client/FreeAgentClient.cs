@@ -237,7 +237,8 @@ namespace FreeAgent.Client
 
             if (response.Data == null)
             {
-                Console.WriteLine("{0} returned null", _restClient.BuildUri(request));
+                //Console.WriteLine("{0} returned null", _restClient.BuildUri(request));
+                throw new FreeAgentException(response, typeof(T).Name, response.ErrorException);
             }
 
             return response.Data;
