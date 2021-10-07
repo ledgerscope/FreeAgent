@@ -44,7 +44,7 @@ namespace FreeAgent.Models
         [JsonProperty("stock_item")]
         public Uri StockItem { get; set; }
         [JsonProperty("stock_altering_quantity")]
-        public int StockAlteringQuantity { get; set; }
+        public decimal StockAlteringQuantity { get; set; }
 
         // Additional properties for bank account categories
         [JsonProperty("bank_account")]
