@@ -4,6 +4,12 @@ using System.Collections.Generic;
 
 namespace FreeAgent.Models
 {
+    /// <summary>
+    /// TrialBalanceSummary is inheriting from BaseModel just so we can make AccountingClient inherit from ResourceClient,
+    /// and thus use the All method which takes care of paging.
+    /// The only drawback is that we have Url property now on TrialBalanceSummary which will always be null (API doesn't return Url 
+    /// for TrialBalanceSummary), so we shouldn't use TrialBalanceSummary.Url anywhere!
+    /// </summary>
     public class TrialBalanceSummary : BaseModel
     {
         [JsonProperty("category")]
