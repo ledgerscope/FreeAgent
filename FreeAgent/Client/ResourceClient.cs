@@ -81,7 +81,12 @@ namespace FreeAgent.Client
 
             if (response != null)
             {
-                return ListFromWrapper(response)[0];
+                var items = ListFromWrapper(response);
+
+                if (items.Count > 0)
+                {
+                    return items[0];
+                }
             }
 
             return null;
@@ -119,11 +124,11 @@ namespace FreeAgent.Client
             return null;
         }
 
-        public async SystemTask Delete(string id)
+        public SystemTask Delete(string id)
         {
             var request = CreateDeleteRequest(id);
 
-            await Client.Execute(request);
+            return Client.Execute(request);
         }
 
         protected RestRequest CreateAllRequest()

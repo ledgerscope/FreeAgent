@@ -14,8 +14,8 @@ namespace FreeAgent.Client
 {
     public partial class FreeAgentClient
     {
-        private readonly TimeLimiter _timeConstraintGeneric = TimeLimiter.GetFromMaxCountByInterval(120, TimeSpan.FromMinutes(1));
-        private readonly TimeLimiter _timeConstraint = TimeLimiter.GetFromMaxCountByInterval(120, TimeSpan.FromMinutes(1));
+        // Even though the API says we can do 120 requests in 60 seconds, we configure the rate limiter to do 119 requests every 61 seconds (just to be safe)
+        private readonly TimeLimiter _timeConstraint = TimeLimiter.GetFromMaxCountByInterval(119, TimeSpan.FromSeconds(61));
 
         private readonly Uri _apiBaseUrl = new Uri("https://api.freeagent.com");
         private readonly Uri _apiSandboxBaseUrl = new Uri("https://api.sandbox.freeagent.com");
@@ -234,7 +234,7 @@ namespace FreeAgent.Client
             SetProxy();
             //Console.WriteLine(_restClient.BuildUri(request));
 
-            await _timeConstraintGeneric;
+            await _timeConstraint;
 
             response = _restClient.Execute<T>(request);
 
