@@ -10,7 +10,7 @@ namespace FreeAgent.Client
     {
         public AccountingClient(FreeAgentClient client) : base(client) { }
 
-        public override string ResourceName => "accounting/trial_balance/summary";
+        public override string ResourceName => "accounting";
 
         public override TrialBalanceSummaryWrapper WrapperFromSingle(TrialBalanceSummary single)
         {
@@ -39,6 +39,8 @@ namespace FreeAgent.Client
         {
             return All((request) =>
             {
+                request.Resource += "/trial_balance/summary";
+
                 if (!string.IsNullOrEmpty(from_date))
                 {
                     request.AddParameter("from_date", from_date, ParameterType.GetOrPost);
