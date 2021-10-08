@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace FreeAgent.Models
 {
-    public class TrialBalanceSummary
+    public class TrialBalanceSummary : BaseModel
     {
         [JsonProperty("category")]
         public Uri Category { get; set; }
@@ -25,6 +25,16 @@ namespace FreeAgent.Models
     public class TrialBalanceSummaryWrapper
     {
         public TrialBalanceSummaryWrapper()
+        {
+            trial_balance_summary = null;
+        }
+
+        public TrialBalanceSummary trial_balance_summary { get; set; }
+    }
+
+    public class TrialBalancesSummaryWrapper
+    {
+        public TrialBalancesSummaryWrapper()
         {
             trial_balance_summary = new List<TrialBalanceSummary>();
         }
