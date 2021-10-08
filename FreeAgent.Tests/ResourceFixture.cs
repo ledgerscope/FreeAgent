@@ -1,163 +1,163 @@
-﻿using FreeAgent.Client;
-using FreeAgent.Extensions;
-using FreeAgent.Models;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
+﻿//using FreeAgent.Client;
+//using FreeAgent.Extensions;
+//using FreeAgent.Models;
+//using NUnit.Framework;
+//using System;
+//using System.Collections.Generic;
 
-namespace FreeAgent.Tests
-{
-    public class ResourceFixture<TSingleWrapper, TListWrapper, TSingle> : BaseFixture
-        where TSingle : BaseModel
-        where TListWrapper : new()
-        where TSingleWrapper : new()
-    {
-        protected bool ExecuteCanGetList = true, ExecuteCanGetListWithContent = true, ExecuteCanLoadById = true, ExecuteCanCreateSingle = true, ExecuteCanDeleteAndCleanup = true;
+//namespace FreeAgent.Tests
+//{
+//    public class ResourceFixture<TSingleWrapper, TListWrapper, TSingle> : BaseFixture
+//        where TSingle : BaseModel
+//        where TListWrapper : new()
+//        where TSingleWrapper : new()
+//    {
+//        protected bool ExecuteCanGetList = true, ExecuteCanGetListWithContent = true, ExecuteCanLoadById = true, ExecuteCanCreateSingle = true, ExecuteCanDeleteAndCleanup = true;
 
-        protected Func<IEnumerable<TSingle>> GetAll = null;
+//        protected Func<IEnumerable<TSingle>> GetAll = null;
 
-        [SetUp]
-        public void Setup()
-        {
-            SetupClient();
-        }
+//        [SetUp]
+//        public void Setup()
+//        {
+//            SetupClient();
+//        }
 
-        public override void SetupClient()
-        {
-            base.SetupClient();
-            GetAll = ResourceFixtureAll;
-        }
+//        public override void SetupClient()
+//        {
+//            base.SetupClient();
+//            GetAll = ResourceFixtureAll;
+//        }
 
-        public IEnumerable<TSingle> ResourceFixtureAll()
-        {
-            return ResourceClient.All();
-        }
+//        public IEnumerable<TSingle> ResourceFixtureAll()
+//        {
+//            return ResourceClient.All();
+//        }
 
-        [Test]
-        public void CanGetList()
-        {
-            if (!ExecuteCanGetList)
-            {
-                Assert.Ignore("CanGetList is being ignored");
-                return;
-            }
+//        [Test]
+//        public void CanGetList()
+//        {
+//            if (!ExecuteCanGetList)
+//            {
+//                Assert.Ignore("CanGetList is being ignored");
+//                return;
+//            }
 
-            var list = GetAll();
+//            var list = GetAll();
 
-            Assert.IsNotNull(list);
+//            Assert.IsNotNull(list);
 
-        }
+//        }
 
-        [Test]
-        public void CanGetListWithContent()
-        {
-            if (!ExecuteCanGetListWithContent)
-            {
-                Assert.Ignore("ExecuteCanGetListWithContent is being ignored");
-                return;
-            }
+//        [Test]
+//        public void CanGetListWithContent()
+//        {
+//            if (!ExecuteCanGetListWithContent)
+//            {
+//                Assert.Ignore("ExecuteCanGetListWithContent is being ignored");
+//                return;
+//            }
 
-            var list = GetAll();
+//            var list = GetAll();
 
-            CheckAllList(list);
-
-
-            foreach (var item in list)
-            {
-                CheckSingleItem(item);
-            }
-        }
-
-        public void CheckAllList(IEnumerable<TSingle> list)
-        {
-            Assert.IsNotNull(list);
-            Assert.IsNotEmpty(list);
-
-        }
-
-        public virtual void CheckSingleItem(TSingle item)
-        {
-
-        }
-
-        [Test]
-        public void CanCreateSingle()
-        {
-            if (!ExecuteCanCreateSingle)
-            {
-                Assert.Ignore("ExecuteCanCreateSingle is being ignored");
-                return;
-            }
+//            CheckAllList(list);
 
 
-            TSingle item = CreateSingleItemForInsert();
+//            foreach (var item in list)
+//            {
+//                CheckSingleItem(item);
+//            }
+//        }
 
-            TSingle result = ResourceClient.Put(item);
+//        public void CheckAllList(IEnumerable<TSingle> list)
+//        {
+//            Assert.IsNotNull(list);
+//            Assert.IsNotEmpty(list);
 
-            CompareSingleItem(item, result);
+//        }
 
-        }
+//        public virtual void CheckSingleItem(TSingle item)
+//        {
 
-        [Test]
-        public void CanLoadById()
-        {
-            if (!ExecuteCanLoadById)
-            {
-                Assert.Ignore("ExecuteCanLoadById is being ignored");
-                return;
-            }
+//        }
 
-            var items = GetAll();
-            CheckAllList(items);
+//        [Test]
+//        public void CanCreateSingle()
+//        {
+//            if (!ExecuteCanCreateSingle)
+//            {
+//                Assert.Ignore("ExecuteCanCreateSingle is being ignored");
+//                return;
+//            }
 
-            foreach (var item in items)
-            {
-                var newitem = ResourceClient.Get(item.Id());
 
-                CompareSingleItem(item, newitem);
-            }
-        }
+//            TSingle item = CreateSingleItemForInsert();
 
-        public virtual TSingle CreateSingleItemForInsert()
-        {
-            throw new NotImplementedException("needs to be overridden");
-        }
+//            TSingle result = ResourceClient.Put(item);
 
-        public virtual void CompareSingleItem(TSingle originalItem, TSingle newItem)
-        {
-            throw new NotImplementedException("needs to be overridden");
-        }
+//            CompareSingleItem(item, result);
 
-        [Test]
-        public void CanDeleteAndCleanup()
-        {
+//        }
 
-            if (!ExecuteCanDeleteAndCleanup)
-            {
-                Assert.Ignore("ExecuteCanDeleteAndCleanup is being ignored");
-                return;
-            }
+//        [Test]
+//        public void CanLoadById()
+//        {
+//            if (!ExecuteCanLoadById)
+//            {
+//                Assert.Ignore("ExecuteCanLoadById is being ignored");
+//                return;
+//            }
 
-            var items = GetAll();
+//            var items = GetAll();
+//            CheckAllList(items);
 
-            CheckAllList(items);
-            foreach (var item in items)
-            {
-                if (!CanDelete(item)) continue;
+//            foreach (var item in items)
+//            {
+//                var newitem = ResourceClient.Get(item.Id());
 
-                ResourceClient.Delete(item.Id());
+//                CompareSingleItem(item, newitem);
+//            }
+//        }
 
-                var deletedclient = ResourceClient.Get(item.Id());
+//        public virtual TSingle CreateSingleItemForInsert()
+//        {
+//            throw new NotImplementedException("needs to be overridden");
+//        }
 
-                Assert.IsNull(deletedclient);
-            }
-        }
+//        public virtual void CompareSingleItem(TSingle originalItem, TSingle newItem)
+//        {
+//            throw new NotImplementedException("needs to be overridden");
+//        }
 
-        public virtual bool CanDelete(TSingle item)
-        {
-            return false;
-        }
+//        [Test]
+//        public void CanDeleteAndCleanup()
+//        {
 
-        public virtual ResourceClient<TSingleWrapper, TListWrapper, TSingle> ResourceClient { get { throw new NotImplementedException("oops!"); } }
-    }
-}
+//            if (!ExecuteCanDeleteAndCleanup)
+//            {
+//                Assert.Ignore("ExecuteCanDeleteAndCleanup is being ignored");
+//                return;
+//            }
+
+//            var items = GetAll();
+
+//            CheckAllList(items);
+//            foreach (var item in items)
+//            {
+//                if (!CanDelete(item)) continue;
+
+//                ResourceClient.Delete(item.Id());
+
+//                var deletedclient = ResourceClient.Get(item.Id());
+
+//                Assert.IsNull(deletedclient);
+//            }
+//        }
+
+//        public virtual bool CanDelete(TSingle item)
+//        {
+//            return false;
+//        }
+
+//        public virtual ResourceClient<TSingleWrapper, TListWrapper, TSingle> ResourceClient { get { throw new NotImplementedException("oops!"); } }
+//    }
+//}

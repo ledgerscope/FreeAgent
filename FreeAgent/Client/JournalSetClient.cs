@@ -1,6 +1,7 @@
 using FreeAgent.Models;
 using RestSharp;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FreeAgent.Client
 {
@@ -25,7 +26,7 @@ namespace FreeAgent.Client
             return wrapper.journal_set;
         }
 
-        public List<JournalSet> All(string from_date = "", string to_date = "", string tag = "")
+        public Task<List<JournalSet>> All(string from_date = "", string to_date = "", string tag = "")
         {
             return All((request) =>
             {

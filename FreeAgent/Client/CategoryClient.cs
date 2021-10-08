@@ -1,5 +1,6 @@
 using FreeAgent.Models;
 using RestSharp;
+using System.Threading.Tasks;
 
 namespace FreeAgent.Client
 {
@@ -9,7 +10,7 @@ namespace FreeAgent.Client
 
         public override string ResourceName => "categories";
 
-        public Categories All(bool includeSubAccounts = false)
+        public async Task<Categories> All(bool includeSubAccounts = false)
         {
             var request = CreateBasicRequest(Method.GET);
 
@@ -18,7 +19,7 @@ namespace FreeAgent.Client
                 request.AddParameter("sub_accounts", "true", ParameterType.GetOrPost);
             }
 
-            var response = Client.Execute<Categories>(request);
+            var response = await Client.Execute<Categories>(request);
 
             if (response != null) return response;
 
@@ -28,9 +29,9 @@ namespace FreeAgent.Client
         // Slow? Caching?
         private Categories all;
 
-        public Category Single(string id)
+        public async Task<Category> Single(string id)
         {
-            if (all == null) all = All();
+            if (all == null) all = await All();
 
             foreach (var cat in all.admin_expenses_categories)
             {

@@ -1,6 +1,7 @@
 ﻿using FreeAgent.Models;
 using RestSharp;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FreeAgent.Client
 {
@@ -10,20 +11,20 @@ namespace FreeAgent.Client
 
         public override string ResourceName => "company";
 
-        public Company Single()
+        public async Task<Company> Single()
         {
             var request = CreateBasicRequest(Method.GET);
-            var response = Client.Execute<CompanyWrapper>(request);
+            var response = await Client.Execute<CompanyWrapper>(request);
 
             if (response != null) return response.company;
 
             return null;
         }
 
-        public List<TaxTimeline> TaxTimeline()
+        public async Task<List<TaxTimeline>> TaxTimeline()
         {
             var request = CreateBasicRequest(Method.GET, "/tax_timeline");
-            var response = Client.Execute<TaxTimelineWrapper>(request);
+            var response = await Client.Execute<TaxTimelineWrapper>(request);
 
             if (response != null) return response.timeline_items;
 

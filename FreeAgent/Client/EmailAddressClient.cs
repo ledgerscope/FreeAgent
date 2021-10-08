@@ -1,6 +1,7 @@
 ﻿using FreeAgent.Models;
 using RestSharp;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FreeAgent.Client
 {
@@ -10,10 +11,10 @@ namespace FreeAgent.Client
 
         public override string ResourceName => "email_addresses";
 
-        public List<string> All()
+        public async Task<List<string>> All()
         {
             var request = CreateBasicRequest(Method.GET);
-            var response = Client.Execute<EmailAddressesWrapper>(request);
+            var response = await Client.Execute<EmailAddressesWrapper>(request);
 
             if (response != null) return response.email_addresses;
 

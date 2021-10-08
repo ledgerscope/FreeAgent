@@ -1,6 +1,7 @@
 using FreeAgent.Models;
 using RestSharp;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FreeAgent.Client
 {
@@ -30,22 +31,22 @@ namespace FreeAgent.Client
             return wrapper.invoice;
         }
 
-        public List<Invoice> AllForProject(string projectId)
+        public Task<List<Invoice>> AllForProject(string projectId)
         {
             return All((request) => request.AddParameter("project", projectId, ParameterType.GetOrPost));
         }
 
-        public List<Invoice> AllForContact(string contactId)
+        public Task<List<Invoice>> AllForContact(string contactId)
         {
             return All((request) => request.AddParameter("contact", contactId, ParameterType.GetOrPost));
         }
 
-        public List<Invoice> AllWithFilter(string filter)
+        public Task<List<Invoice>> AllWithFilter(string filter)
         {
             return All((request) => request.AddParameter("view", filter, ParameterType.GetOrPost));
         }
 
-        public bool SendEmail(string invoiceId, InvoiceEmail email)
+        public async Task<bool> SendEmail(string invoiceId, InvoiceEmail email)
         {
             var request = CreateBasicRequest(Method.POST, "/{id}/send_email");
 
@@ -54,7 +55,7 @@ namespace FreeAgent.Client
             request.AddUrlSegment("id", invoiceId);
             request.AddJsonBody(new InvoiceEmailWrapper() { invoice = email });
 
-            var response = Client.Execute(request);
+            var response = await Client.Execute(request);
 
             if (response != null)
                 return response.StatusCode == System.Net.HttpStatusCode.OK;
@@ -62,7 +63,7 @@ namespace FreeAgent.Client
             return false;
         }
 
-        public bool MarkAsSent(string invoiceId)
+        public async Task<bool> MarkAsSent(string invoiceId)
         {
             var request = CreateBasicRequest(Method.PUT, "/{id}/transitions/mark_as_sent");
 
@@ -70,7 +71,7 @@ namespace FreeAgent.Client
 
             request.AddUrlSegment("id", invoiceId);
 
-            var response = Client.Execute(request);
+            var response = await Client.Execute(request);
 
             if (response != null)
                 return response.StatusCode == System.Net.HttpStatusCode.OK;
@@ -78,7 +79,7 @@ namespace FreeAgent.Client
             return false;
         }
 
-        public bool MarkAsDraft(string invoiceId)
+        public async Task<bool> MarkAsDraft(string invoiceId)
         {
             var request = CreateBasicRequest(Method.PUT, "/{id}/transitions/mark_as_draft");
 
@@ -86,7 +87,7 @@ namespace FreeAgent.Client
 
             request.AddUrlSegment("id", invoiceId);
 
-            var response = Client.Execute(request);
+            var response = await Client.Execute(request);
 
             if (response != null)
                 return response.StatusCode == System.Net.HttpStatusCode.OK;
@@ -94,7 +95,7 @@ namespace FreeAgent.Client
             return false;
         }
 
-        public bool DeleteLine(string lineId)
+        public async Task<bool> DeleteLine(string lineId)
         {
             var request = CreateBasicRequest(Method.DELETE, "/{id}", resourceOverride: "invoice_items");
 
@@ -102,7 +103,7 @@ namespace FreeAgent.Client
 
             request.AddUrlSegment("id", lineId);
 
-            var response = Client.Execute(request);
+            var response = await Client.Execute(request);
 
             if (response != null)
                 return response.StatusCode == System.Net.HttpStatusCode.OK;

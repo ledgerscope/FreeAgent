@@ -1,6 +1,7 @@
 using FreeAgent.Models;
 using RestSharp;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FreeAgent.Client
 {
@@ -33,7 +34,7 @@ namespace FreeAgent.Client
         /// </summary>
         /// <param name="from_date">Date in YYYY-MM-DD format (optional)</param>
 		/// <param name="to_date">Date in YYYY-MM-DD format</param>
-        public List<TrialBalanceSummary> AllForPeriod(string from_date = "", string to_date = "")
+        public Task<List<TrialBalanceSummary>> AllForPeriod(string from_date = "", string to_date = "")
         {
             return All((request) =>
             {

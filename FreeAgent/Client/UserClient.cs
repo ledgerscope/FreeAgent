@@ -1,5 +1,6 @@
 using FreeAgent.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FreeAgent.Client
 {
@@ -24,7 +25,7 @@ namespace FreeAgent.Client
             return wrapper.user;
         }
 
-        public User Me
+        public Task<User> Me
         {
             get { return Get("me"); }
         }

@@ -1,5 +1,4 @@
 using FreeAgent.Models;
-using RestSharp;
 using System.Collections.Generic;
 
 namespace FreeAgent.Client
@@ -25,24 +24,24 @@ namespace FreeAgent.Client
             return wrapper.task;
         }
 
-        public List<Task> AllForProject(string project)
-        {
-            return All((request) => request.AddParameter("project", project, ParameterType.GetOrPost));
-        }
+        //public List<Task> AllForProject(string project)
+        //{
+        //    return All((request) => request.AddParameter("project", project, ParameterType.GetOrPost));
+        //}
 
-        public Task Put(Task item, string project)
-        {
-            var request = CreatePutRequest(item);
-            request.Resource += "?project={project}";
+        //public Task Put(Task item, string project)
+        //{
+        //    var request = CreatePutRequest(item);
+        //    request.Resource += "?project={project}";
 
-            request.AddParameter("project", project, ParameterType.UrlSegment);
+        //    request.AddParameter("project", project, ParameterType.UrlSegment);
 
-            var response = Client.Execute<TaskWrapper>(request);
+        //    var response = Client.Execute<TaskWrapper>(request);
 
-            if (response != null) return SingleFromWrapper(response);
+        //    if (response != null) return SingleFromWrapper(response);
 
-            return null;
-        }
+        //    return null;
+        //}
     }
 }
 

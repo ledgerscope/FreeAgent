@@ -3,6 +3,7 @@ using FreeAgent.Models;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FreeAgent.Client
 {
@@ -27,7 +28,7 @@ namespace FreeAgent.Client
             return wrapper.timeslip;
         }
 
-        public List<Timeslip> All(string from_date, string to_date)
+        public Task<List<Timeslip>> All(string from_date, string to_date)
         {
             return All((request) =>
             {
@@ -36,7 +37,7 @@ namespace FreeAgent.Client
             });
         }
 
-        public List<Timeslip> AllRecent()
+        public Task<List<Timeslip>> AllRecent()
         {
             DateTime now = DateTime.Now;
 

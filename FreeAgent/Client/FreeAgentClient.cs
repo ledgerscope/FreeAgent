@@ -1,16 +1,22 @@
+using ComposableAsync;
 using FreeAgent.Exceptions;
 using FreeAgent.Extensions;
 using FreeAgent.Helpers;
 using FreeAgent.Models;
+using RateLimiter;
 using RestSharp;
 using RestSharp.Serializers.NewtonsoftJson;
 using System;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace FreeAgent.Client
 {
     public partial class FreeAgentClient
     {
+        private readonly TimeLimiter _timeConstraintGeneric = TimeLimiter.GetFromMaxCountByInterval(120, TimeSpan.FromMinutes(1));
+        private readonly TimeLimiter _timeConstraint = TimeLimiter.GetFromMaxCountByInterval(120, TimeSpan.FromMinutes(1));
+
         private readonly Uri _apiBaseUrl = new Uri("https://api.freeagent.com");
         private readonly Uri _apiSandboxBaseUrl = new Uri("https://api.sandbox.freeagent.com");
 
@@ -221,12 +227,15 @@ namespace FreeAgent.Client
             return val < 299;
         }
 
-        internal T Execute<T>(IRestRequest request) where T : new()
+        internal async Task<T> Execute<T>(IRestRequest request) where T : new()
         {
             IRestResponse<T> response;
 
             SetProxy();
             //Console.WriteLine(_restClient.BuildUri(request));
+
+            await _timeConstraintGeneric;
+
             response = _restClient.Execute<T>(request);
 
             if (!IsSuccess(response.StatusCode))
@@ -244,15 +253,15 @@ namespace FreeAgent.Client
             return response.Data;
         }
 
-        internal IRestResponse Execute(IRestRequest request)
+        internal async Task<IRestResponse> Execute(IRestRequest request)
         {
-            IRestResponse response;
+            await _timeConstraint;
 
-            response = _restClient.Execute(request);
+            IRestResponse response = _restClient.Execute(request);
 
             if (!IsSuccess(response.StatusCode))
             {
-                throw new FreeAgentException(response);
+                throw new FreeAgentException(response, innerException: response.ErrorException);
             }
 
             return response;

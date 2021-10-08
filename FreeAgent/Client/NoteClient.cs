@@ -1,6 +1,7 @@
 using FreeAgent.Models;
 using RestSharp;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FreeAgent.Client
 {
@@ -25,12 +26,12 @@ namespace FreeAgent.Client
             return wrapper.note;
         }
 
-        public List<Note> AllForContact(string contact)
+        public Task<List<Note>> AllForContact(string contact)
         {
             return All((request) => request.AddParameter("contact", contact, ParameterType.GetOrPost));
         }
 
-        public List<Note> AllForProject(string project)
+        public Task<List<Note>> AllForProject(string project)
         {
             return All((request) => request.AddParameter("project", project, ParameterType.GetOrPost));
         }

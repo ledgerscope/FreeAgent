@@ -1,6 +1,7 @@
 ﻿using FreeAgent.Models;
 using RestSharp;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FreeAgent.Client
 {
@@ -25,7 +26,7 @@ namespace FreeAgent.Client
             return wrapper.bank_transaction;
         }
 
-        public List<BankTransaction> AllForAccount(string bankAccount, string from_date = "", string to_date = "")
+        public Task<List<BankTransaction>> AllForAccount(string bankAccount, string from_date = "", string to_date = "")
         {
             return All((request) =>
             {

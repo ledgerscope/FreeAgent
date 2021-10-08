@@ -1,16 +1,17 @@
 ﻿using FreeAgent.Models;
+using System.Threading.Tasks;
 
 namespace FreeAgent.Client
 {
     public partial class FreeAgentClient
     {
-        public AccessToken GetAccessToken(string code, string redirectUri = "")
+        public async Task<AccessToken> GetAccessToken(string code, string redirectUri = "")
         {
             _restClient.BaseUrl = BaseUrl;
 
             var request = _requestHelper.CreateAccessTokenRequest(code, redirectUri);
 
-            var response = Execute<AccessToken>(request);
+            var response = await Execute<AccessToken>(request);
 
             if (response != null && !string.IsNullOrEmpty(response.access_token))
             {
@@ -20,12 +21,12 @@ namespace FreeAgent.Client
             return CurrentAccessToken;
         }
 
-        public AccessToken RefreshAccessToken()
+        public async Task<AccessToken> RefreshAccessToken()
         {
             _restClient.BaseUrl = BaseUrl;
 
             var request = _requestHelper.CreateRefreshTokenRequest();
-            var response = Execute<AccessToken>(request);
+            var response = await Execute<AccessToken>(request);
 
             if (response != null && !string.IsNullOrEmpty(response.access_token))
             {
