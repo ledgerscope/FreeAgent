@@ -117,6 +117,12 @@ namespace FreeAgent.Models
             public const string Invoice = "Invoice";
             public const string Cash = "Cash";
         }
+
+        public static class SalesTaxStatus
+        {
+            public const string NotRegistered = "Not Registered";
+            public const string Registered = "Registered";
+        }
     }
 
     public class CompanyWrapper
