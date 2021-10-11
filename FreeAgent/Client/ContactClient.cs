@@ -10,7 +10,7 @@ namespace FreeAgent.Client
 
         public override void CustomizeAllRequest(RestRequest request)
         {
-            request.AddParameter("view", "active", ParameterType.GetOrPost);
+            request.AddParameter("view", "all", ParameterType.GetOrPost);
         }
 
         public override string ResourceName => "contacts";

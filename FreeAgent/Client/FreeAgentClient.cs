@@ -236,7 +236,7 @@ namespace FreeAgent.Client
 
             await _timeConstraint;
 
-            response = _restClient.Execute<T>(request);
+            response = await _restClient.ExecuteAsync<T>(request);
 
             if (!IsSuccess(response.StatusCode))
             {
@@ -257,7 +257,7 @@ namespace FreeAgent.Client
         {
             await _timeConstraint;
 
-            IRestResponse response = _restClient.Execute(request);
+            IRestResponse response = await _restClient.ExecuteAsync(request);
 
             if (!IsSuccess(response.StatusCode))
             {

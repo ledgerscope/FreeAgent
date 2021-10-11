@@ -62,12 +62,12 @@ namespace FreeAgent.Models
         public string Locale { get; set; }
         [JsonProperty("account_balance")]
         public decimal AccountBalance { get; set; }
-    }
 
-    public static class ContactStatus
-    {
-        public static string Active = "Active";
-        public static string Hidden = "Hidden";
+        public static class ContactStatus
+        {
+            public static string Active = "Active";
+            public static string Hidden = "Hidden";
+        }
     }
 
     public class ContactWrapper
