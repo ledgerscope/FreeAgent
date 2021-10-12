@@ -8,6 +8,11 @@ namespace FreeAgent.Client
     {
         public ProjectClient(FreeAgentClient client) : base(client) { }
 
+        public override void CustomizeAllRequest(RestRequest request)
+        {
+            request.AddParameter("view", "all", ParameterType.GetOrPost);
+        }
+
         public override string ResourceName => "projects";
 
         public override ProjectWrapper WrapperFromSingle(Project single)
@@ -23,11 +28,6 @@ namespace FreeAgent.Client
         public override Project SingleFromWrapper(ProjectWrapper wrapper)
         {
             return wrapper.project;
-        }
-
-        public override void CustomizeAllRequest(RestRequest request)
-        {
-            request.AddParameter("view", "active", ParameterType.GetOrPost);
         }
     }
 }
