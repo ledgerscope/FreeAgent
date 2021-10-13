@@ -14,8 +14,13 @@ namespace FreeAgent.Client
 {
     public partial class FreeAgentClient
     {
-        // Even though the API says we can do 120 requests in 60 seconds, we configure the rate limiter to do 119 requests every 61 seconds (just to be safe)
-        private readonly TimeLimiter _timeConstraint = TimeLimiter.GetFromMaxCountByInterval(119, TimeSpan.FromSeconds(61));
+        // Even though the API says we can do 120 requests in 60 seconds,
+        // we configure the rate limiter to do 119 requests every 61 seconds (just to be safe)
+        // https://dev.freeagent.com/docs/introduction#rate-limits
+        private readonly TimeLimiter _timeConstraint = TimeLimiter.Compose(
+            new CountByIntervalAwaitableConstraint(119, TimeSpan.FromSeconds(61)),
+            new CountByIntervalAwaitableConstraint(3599, TimeSpan.FromMinutes(61))
+        );
 
         private readonly Uri _apiBaseUrl = new Uri("https://api.freeagent.com");
         private readonly Uri _apiSandboxBaseUrl = new Uri("https://api.sandbox.freeagent.com");
