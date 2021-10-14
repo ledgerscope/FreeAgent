@@ -26,9 +26,9 @@ namespace FreeAgent.Client
             return wrapper.expense;
         }
 
-        public Task<List<Expense>> All(string view = "", string from_date = "", string to_date = "")
+        public Task<List<Expense>> AllAsync(string view = "", string from_date = "", string to_date = "")
         {
-            return All((request) =>
+            return AllAsync((request) =>
             {
                 if (!string.IsNullOrEmpty(from_date))
                 {

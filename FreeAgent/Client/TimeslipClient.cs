@@ -28,20 +28,20 @@ namespace FreeAgent.Client
             return wrapper.timeslip;
         }
 
-        public Task<List<Timeslip>> All(string from_date, string to_date)
+        public Task<List<Timeslip>> AllAsync(string from_date, string to_date)
         {
-            return All((request) =>
+            return AllAsync((request) =>
             {
                 request.AddParameter("from_date", from_date, ParameterType.GetOrPost);
                 request.AddParameter("to_date", to_date, ParameterType.GetOrPost);
             });
         }
 
-        public Task<List<Timeslip>> AllRecent()
+        public Task<List<Timeslip>> AllRecentAsync()
         {
             DateTime now = DateTime.Now;
 
-            return All((request) =>
+            return AllAsync((request) =>
             {
                 request.AddParameter("from_date", now.AddDays(-20).ModelDate(), ParameterType.GetOrPost);
                 request.AddParameter("to_date", now.ModelDate(), ParameterType.GetOrPost);

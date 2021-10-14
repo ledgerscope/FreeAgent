@@ -34,9 +34,9 @@ namespace FreeAgent.Client
             return wrapper.bill;
         }
 
-        public Task<List<Bill>> All(string from_date = "", string to_date = "")
+        public Task<List<Bill>> AllAsync(string from_date = "", string to_date = "")
         {
-            return All((request) =>
+            return AllAsync((request) =>
             {
                 if (!string.IsNullOrEmpty(from_date))
                 {

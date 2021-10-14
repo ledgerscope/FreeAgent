@@ -26,9 +26,9 @@ namespace FreeAgent.Client
             return wrapper.journal_set;
         }
 
-        public Task<List<JournalSet>> All(string from_date = "", string to_date = "", string tag = "")
+        public Task<List<JournalSet>> AllAsync(string from_date = "", string to_date = "", string tag = "")
         {
-            return All((request) =>
+            return AllAsync((request) =>
             {
                 if (!string.IsNullOrEmpty(from_date))
                 {

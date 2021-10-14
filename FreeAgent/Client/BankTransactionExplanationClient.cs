@@ -26,9 +26,9 @@ namespace FreeAgent.Client
             return wrapper.bank_transaction_explanation;
         }
 
-        public Task<List<BankTransactionExplanation>> AllForAccount(string bankAccount, string from_date = "", string to_date = "")
+        public Task<List<BankTransactionExplanation>> AllForAccountAsync(string bankAccount, string from_date = "", string to_date = "")
         {
-            return All((request) =>
+            return AllAsync((request) =>
             {
                 request.AddParameter("bank_account", bankAccount, ParameterType.GetOrPost);
 

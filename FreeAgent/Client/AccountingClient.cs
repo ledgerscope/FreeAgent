@@ -34,9 +34,9 @@ namespace FreeAgent.Client
         /// </summary>
         /// <param name="from_date">Date in YYYY-MM-DD format (optional)</param>
 		/// <param name="to_date">Date in YYYY-MM-DD format</param>
-        public Task<List<TrialBalanceSummary>> AllForPeriod(string from_date = "", string to_date = "")
+        public Task<List<TrialBalanceSummary>> AllForPeriodAsync(string from_date = "", string to_date = "")
         {
-            return All((request) =>
+            return AllAsync((request) =>
             {
                 // If we put '/trial_balance/summary' on the ResourceName, it get's url-encoded and we get 404 upon making a request
                 request.Resource += "/trial_balance/summary";

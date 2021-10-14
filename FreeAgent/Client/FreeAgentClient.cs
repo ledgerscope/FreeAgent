@@ -232,7 +232,7 @@ namespace FreeAgent.Client
             return val < 299;
         }
 
-        internal async Task<T> Execute<T>(IRestRequest request) where T : new()
+        internal async Task<T> ExecuteAsync<T>(IRestRequest request) where T : new()
         {
             IRestResponse<T> response;
 
@@ -258,7 +258,7 @@ namespace FreeAgent.Client
             return response.Data;
         }
 
-        internal async Task<IRestResponse> Execute(IRestRequest request)
+        internal async Task<IRestResponse> ExecuteAsync(IRestRequest request)
         {
             await _timeConstraint;
 

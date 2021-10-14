@@ -25,9 +25,9 @@ namespace FreeAgent.Client
             return wrapper.user;
         }
 
-        public Task<User> Me
+        public Task<User> MeAsync
         {
-            get { return Get("me"); }
+            get { return GetAsync("me"); }
         }
     }
 }

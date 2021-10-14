@@ -31,22 +31,22 @@ namespace FreeAgent.Client
             return wrapper.credit_note;
         }
 
-        public Task<List<CreditNote>> AllForProject(string projectId)
+        public Task<List<CreditNote>> AllForProjectAsync(string projectId)
         {
-            return All((request) => request.AddParameter("project", projectId, ParameterType.GetOrPost));
+            return AllAsync((request) => request.AddParameter("project", projectId, ParameterType.GetOrPost));
         }
 
-        public Task<List<CreditNote>> AllForContact(string contactId)
+        public Task<List<CreditNote>> AllForContactAsync(string contactId)
         {
-            return All((request) => request.AddParameter("contact", contactId, ParameterType.GetOrPost));
+            return AllAsync((request) => request.AddParameter("contact", contactId, ParameterType.GetOrPost));
         }
 
-        public Task<List<CreditNote>> AllWithFilter(string filter)
+        public Task<List<CreditNote>> AllWithFilterAsync(string filter)
         {
-            return All((request) => request.AddParameter("view", filter, ParameterType.GetOrPost));
+            return AllAsync((request) => request.AddParameter("view", filter, ParameterType.GetOrPost));
         }
 
-        public async Task<bool> SendEmail(string creditNoteId, CreditNoteEmail email)
+        public async Task<bool> SendEmailAsync(string creditNoteId, CreditNoteEmail email)
         {
             var request = CreateBasicRequest(Method.POST, "/{id}/send_email");
 
@@ -55,7 +55,7 @@ namespace FreeAgent.Client
             request.AddUrlSegment("id", creditNoteId);
             request.AddJsonBody(new CreditNoteEmailWrapper() { credit_note = email });
 
-            var response = await Client.Execute(request);
+            var response = await Client.ExecuteAsync(request);
 
             if (response != null)
                 return response.StatusCode == System.Net.HttpStatusCode.OK;
@@ -63,7 +63,7 @@ namespace FreeAgent.Client
             return false;
         }
 
-        public async Task<bool> MarkAsSent(string creditNoteId)
+        public async Task<bool> MarkAsSentAsync(string creditNoteId)
         {
             var request = CreateBasicRequest(Method.PUT, "/{id}/transitions/mark_as_sent");
 
@@ -71,7 +71,7 @@ namespace FreeAgent.Client
 
             request.AddUrlSegment("id", creditNoteId);
 
-            var response = await Client.Execute(request);
+            var response = await Client.ExecuteAsync(request);
 
             if (response != null)
                 return response.StatusCode == System.Net.HttpStatusCode.OK;
@@ -79,7 +79,7 @@ namespace FreeAgent.Client
             return false;
         }
 
-        public async Task<bool> MarkAsDraft(string creditNoteId)
+        public async Task<bool> MarkAsDraftAsync(string creditNoteId)
         {
             var request = CreateBasicRequest(Method.PUT, "/{id}/transitions/mark_as_draft");
 
@@ -87,7 +87,7 @@ namespace FreeAgent.Client
 
             request.AddUrlSegment("id", creditNoteId);
 
-            var response = await Client.Execute(request);
+            var response = await Client.ExecuteAsync(request);
 
             if (response != null)
                 return response.StatusCode == System.Net.HttpStatusCode.OK;
@@ -95,7 +95,7 @@ namespace FreeAgent.Client
             return false;
         }
 
-        public async Task<bool> DeleteLine(string lineId)
+        public async Task<bool> DeleteLineAsync(string lineId)
         {
             var request = CreateBasicRequest(Method.DELETE, "/{id}", resourceOverride: "credit_note_items");
 
@@ -103,7 +103,7 @@ namespace FreeAgent.Client
 
             request.AddUrlSegment("id", lineId);
 
-            var response = await Client.Execute(request);
+            var response = await Client.ExecuteAsync(request);
 
             if (response != null)
                 return response.StatusCode == System.Net.HttpStatusCode.OK;

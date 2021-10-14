@@ -6,13 +6,13 @@ namespace FreeAgent.Client
 {
     public partial class FreeAgentClient
     {
-        public async Task<AccessToken> GetAccessToken(string code, string redirectUri = "")
+        public async Task<AccessToken> GetAccessTokenAsync(string code, string redirectUri = "")
         {
             _restClient.BaseUrl = BaseUrl;
 
             var request = _requestHelper.CreateAccessTokenRequest(code, redirectUri);
 
-            var response = await Execute<AccessToken>(request);
+            var response = await ExecuteAsync<AccessToken>(request);
 
             if (response != null && !string.IsNullOrEmpty(response.access_token))
             {
@@ -22,7 +22,7 @@ namespace FreeAgent.Client
             return CurrentAccessToken;
         }
 
-        public async Task<AccessToken> RefreshAccessToken()
+        public async Task<AccessToken> RefreshAccessTokenAsync()
         {
             _restClient.BaseUrl = BaseUrl;
 
@@ -32,7 +32,7 @@ namespace FreeAgent.Client
             var timestamp = DateTime.UtcNow;
 
             var request = _requestHelper.CreateRefreshTokenRequest();
-            var response = await Execute<AccessToken>(request);
+            var response = await ExecuteAsync<AccessToken>(request);
 
             if (response != null && !string.IsNullOrEmpty(response.access_token))
             {

@@ -11,10 +11,10 @@ namespace FreeAgent.Client
 
         public override string ResourceName => "email_addresses";
 
-        public async Task<List<string>> All()
+        public async Task<List<string>> AllAsync()
         {
             var request = CreateBasicRequest(Method.GET);
-            var response = await Client.Execute<EmailAddressesWrapper>(request);
+            var response = await Client.ExecuteAsync<EmailAddressesWrapper>(request);
 
             if (response != null) return response.email_addresses;
 

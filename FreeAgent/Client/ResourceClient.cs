@@ -25,7 +25,7 @@ namespace FreeAgent.Client
 
         private const int PageSize = 50;
 
-        public async Task<List<TSingle>> All(Action<RestRequest> customizeRequest = null)
+        public async Task<List<TSingle>> AllAsync(Action<RestRequest> customizeRequest = null)
         {
             int page = 1;
 
@@ -38,7 +38,7 @@ namespace FreeAgent.Client
 
                 AddPaging(request, page);
 
-                var response = await Client.Execute<TListWrapper>(request);
+                var response = await Client.ExecuteAsync<TListWrapper>(request);
 
                 if (response != null)
                 {
@@ -60,7 +60,7 @@ namespace FreeAgent.Client
             }
         }
 
-        public async Task<TSingle> GetModelSorted(Order order, string bankAccountUrl = null)
+        public async Task<TSingle> GetModelSortedAsync(Order order, string bankAccountUrl = null)
         {
             var request = CreateBasicRequest(Method.GET);
 
@@ -77,7 +77,7 @@ namespace FreeAgent.Client
 
             request.AddParameter("sort", sort, ParameterType.GetOrPost);
 
-            var response = await Client.Execute<TListWrapper>(request);
+            var response = await Client.ExecuteAsync<TListWrapper>(request);
 
             if (response != null)
             {
@@ -92,12 +92,12 @@ namespace FreeAgent.Client
             return null;
         }
 
-        public async Task<TSingle> Get(string id)
+        public async Task<TSingle> GetAsync(string id)
         {
             try
             {
                 var request = CreateGetRequest(id);
-                var response = await Client.Execute<TSingleWrapper>(request);
+                var response = await Client.ExecuteAsync<TSingleWrapper>(request);
 
                 if (response != null) return SingleFromWrapper(response);
 
@@ -114,21 +114,21 @@ namespace FreeAgent.Client
             }
         }
 
-        public async Task<TSingle> Put(TSingle c)
+        public async Task<TSingle> PutAsync(TSingle c)
         {
             var request = CreatePutRequest(c);
-            var response = await Client.Execute<TSingleWrapper>(request);
+            var response = await Client.ExecuteAsync<TSingleWrapper>(request);
 
             if (response != null) return SingleFromWrapper(response);
 
             return null;
         }
 
-        public SystemTask Delete(string id)
+        public SystemTask DeleteAsync(string id)
         {
             var request = CreateDeleteRequest(id);
 
-            return Client.Execute(request);
+            return Client.ExecuteAsync(request);
         }
 
         protected RestRequest CreateAllRequest()

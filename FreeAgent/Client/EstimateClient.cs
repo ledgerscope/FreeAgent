@@ -31,27 +31,27 @@ namespace FreeAgent.Client
             return wrapper.estimate;
         }
 
-        public Task<List<Estimate>> AllForContact(string contact)
+        public Task<List<Estimate>> AllForContactAsync(string contact)
         {
-            return All((request) => request.AddParameter("contact", contact, ParameterType.GetOrPost));
+            return AllAsync((request) => request.AddParameter("contact", contact, ParameterType.GetOrPost));
         }
 
-        public Task<List<Estimate>> AllForProject(string project)
+        public Task<List<Estimate>> AllForProjectAsync(string project)
         {
-            return All((request) => request.AddParameter("project", project, ParameterType.GetOrPost));
+            return AllAsync((request) => request.AddParameter("project", project, ParameterType.GetOrPost));
         }
 
-        public Task<List<Estimate>> AllForInvoice(string invoice)
+        public Task<List<Estimate>> AllForInvoiceAsync(string invoice)
         {
-            return All((request) => request.AddParameter("invoice", invoice, ParameterType.GetOrPost));
+            return AllAsync((request) => request.AddParameter("invoice", invoice, ParameterType.GetOrPost));
         }
 
-        public Task<List<Estimate>> AllWithFilter(string filter)
+        public Task<List<Estimate>> AllWithFilterAsync(string filter)
         {
-            return All((request) => request.AddParameter("view", filter, ParameterType.GetOrPost));
+            return AllAsync((request) => request.AddParameter("view", filter, ParameterType.GetOrPost));
         }
 
-        public async Task<bool> SendEmail(string estimateId, EstimateEmail email)
+        public async Task<bool> SendEmailAsync(string estimateId, EstimateEmail email)
         {
             var request = CreateBasicRequest(Method.POST, "/{id}/send_email");
 
@@ -60,7 +60,7 @@ namespace FreeAgent.Client
             request.AddUrlSegment("id", estimateId);
             request.AddJsonBody(new EstimateEmailWrapper() { estimate = email });
 
-            var response = await Client.Execute(request);
+            var response = await Client.ExecuteAsync(request);
 
             if (response != null)
                 return response.StatusCode == System.Net.HttpStatusCode.OK;
@@ -68,7 +68,7 @@ namespace FreeAgent.Client
             return false;
         }
 
-        public async Task<bool> MarkAsSent(string estimateId)
+        public async Task<bool> MarkAsSentAsync(string estimateId)
         {
             var request = CreateBasicRequest(Method.PUT, "/{id}/transitions/mark_as_sent");
 
@@ -76,7 +76,7 @@ namespace FreeAgent.Client
 
             request.AddUrlSegment("id", estimateId);
 
-            var response = await Client.Execute(request);
+            var response = await Client.ExecuteAsync(request);
 
             if (response != null)
                 return response.StatusCode == System.Net.HttpStatusCode.OK;
@@ -84,7 +84,7 @@ namespace FreeAgent.Client
             return false;
         }
 
-        public async Task<bool> MarkAsDraft(string estimateId)
+        public async Task<bool> MarkAsDraftAsync(string estimateId)
         {
             var request = CreateBasicRequest(Method.PUT, "/{id}/transitions/mark_as_draft");
 
@@ -92,7 +92,7 @@ namespace FreeAgent.Client
 
             request.AddUrlSegment("id", estimateId);
 
-            var response = await Client.Execute(request);
+            var response = await Client.ExecuteAsync(request);
 
             if (response != null)
                 return response.StatusCode == System.Net.HttpStatusCode.OK;
@@ -100,7 +100,7 @@ namespace FreeAgent.Client
             return false;
         }
 
-        public async Task<bool> DeleteLine(string lineId)
+        public async Task<bool> DeleteLineAsync(string lineId)
         {
             var request = CreateBasicRequest(Method.DELETE, "/{id}", resourceOverride: "estimate_items");
 
@@ -108,7 +108,7 @@ namespace FreeAgent.Client
 
             request.AddUrlSegment("id", lineId);
 
-            var response = await Client.Execute(request);
+            var response = await Client.ExecuteAsync(request);
 
             if (response != null)
                 return response.StatusCode == System.Net.HttpStatusCode.OK;

@@ -26,14 +26,14 @@ namespace FreeAgent.Client
             return wrapper.note;
         }
 
-        public Task<List<Note>> AllForContact(string contact)
+        public Task<List<Note>> AllForContactAsync(string contact)
         {
-            return All((request) => request.AddParameter("contact", contact, ParameterType.GetOrPost));
+            return AllAsync((request) => request.AddParameter("contact", contact, ParameterType.GetOrPost));
         }
 
-        public Task<List<Note>> AllForProject(string project)
+        public Task<List<Note>> AllForProjectAsync(string project)
         {
-            return All((request) => request.AddParameter("project", project, ParameterType.GetOrPost));
+            return AllAsync((request) => request.AddParameter("project", project, ParameterType.GetOrPost));
         }
     }
 }
