@@ -17,21 +17,41 @@ namespace FreeAgent.Models
         public DateTime PurchasedOn { get; set; }
         [JsonProperty("disposed_on")]
         public DateTime DisposedOn { get; set; }
-        //[JsonProperty("capital_asset_history")]
-        //public List<CapitalAssetHistoryItem> CapitalAssetHistory { get; set; } // Returned if 'include_history=true' is added to the request URL
+        [JsonProperty("capital_asset_history")]
+        public List<CapitalAssetHistoryItem> CapitalAssetHistory { get; set; }
     }
 
-    //public class CapitalAssetHistoryItem
-    //{
-    //}
+    public class CapitalAssetHistoryItem
+    {
+        [JsonProperty("type")]
+        public string Type { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
+        [JsonProperty("date")]
+        public DateTime Date { get; set; }
+        [JsonProperty("value")]
+        public decimal Value { get; set; }
+        [JsonProperty("tax_value")]
+        public decimal TaxValue { get; set; }
+        [JsonProperty("link")]
+        public Uri Link { get; set; }
+    }
 
-    //public static class CapitalAssetType
-    //{
-    //    public static string ComputerEquipment = "Computer Equipment";
-    //    public static string FixturesAndFittings = "Fixtures and Fittings";
-    //    public static string MotorVehicles = "Motor Vehicles";
-    //    public static string OtherCapitalAsset = "Other Capital Asset";
-    //}
+    public static class SystemCapitalAssetType
+    {
+        public static string ComputerEquipment = "Computer Equipment";
+        public static string FixturesAndFittings = "Fixtures and Fittings";
+        public static string MotorVehicles = "Motor Vehicles";
+        public static string OtherCapitalAsset = "Other Capital Asset";
+    }
+
+    public static class CapitalAssetHistoryItemType
+    {
+        public static string Purchase = "purchase";
+        public static string Depreciation = "depreciation";
+        public static string AnnualInvestmentAllowance = "annual_investment_allowance";
+        public static string Disposal = "disposal";
+    }
 
     public class CapitalAssetWrapper
     {

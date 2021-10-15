@@ -1,4 +1,5 @@
 using FreeAgent.Models;
+using RestSharp;
 using System.Collections.Generic;
 
 namespace FreeAgent.Client
@@ -8,6 +9,11 @@ namespace FreeAgent.Client
         public CapitalAssetClient(FreeAgentClient client) : base(client) { }
 
         public override string ResourceName => "capital_assets";
+
+        public override void CustomizeAllRequest(RestRequest request)
+        {
+            request.AddParameter("include_history", "true", ParameterType.GetOrPost);
+        }
 
         public override CapitalAssetWrapper WrapperFromSingle(CapitalAsset single)
         {
