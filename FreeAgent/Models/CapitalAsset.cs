@@ -35,6 +35,14 @@ namespace FreeAgent.Models
         public decimal TaxValue { get; set; }
         [JsonProperty("link")]
         public Uri Link { get; set; }
+
+        public static class CapitalAssetHistoryItemType
+        {
+            public static string Purchase = "purchase";
+            public static string Depreciation = "depreciation";
+            public static string AnnualInvestmentAllowance = "annual_investment_allowance";
+            public static string Disposal = "disposal";
+        }
     }
 
     public static class SystemCapitalAssetType
@@ -43,14 +51,6 @@ namespace FreeAgent.Models
         public static string FixturesAndFittings = "Fixtures and Fittings";
         public static string MotorVehicles = "Motor Vehicles";
         public static string OtherCapitalAsset = "Other Capital Asset";
-    }
-
-    public static class CapitalAssetHistoryItemType
-    {
-        public static string Purchase = "purchase";
-        public static string Depreciation = "depreciation";
-        public static string AnnualInvestmentAllowance = "annual_investment_allowance";
-        public static string Disposal = "disposal";
     }
 
     public class CapitalAssetWrapper
