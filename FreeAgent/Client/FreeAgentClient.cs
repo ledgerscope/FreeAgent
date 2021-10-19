@@ -224,6 +224,7 @@ namespace FreeAgent.Client
             User = new UserClient(this);
             EmailAddress = new EmailAddressClient(this);
             Payroll = new PayrollClient(this);
+            Profile = new ProfileClient(this);
         }
 
         private bool IsSuccess(HttpStatusCode code)
