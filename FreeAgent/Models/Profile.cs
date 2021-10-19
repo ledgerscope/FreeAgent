@@ -14,7 +14,7 @@ namespace FreeAgent.Models
         [JsonProperty("total_pay_in_previous_employment")]
         public decimal TotalPayInPreviousEmployment { get; set; }
         [JsonProperty("total_tax_in_previous_employment")]
-        public DateTime TotalTaxInPreviousEmployment { get; set; }
+        public decimal TotalTaxInPreviousEmployment { get; set; }
     }
 
     public class ProfilesWrapper
