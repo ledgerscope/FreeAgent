@@ -192,6 +192,7 @@ namespace FreeAgent.Client
         public UserClient User;
         public EmailAddressClient EmailAddress;
         public PayrollClient Payroll;
+        public ProfileClient Profile;
 
         private void SetupClients()
         {
