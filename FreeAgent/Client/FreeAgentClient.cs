@@ -193,6 +193,7 @@ namespace FreeAgent.Client
         public EmailAddressClient EmailAddress;
         public PayrollClient Payroll;
         public ProfileClient Profile;
+        public ProfitAndLossClient ProfitAndLoss;
 
         private void SetupClients()
         {
@@ -225,6 +226,7 @@ namespace FreeAgent.Client
             EmailAddress = new EmailAddressClient(this);
             Payroll = new PayrollClient(this);
             Profile = new ProfileClient(this);
+            ProfitAndLoss = new ProfitAndLossClient(this);
         }
 
         private bool IsSuccess(HttpStatusCode code)
