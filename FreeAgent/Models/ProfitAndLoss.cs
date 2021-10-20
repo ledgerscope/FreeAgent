@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace FreeAgent.Models
 {
+    /// <summary>
+    /// The profit and loss for the current accounting period
+    /// </summary>
     public class ProfitAndLoss
     {
         [JsonProperty("from")]
