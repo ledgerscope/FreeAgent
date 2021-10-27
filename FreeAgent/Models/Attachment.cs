@@ -7,14 +7,18 @@ namespace FreeAgent.Models
     {
         [JsonProperty("content_src")]
         public Uri ContentSrc { get; set; }
+        [JsonProperty("content_src_medium")]
+        public Uri ContentSrcMedium { get; set; }
+        [JsonProperty("content_src_small")]
+        public Uri ContentSrcSmall { get; set; }
         [JsonProperty("content_type")]
         public string ContentType { get; set; }
+        [JsonProperty("expires_at")]
+        public DateTime ExpiresAt { get; set; }
         [JsonProperty("file_name")]
         public string FileName { get; set; }
         [JsonProperty("file_size")]
         public int FileSize { get; set; }
-        //[JsonProperty("data ")]
-        //public ? Data { get; set; }
         [JsonProperty("description")]
         public string Description { get; set; }
     }
