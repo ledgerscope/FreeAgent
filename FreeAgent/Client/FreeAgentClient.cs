@@ -194,6 +194,7 @@ namespace FreeAgent.Client
         public PayrollClient Payroll;
         public ProfileClient Profile;
         public ProfitAndLossClient ProfitAndLoss;
+        public AttachmentClient Attachment;
 
         private void SetupClients()
         {
@@ -227,6 +228,7 @@ namespace FreeAgent.Client
             Payroll = new PayrollClient(this);
             Profile = new ProfileClient(this);
             ProfitAndLoss = new ProfitAndLossClient(this);
+            Attachment = new AttachmentClient(this);
         }
 
         private bool IsSuccess(HttpStatusCode code)

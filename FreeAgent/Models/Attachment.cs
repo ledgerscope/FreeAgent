@@ -32,6 +32,16 @@ namespace FreeAgent.Models
         public const string Gif = "image/gif";
         public const string Pdf = "application/x-pdf";
     }
+
+    public class AttachmentWrapper
+    {
+        public AttachmentWrapper()
+        {
+            attachment = new Attachment();
+        }
+
+        public Attachment attachment { get; set; }
+    }
 }
 
 
