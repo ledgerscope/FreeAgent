@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace FreeAgent.Models
 {
-    public class BankTransactionExplanation : UpdatableModel, IRemoveUrlOnSerialization
+    public class BankTransactionExplanation : UpdatableModel, IAttachmentModel, IRemoveUrlOnSerialization
     {
         [JsonProperty("bank_account")]
         public Uri BankAccount { get; set; }

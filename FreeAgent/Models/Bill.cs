@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace FreeAgent.Models
 {
-    public class Bill : ControlTransactionModel, IRemoveUrlOnSerialization, IRemoveRecurringOnSerialization
+    public class Bill : ControlTransactionModel, IAttachmentModel, IRemoveUrlOnSerialization, IRemoveRecurringOnSerialization
     {
         [JsonProperty("rebill_type")]
         public Uri RebillType { get; set; }

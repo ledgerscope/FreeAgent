@@ -16,5 +16,10 @@ namespace FreeAgent.Models
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; }
     }
+
+    public interface IAttachmentModel
+    {
+        Attachment Attachment { get; set; }
+    }
 }
 

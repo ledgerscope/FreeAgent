@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace FreeAgent.Models
 {
-    public class Expense : UpdatableModel, IRemoveUrlOnSerialization, IRemoveRecurringOnSerialization
+    public class Expense : UpdatableModel, IAttachmentModel, IRemoveUrlOnSerialization, IRemoveRecurringOnSerialization
     {
         [JsonProperty("user")]
         public Uri User { get; set; }
