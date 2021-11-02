@@ -16,7 +16,7 @@ namespace FreeAgent.Models
         [JsonProperty("rebilled_on_invoice_item")]
         public Uri RebilledOnInvoiceItem { get; set; }
         [JsonProperty("recurring")]
-        public bool Recurring { get; set; }
+        public string Recurring { get; set; }
         [JsonProperty("recurring_end_date")]
         public DateTime RecurringEndDate { get; set; }
         [JsonProperty("attachment")]
@@ -41,6 +41,19 @@ namespace FreeAgent.Models
         public static string ECServices = "EC Services";
     }
 
+    public static class BillRecurring
+    {
+        public static string Weekly = "Weekly";
+        public static string TwoWeekly = "Two Weekly";
+        public static string FourWeekly = "Four Weekly";
+        public static string Monthly = "Monthly";
+        public static string TwoMonthly = "Two Monthly";
+        public static string Quarterly = "Quarterly";
+        public static string Biannually = "Biannually";
+        public static string Annually = "Annually";
+        public static string TwoYearly = "2-Yearly";
+    }
+
     public class BillItem : ControlTransactionItemModel
     {
         [JsonProperty("bill")]
@@ -52,7 +65,7 @@ namespace FreeAgent.Models
         [JsonProperty("depreciation_schedule")]
         public string DepreciationSchedule { get; set; }
         [JsonProperty("manual_sales_tax_amount")]
-        public string ManualSalesTaxAmount { get; set; }
+        public decimal ManualSalesTaxAmount { get; set; }
     }
 
     public class BillWrapper
