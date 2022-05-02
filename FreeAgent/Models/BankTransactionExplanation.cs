@@ -93,8 +93,11 @@ namespace FreeAgent.Models
         // Additional properties for Purchase of Capital Asset/Disposal of Capital Asset
         [JsonProperty("capital_asset")]
         public Uri CapitalAsset { get; set; }
+        /// <summary>
+        /// Even though FA API docs say this should be an int, some companies are having this value set to string (for example: "3 Years")
+        /// </summary>
         [JsonProperty("asset_life_years")]
-        public int AssetLifeYears { get; set; }
+        public string AssetLifeYears { get; set; }
         [JsonProperty("disposed_asset")]
         public Uri DisposedAsset { get; set; }
 
