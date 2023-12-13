@@ -21,6 +21,8 @@ namespace FreeAgent.Models
         public DateTime DatedOn { get; set; }
         [JsonProperty("due_on")]
         public DateTime DueOn { get; set; }
+        [JsonProperty("due_value")]
+        public decimal DueValue { get; set; }
         [JsonProperty("currency")]
         public string Currency { get; set; }
         [JsonProperty("comments")]
@@ -29,10 +31,14 @@ namespace FreeAgent.Models
         public string EcStatus { get; set; }
         [JsonProperty("exchange_rate")]
         public decimal ExchangeRate { get; set; }
+        [JsonProperty("net_value")]
+        public decimal NetValue { get; set; }
         [JsonProperty("total_value")]
         public decimal TotalValue { get; set; }
         [JsonProperty("paid_on")]
         public DateTime PaidOn { get; set; }
+        [JsonProperty("paid_value")]
+        public decimal PaidValue { get; set; }
 
         // Sales tax properties
         [JsonProperty("sales_tax_value")]

@@ -39,6 +39,7 @@ namespace FreeAgent.Models
         public static string UKNonEc = "UK/Non-EC";
         public static string ECGoods = "EC Goods";
         public static string ECServices = "EC Services";
+        public static string ReverseCharge = "Reverse Charge";
     }
 
     public static class BillRecurring
@@ -66,6 +67,8 @@ namespace FreeAgent.Models
         public string DepreciationSchedule { get; set; }
         [JsonProperty("manual_sales_tax_amount")]
         public decimal ManualSalesTaxAmount { get; set; }
+        [JsonProperty("total_value_ex_tax")]
+        public decimal TotalValueExTax { get; set; }
     }
 
     public class BillWrapper

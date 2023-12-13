@@ -31,12 +31,8 @@ namespace FreeAgent.Models
         public bool ShowProjectName { get; set; }
         [JsonProperty("place_of_supply")]
         public string PlaceOfSupply { get; set; }
-        [JsonProperty("net_value")]
-        public decimal NetValue { get; set; }
         [JsonProperty("involves_sales_tax")]
         public bool InvolvesSalesTax { get; set; }
-        [JsonProperty("due_value")]
-        public decimal DueValue { get; set; }
         [JsonProperty("is_interim_uk_vat")]
         public bool IsInterimUKVat { get; set; }
         [JsonProperty("written_off_date")]
