@@ -195,6 +195,10 @@ namespace FreeAgent.Client
         public ProfileClient Profile;
         public ProfitAndLossClient ProfitAndLoss;
         public AttachmentClient Attachment;
+        public CorporationTaxReturnClient CorporationTaxReturn;
+        public HirePurchaseClient HirePurchase;
+        public FinalAccountsReportClient FinalAccountsReport;
+        public SelfAssessmentReturnClient SelfAssessmentReturn;
 
         private void SetupClients()
         {
@@ -229,6 +233,10 @@ namespace FreeAgent.Client
             Profile = new ProfileClient(this);
             ProfitAndLoss = new ProfitAndLossClient(this);
             Attachment = new AttachmentClient(this);
+            CorporationTaxReturn = new CorporationTaxReturnClient(this);
+            HirePurchase = new HirePurchaseClient(this);
+            FinalAccountsReport = new FinalAccountsReportClient(this);
+            SelfAssessmentReturn = new SelfAssessmentReturnClient(this);
         }
 
         private bool IsSuccess(HttpStatusCode code)
