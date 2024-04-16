@@ -41,6 +41,10 @@ namespace FreeAgent.Client
                 if (response != null)
                 {
                     var newItems = ListFromWrapper(response);
+
+                    if (newItems.Count == 0)
+                        break;
+
                     foreach (var newItem in newItems)
                     {
                         yield return newItem;
