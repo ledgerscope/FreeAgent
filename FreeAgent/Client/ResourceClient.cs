@@ -49,6 +49,9 @@ namespace FreeAgent.Client
                     {
                         yield return newItem;
                     }
+
+                    if (newItems.Count < PageSize)
+                        break;
                 }
                 else
                 {
