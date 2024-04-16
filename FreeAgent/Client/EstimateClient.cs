@@ -31,22 +31,22 @@ namespace FreeAgent.Client
             return wrapper.estimate;
         }
 
-        public Task<List<Estimate>> AllForContactAsync(string contact)
+        public IAsyncEnumerable<Estimate> AllForContactAsync(string contact)
         {
             return AllAsync((request) => request.AddParameter("contact", contact, ParameterType.GetOrPost));
         }
 
-        public Task<List<Estimate>> AllForProjectAsync(string project)
+        public IAsyncEnumerable<Estimate> AllForProjectAsync(string project)
         {
             return AllAsync((request) => request.AddParameter("project", project, ParameterType.GetOrPost));
         }
 
-        public Task<List<Estimate>> AllForInvoiceAsync(string invoice)
+        public IAsyncEnumerable<Estimate> AllForInvoiceAsync(string invoice)
         {
             return AllAsync((request) => request.AddParameter("invoice", invoice, ParameterType.GetOrPost));
         }
 
-        public Task<List<Estimate>> AllWithFilterAsync(string filter)
+        public IAsyncEnumerable<Estimate> AllWithFilterAsync(string filter)
         {
             return AllAsync((request) => request.AddParameter("view", filter, ParameterType.GetOrPost));
         }

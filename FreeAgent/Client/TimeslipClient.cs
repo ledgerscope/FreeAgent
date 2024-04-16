@@ -28,7 +28,7 @@ namespace FreeAgent.Client
             return wrapper.timeslip;
         }
 
-        public Task<List<Timeslip>> AllAsync(string from_date, string to_date)
+        public IAsyncEnumerable<Timeslip> AllAsync(string from_date, string to_date)
         {
             return AllAsync((request) =>
             {
@@ -37,7 +37,7 @@ namespace FreeAgent.Client
             });
         }
 
-        public Task<List<Timeslip>> AllRecentAsync()
+        public IAsyncEnumerable<Timeslip> AllRecentAsync()
         {
             DateTime now = DateTime.Now;
 

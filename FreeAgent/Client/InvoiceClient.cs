@@ -31,17 +31,17 @@ namespace FreeAgent.Client
             return wrapper.invoice;
         }
 
-        public Task<List<Invoice>> AllForProjectAsync(string projectId)
+        public IAsyncEnumerable<Invoice> AllForProjectAsync(string projectId)
         {
             return AllAsync((request) => request.AddParameter("project", projectId, ParameterType.GetOrPost));
         }
 
-        public Task<List<Invoice>> AllForContactAsync(string contactId)
+        public IAsyncEnumerable<Invoice> AllForContactAsync(string contactId)
         {
             return AllAsync((request) => request.AddParameter("contact", contactId, ParameterType.GetOrPost));
         }
 
-        public Task<List<Invoice>> AllWithFilterAsync(string filter)
+        public IAsyncEnumerable<Invoice> AllWithFilterAsync(string filter)
         {
             return AllAsync((request) => request.AddParameter("view", filter, ParameterType.GetOrPost));
         }

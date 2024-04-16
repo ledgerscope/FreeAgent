@@ -34,7 +34,7 @@ namespace FreeAgent.Client
             return wrapper.bill;
         }
 
-        public Task<List<Bill>> AllAsync(string from_date = "", string to_date = "")
+        public IAsyncEnumerable<Bill> AllAsync(string from_date = "", string to_date = "")
         {
             return AllAsync((request) =>
             {

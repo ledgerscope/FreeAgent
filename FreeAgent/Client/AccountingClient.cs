@@ -34,7 +34,7 @@ namespace FreeAgent.Client
         /// </summary>
         /// <param name="from_date">Date in YYYY-MM-DD format (optional)</param>
 		/// <param name="to_date">Date in YYYY-MM-DD format</param>
-        public Task<List<TrialBalanceSummary>> AllForPeriodAsync(string from_date = "", string to_date = "")
+        public IAsyncEnumerable<TrialBalanceSummary> AllForPeriodAsync(string from_date = "", string to_date = "")
         {
             return AllAsync((request) =>
             {

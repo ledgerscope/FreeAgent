@@ -26,7 +26,7 @@ namespace FreeAgent.Client
             return wrapper.expense;
         }
 
-        public Task<List<Expense>> AllAsync(string view = "", string from_date = "", string to_date = "")
+        public IAsyncEnumerable<Expense> AllAsync(string view = "", string from_date = "", string to_date = "")
         {
             return AllAsync((request) =>
             {

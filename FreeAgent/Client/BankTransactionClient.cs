@@ -26,7 +26,7 @@ namespace FreeAgent.Client
             return wrapper.bank_transaction;
         }
 
-        public Task<List<BankTransaction>> AllForAccountAsync(string bankAccount, string from_date = "", string to_date = "")
+        public IAsyncEnumerable<BankTransaction> AllForAccountAsync(string bankAccount, string from_date = "", string to_date = "")
         {
             return AllAsync((request) =>
             {

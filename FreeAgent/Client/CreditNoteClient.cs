@@ -31,17 +31,17 @@ namespace FreeAgent.Client
             return wrapper.credit_note;
         }
 
-        public Task<List<CreditNote>> AllForProjectAsync(string projectId)
+        public IAsyncEnumerable<CreditNote> AllForProjectAsync(string projectId)
         {
             return AllAsync((request) => request.AddParameter("project", projectId, ParameterType.GetOrPost));
         }
 
-        public Task<List<CreditNote>> AllForContactAsync(string contactId)
+        public IAsyncEnumerable<CreditNote> AllForContactAsync(string contactId)
         {
             return AllAsync((request) => request.AddParameter("contact", contactId, ParameterType.GetOrPost));
         }
 
-        public Task<List<CreditNote>> AllWithFilterAsync(string filter)
+        public IAsyncEnumerable<CreditNote> AllWithFilterAsync(string filter)
         {
             return AllAsync((request) => request.AddParameter("view", filter, ParameterType.GetOrPost));
         }

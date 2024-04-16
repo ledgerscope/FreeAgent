@@ -10,10 +10,10 @@ namespace FreeAgent.Client
             Client = client;
         }
 
-        public FreeAgentClient Client;
+        protected readonly FreeAgentClient Client;
         public string Version => FreeAgentClient.Version;
         public RequestHelper Helper => Client.Helper;
-        public virtual string ResourceName => "unknown";
+        public abstract string ResourceName { get; }
 
         protected void SetAuthentication(RestRequest request)
         {

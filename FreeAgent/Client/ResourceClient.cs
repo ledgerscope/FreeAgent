@@ -25,16 +25,14 @@ namespace FreeAgent.Client
 
         private const int PageSize = 50;
 
-        public async Task<List<TSingle>> AllAsync(Action<RestRequest> customizeRequest = null)
+        public async IAsyncEnumerable<TSingle> AllAsync(Action<RestRequest> customizeRequest = null)
         {
             int page = 1;
-
-            List<TSingle> allItems = new List<TSingle>();
 
             while (true)
             {
                 var request = CreateAllRequest();
-                if (customizeRequest != null) customizeRequest(request);
+                customizeRequest?.Invoke(request);
 
                 AddPaging(request, page);
 
@@ -43,17 +41,14 @@ namespace FreeAgent.Client
                 if (response != null)
                 {
                     var newItems = ListFromWrapper(response);
-                    allItems.AddRange(newItems);
-
-                    if (newItems.Count < PageSize) return allItems;
-                }
-                else if (response == null && page == 1)
-                {
-                    return null;
+                    foreach (var newItem in newItems)
+                    {
+                        yield return newItem;
+                    }
                 }
                 else
                 {
-                    return allItems;
+                    break;
                 }
 
                 page++;
@@ -99,7 +94,8 @@ namespace FreeAgent.Client
                 var request = CreateGetRequest(id);
                 var response = await Client.ExecuteAsync<TSingleWrapper>(request);
 
-                if (response != null) return SingleFromWrapper(response);
+                if (response != null) 
+                    return SingleFromWrapper(response);
 
                 return null;
             }
@@ -119,7 +115,8 @@ namespace FreeAgent.Client
             var request = CreatePutRequest(c);
             var response = await Client.ExecuteAsync<TSingleWrapper>(request);
 
-            if (response != null) return SingleFromWrapper(response);
+            if (response != null) 
+                return SingleFromWrapper(response);
 
             return null;
         }
