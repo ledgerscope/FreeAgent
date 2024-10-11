@@ -38,19 +38,19 @@ namespace FreeAgent.Models
 
         public static class CapitalAssetHistoryItemType
         {
-            public static string Purchase = "purchase";
-            public static string Depreciation = "depreciation";
-            public static string AnnualInvestmentAllowance = "annual_investment_allowance";
-            public static string Disposal = "disposal";
+            public const string Purchase = "purchase";
+            public const string Depreciation = "depreciation";
+            public const string AnnualInvestmentAllowance = "annual_investment_allowance";
+            public const string Disposal = "disposal";
         }
     }
 
     public static class SystemCapitalAssetType
     {
-        public static string ComputerEquipment = "Computer Equipment";
-        public static string FixturesAndFittings = "Fixtures and Fittings";
-        public static string MotorVehicles = "Motor Vehicles";
-        public static string OtherCapitalAsset = "Other Capital Asset";
+        public const string ComputerEquipment = "Computer Equipment";
+        public const string FixturesAndFittings = "Fixtures and Fittings";
+        public const string MotorVehicles = "Motor Vehicles";
+        public const string OtherCapitalAsset = "Other Capital Asset";
     }
 
     public class CapitalAssetWrapper
