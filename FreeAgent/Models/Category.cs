@@ -15,7 +15,7 @@ namespace FreeAgent.Models
         [JsonProperty("auto_sales_tax_rate")]
         public string AutoSalesTaxRate { get; set; }
         [JsonProperty("allowable_for_tax")]
-        public bool AllowableForTax { get; set; }
+        public bool? AllowableForTax { get; set; }
         [JsonProperty("tax_reporting_name")]
         public string TaxReportingName { get; set; }
     }
