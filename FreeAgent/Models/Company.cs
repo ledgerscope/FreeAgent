@@ -25,6 +25,8 @@ namespace FreeAgent.Models
         public DateTime TradingStartDate { get; set; }
         [JsonProperty("first_accounting_year_end")]
         public DateTime FirstAccountingYearEnd { get; set; }
+        [JsonProperty("annual_accounting_periods")]
+        public List<AnnualAccountingPeriod> AnnualAccountingPeriods { get; set; }
         [JsonProperty("freeagent_start_date")]
         public DateTime FreeagentStartDate { get; set; }
         [JsonProperty("address1")]
@@ -97,6 +99,14 @@ namespace FreeAgent.Models
         public List<string> SecondSalesTaxRates { get; set; }
         [JsonProperty("second_sales_tax_is_compound")]
         public bool SecondSalesTaxIsCompound { get; set; }
+
+        public class AnnualAccountingPeriod
+        {
+            [JsonProperty("starts_on")]
+            public DateTime StartsOn { get; set; }
+            [JsonProperty("ends_on")]
+            public DateTime EndsOn { get; set; }
+        }
 
         public static class CompanyType
         {
